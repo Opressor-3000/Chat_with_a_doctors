@@ -1,19 +1,43 @@
 version: "3.0"
 
 services:
-  db:
-    container_name: database
-    image: postgres:14.1-alpine
-    restart: always
-    environment:
-      - POSTGRES_DB=BTK
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=2023btkChat
-    ports:
-      - "5432:5432"
-    networks:
-      - custom
+  # db:
+  #   container_name: database
+  #   image: postgres:14.1-alpine
+  #   restart: always
+  #   environment:
+  #     - POSTGRES_DB=BTK
+  #     - POSTGRES_USER=root
+  #     - POSTGRES_PASSWORD=2023btkChat
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - custom
 
-networks:
-  custom:
-    driver: bridge
+# networks:
+#   custom:
+#     driver: bridge
+
+
+
+  db:
+    image: postgres
+    restart: always
+    container_name: postgres
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: Chatbtk
+      POSTGRES_PASSWORD: P@wshop2023
+      POSTGRES_DB: btkchat
+      PGDATA: ~/BTK_Chat_DB/
+      POSTGRES_INITDB_ARGS: "-A md5"
+    volumes:
+      - ./database:/var/lib/postgresql/data
+
+  redis:
+    image: redis
+    container_name: redis_1
+    restart: always
+    ports:
+      - 6379:6379

@@ -1,0 +1,460 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0 169136 13212 ?        Ss   14:31   0:02 /sbin/init splash
+root           2  0.0  0.0      0     0 ?        S    14:31   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   14:31   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   14:31   0:00 [rcu_par_gp]
+root           5  0.0  0.0      0     0 ?        I<   14:31   0:00 [slub_flushwq]
+root           6  0.0  0.0      0     0 ?        I<   14:31   0:00 [netns]
+root           8  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/0:0H-events_highpri]
+root          10  0.0  0.0      0     0 ?        I<   14:31   0:00 [mm_percpu_wq]
+root          11  0.0  0.0      0     0 ?        I    14:31   0:00 [rcu_tasks_kthread]
+root          12  0.0  0.0      0     0 ?        I    14:31   0:00 [rcu_tasks_rude_kthread]
+root          13  0.0  0.0      0     0 ?        I    14:31   0:00 [rcu_tasks_trace_kthread]
+root          14  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/0]
+root          15  0.2  0.0      0     0 ?        I    14:31   0:12 [rcu_preempt]
+root          16  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/0]
+root          17  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/0]
+root          19  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/0]
+root          20  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/1]
+root          21  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/1]
+root          22  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/1]
+root          23  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/1]
+root          25  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/1:0H-events_highpri]
+root          26  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/2]
+root          27  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/2]
+root          28  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/2]
+root          29  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/2]
+root          31  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/2:0H-events_highpri]
+root          32  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/3]
+root          33  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/3]
+root          34  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/3]
+root          35  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/3]
+root          37  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/3:0H-events_highpri]
+root          38  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/4]
+root          39  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/4]
+root          40  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/4]
+root          41  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/4]
+root          43  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/4:0H-events_highpri]
+root          44  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/5]
+root          45  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/5]
+root          46  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/5]
+root          47  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/5]
+root          49  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/5:0H-events_highpri]
+root          50  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/6]
+root          51  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/6]
+root          52  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/6]
+root          53  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/6]
+root          55  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/6:0H-events_highpri]
+root          56  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/7]
+root          57  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/7]
+root          58  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/7]
+root          59  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/7]
+root          61  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/7:0H-events_highpri]
+root          62  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/8]
+root          63  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/8]
+root          64  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/8]
+root          65  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/8]
+root          67  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/8:0H-events_highpri]
+root          68  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/9]
+root          69  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/9]
+root          70  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/9]
+root          71  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/9]
+root          73  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/9:0H-events_highpri]
+root          74  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/10]
+root          75  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/10]
+root          76  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/10]
+root          77  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/10]
+root          79  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/10:0H-events_highpri]
+root          80  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/11]
+root          81  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/11]
+root          82  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/11]
+root          83  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/11]
+root          85  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/11:0H-events_highpri]
+root          86  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/12]
+root          87  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/12]
+root          88  0.0  0.0      0     0 ?        S    14:31   0:01 [migration/12]
+root          89  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/12]
+root          91  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/12:0H-events_highpri]
+root          92  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/13]
+root          93  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/13]
+root          94  0.0  0.0      0     0 ?        S    14:31   0:01 [migration/13]
+root          95  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/13]
+root          97  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/13:0H-events_highpri]
+root          98  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/14]
+root          99  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/14]
+root         100  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/14]
+root         101  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/14]
+root         103  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/14:0H-events_highpri]
+root         104  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/15]
+root         105  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/15]
+root         106  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/15]
+root         107  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/15]
+root         109  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/15:0H-events_highpri]
+root         110  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/16]
+root         111  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/16]
+root         112  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/16]
+root         113  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/16]
+root         115  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/16:0H-events_highpri]
+root         116  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/17]
+root         117  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/17]
+root         118  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/17]
+root         119  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/17]
+root         121  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/17:0H-events_highpri]
+root         122  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/18]
+root         123  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/18]
+root         124  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/18]
+root         125  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/18]
+root         127  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/18:0H-events_highpri]
+root         128  0.0  0.0      0     0 ?        S    14:31   0:00 [cpuhp/19]
+root         129  0.0  0.0      0     0 ?        S    14:31   0:00 [idle_inject/19]
+root         130  0.0  0.0      0     0 ?        S    14:31   0:00 [migration/19]
+root         131  0.0  0.0      0     0 ?        S    14:31   0:00 [ksoftirqd/19]
+root         133  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/19:0H-events_highpri]
+root         134  0.0  0.0      0     0 ?        S    14:31   0:00 [kdevtmpfs]
+root         135  0.0  0.0      0     0 ?        I<   14:31   0:00 [inet_frag_wq]
+root         136  0.0  0.0      0     0 ?        S    14:31   0:00 [kauditd]
+root         138  0.0  0.0      0     0 ?        I    14:31   0:00 [kworker/1:1-mm_percpu_wq]
+root         140  0.0  0.0      0     0 ?        S    14:31   0:00 [khungtaskd]
+root         141  0.0  0.0      0     0 ?        S    14:31   0:00 [oom_reaper]
+root         143  0.0  0.0      0     0 ?        I<   14:31   0:00 [writeback]
+root         144  0.0  0.0      0     0 ?        S    14:31   0:00 [kcompactd0]
+root         146  0.0  0.0      0     0 ?        SN   14:31   0:00 [ksmd]
+root         147  0.0  0.0      0     0 ?        SN   14:31   0:00 [khugepaged]
+root         148  0.0  0.0      0     0 ?        I<   14:31   0:00 [kintegrityd]
+root         149  0.0  0.0      0     0 ?        I<   14:31   0:00 [kblockd]
+root         150  0.0  0.0      0     0 ?        I<   14:31   0:00 [blkcg_punt_bio]
+root         151  0.0  0.0      0     0 ?        I<   14:31   0:00 [tpm_dev_wq]
+root         152  0.0  0.0      0     0 ?        I<   14:31   0:00 [ata_sff]
+root         153  0.0  0.0      0     0 ?        I<   14:31   0:00 [md]
+root         154  0.0  0.0      0     0 ?        I<   14:31   0:00 [edac-poller]
+root         155  0.0  0.0      0     0 ?        I<   14:31   0:00 [devfreq_wq]
+root         167  0.0  0.0      0     0 ?        I    14:31   0:00 [kworker/12:1-mm_percpu_wq]
+root         174  0.0  0.0      0     0 ?        S    14:31   0:00 [watchdogd]
+root         175  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/1:1H-kblockd]
+root         176  0.0  0.0      0     0 ?        S    14:31   0:00 [kswapd0]
+root         177  0.0  0.0      0     0 ?        S    14:31   0:00 [ecryptfs-kthread]
+root         178  0.0  0.0      0     0 ?        I<   14:31   0:00 [kthrotld]
+root         179  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/124-pciehp]
+root         180  0.0  0.0      0     0 ?        I<   14:31   0:00 [acpi_thermal_pm]
+root         181  0.0  0.0      0     0 ?        S    14:31   0:00 [xenbus_probe]
+root         182  0.0  0.0      0     0 ?        S    14:31   0:00 [hwrng]
+root         183  0.0  0.0      0     0 ?        I<   14:31   0:00 [hfi-updates]
+root         186  0.0  0.0      0     0 ?        I<   14:31   0:00 [mld]
+root         187  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/4:1H-kblockd]
+root         188  0.0  0.0      0     0 ?        I<   14:31   0:00 [ipv6_addrconf]
+root         196  0.0  0.0      0     0 ?        I<   14:31   0:00 [kstrp]
+root         198  0.0  0.0      0     0 ?        I<   14:31   0:00 [zswap-shrink]
+root         203  0.0  0.0      0     0 ?        I<   14:31   0:00 [charger_manager]
+root         226  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/3:1H-kblockd]
+root         230  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/0:1H-events_highpri]
+root         273  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/14:1H-events_highpri]
+root         274  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/6:1H-events_highpri]
+root         275  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/19:1H-events_highpri]
+root         276  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/11:1H-kblockd]
+root         277  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/10:1H-events_highpri]
+root         278  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/2:1H-events_highpri]
+root         279  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/5:1H-kblockd]
+root         280  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/16:1H-events_highpri]
+root         281  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/13:1H-events_highpri]
+root         282  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/12:1H-kblockd]
+root         283  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/17:1H-events_highpri]
+root         284  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/15:1H-kblockd]
+root         285  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/18:1H-events_highpri]
+root         286  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/8:1H-events_highpri]
+root         287  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/7:1H-events_highpri]
+root         303  0.0  0.0      0     0 ?        I<   14:31   0:00 [kworker/9:1H-kblockd]
+root         317  0.0  0.0      0     0 ?        I<   14:31   0:00 [nvme-wq]
+root         318  0.0  0.0      0     0 ?        I<   14:31   0:00 [nvme-reset-wq]
+root         319  0.0  0.0      0     0 ?        I<   14:31   0:00 [nvme-delete-wq]
+root         320  0.0  0.0      0     0 ?        I<   14:31   0:00 [nvme-auth-wq]
+root         321  0.4  0.0      0     0 ?        S    14:31   0:24 [irq/79-ASUF1204:00]
+root         323  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/153-ITE5570:00]
+root         348  0.0  0.0      0     0 ?        S    14:31   0:00 [jbd2/nvme0n1p5-8]
+root         349  0.0  0.0      0     0 ?        I<   14:31   0:00 [ext4-rsv-conver]
+root         396  0.0  0.1  58368 25920 ?        S<s  14:31   0:00 /lib/systemd/systemd-journald
+root         432  0.0  0.0  28456  8000 ?        Ss   14:31   0:00 /lib/systemd/systemd-udevd
+root         433  0.0  0.0      0     0 ?        I    14:31   0:00 [kworker/3:2-mm_percpu_wq]
+root         506  0.0  0.0      0     0 ?        I    14:31   0:00 [kworker/14:3-rcu_par_gp]
+root         710  0.0  0.0      0     0 ?        S    14:31   0:01 [irq/154-mei_me]
+root         721  0.0  0.0      0     0 ?        I<   14:31   0:00 [cfg80211]
+root         887  0.0  0.0      0     0 ?        I<   14:31   0:00 [cryptd]
+root         898  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/155-iwlwifi:default_queue]
+root         899  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/156-iwlwifi:queue_1]
+root         900  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/157-iwlwifi:queue_2]
+root         901  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/158-iwlwifi:queue_3]
+root         902  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/159-iwlwifi:queue_4]
+root         903  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/160-iwlwifi:queue_5]
+root         904  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/161-iwlwifi:queue_6]
+root         905  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/162-iwlwifi:queue_7]
+root         906  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/163-iwlwifi:queue_8]
+root         907  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/164-iwlwifi:queue_9]
+root         908  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/165-iwlwifi:queue_10]
+root         909  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/166-iwlwifi:queue_11]
+root         910  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/167-iwlwifi:queue_12]
+root         911  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/168-iwlwifi:queue_13]
+root         912  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/169-iwlwifi:queue_14]
+root         913  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/170-iwlwifi:exception]
+root         914  0.0  0.0      0     0 ?        I<   14:31   0:00 [led_workqueue]
+root         950  0.0  0.0      0     0 ?        S    14:31   0:00 [card0-crtc0]
+root         951  0.0  0.0      0     0 ?        S    14:31   0:00 [card0-crtc1]
+root         952  0.0  0.0      0     0 ?        S    14:31   0:00 [card0-crtc2]
+root         953  0.0  0.0      0     0 ?        S    14:31   0:00 [card0-crtc3]
+root         955  0.0  0.0      0     0 ?        S    14:31   0:00 [nv_queue]
+root         956  0.0  0.0      0     0 ?        S    14:31   0:00 [nv_queue]
+root         971  0.0  0.0      0     0 ?        S    14:31   0:00 [nvidia-modeset/kthread_q]
+root         972  0.0  0.0      0     0 ?        S    14:31   0:00 [nvidia-modeset/deferred_close_kthread_q]
+root         974  0.0  0.0      0     0 ?        S    14:31   0:00 [irq/173-nvidia]
+root         975  0.0  0.0      0     0 ?        S    14:31   0:00 [nvidia]
+root         976  0.0  0.0      0     0 ?        S    14:31   0:00 [nv_queue]
+root        1120  0.0  0.0      0     0 ?        S    14:31   0:00 [UVM global queue]
+root        1121  0.0  0.0      0     0 ?        S    14:31   0:00 [UVM deferred release queue]
+root        1122  0.0  0.0      0     0 ?        S    14:31   0:00 [UVM Tools Event Queue]
+systemd+    1204  0.1  0.0  16204  7200 ?        Ss   14:31   0:06 /lib/systemd/systemd-oomd
+systemd+    1205  0.0  0.0  20452 12480 ?        Ss   14:31   0:00 /lib/systemd/systemd-resolved
+systemd+    1206  0.0  0.0  89692  7200 ?        Ssl  14:31   0:00 /lib/systemd/systemd-timesyncd
+root        1310  0.0  0.0 315560  8956 ?        Ssl  14:31   0:00 /usr/libexec/accounts-daemon
+avahi       1314  0.4  0.0   8800  3680 ?        Ss   14:31   0:26 avahi-daemon: running [fx507zm.local]
+root        1315  0.0  0.0  11104  5120 ?        Ss   14:31   0:00 /usr/lib/bluetooth/bluetoothd
+root        1319  0.0  0.0   9368  2560 ?        Ss   14:31   0:00 /usr/sbin/cron -f -P
+message+    1321  0.0  0.0  12332  5920 ?        Ss   14:31   0:01 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root        1334  0.0  0.0  82892  3360 ?        Ssl  14:31   0:00 /usr/sbin/irqbalance --foreground
+root        1350  0.0  0.1  36240 19840 ?        Ss   14:31   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root        1356  0.0  0.0 315832  9376 ?        Ssl  14:31   0:01 /usr/libexec/polkitd --no-debug
+root        1360  0.0  0.0 313756  7464 ?        Ssl  14:31   0:00 /usr/libexec/power-profiles-daemon
+nvidia-+    1365  0.0  0.0   5164  1920 ?        Ss   14:31   0:00 /usr/bin/nvidia-persistenced --user nvidia-persistenced --no-persistence-mode --verbose
+root        1369  0.0  0.1 2649832 31184 ?       Ssl  14:31   0:02 /usr/lib/snapd/snapd
+root        1372  0.0  0.0 309728  6080 ?        Ssl  14:31   0:00 /usr/libexec/switcheroo-control
+root        1381  0.0  0.0  49564  8400 ?        Ss   14:31   0:00 /lib/systemd/systemd-logind
+root        1384  0.0  0.0 351292 10080 ?        Ssl  14:31   0:01 /usr/sbin/thermald --systemd --dbus-enable --adaptive
+root        1386  0.0  0.0 466992 12300 ?        Ssl  14:31   0:00 /usr/libexec/udisks2/udisksd
+avahi       1395  0.0  0.0   8232  1300 ?        S    14:31   0:00 avahi-daemon: chroot helper
+syslog      1429  0.0  0.0 222300  5760 ?        Ssl  14:31   0:00 /usr/sbin/rsyslogd -n -iNONE
+root        1501  0.3  0.1 410624 18984 ?        Ssl  14:31   0:20 /usr/sbin/NetworkManager --no-daemon
+root        1504  0.0  0.0  16460  6240 ?        Ss   14:31   0:00 /sbin/wpa_supplicant -u -s -O DIR=/run/wpa_supplicant GROUP=netdev
+root        1506  0.0  0.0 317152 11312 ?        Ssl  14:31   0:00 /usr/sbin/ModemManager
+root        1508  0.0  0.0 313732  7648 ?        Ssl  14:31   0:00 /usr/libexec/boltd
+root        1542  0.0  0.0  37836 11360 ?        Ss   14:31   0:00 /usr/sbin/cupsd -l
+root        1546  0.0  0.1 113252 22400 ?        Ssl  14:31   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root        1560  0.2  0.2 2095908 43556 ?       Ssl  14:31   0:15 /usr/bin/containerd
+root        1583  0.0  0.0 314588  8320 ?        Ssl  14:31   0:00 /usr/sbin/gdm3
+postgres    1598  0.0  0.1 223564 30080 ?        Ss   14:31   0:00 /usr/lib/postgresql/15/bin/postgres -D /var/lib/postgresql/15/main -c config_file=/etc/postgresql/15/main/postgresql.conf
+postgres    1607  0.0  0.0 223696  8468 ?        Ss   14:31   0:00 postgres: 15/main: checkpointer 
+postgres    1608  0.0  0.0 223712  6548 ?        Ss   14:31   0:00 postgres: 15/main: background writer 
+postgres    1625  0.0  0.0 223564 10068 ?        Ss   14:31   0:00 postgres: 15/main: walwriter 
+postgres    1626  0.0  0.0 225152  8148 ?        Ss   14:31   0:00 postgres: 15/main: autovacuum launcher 
+postgres    1627  0.0  0.0 225136  7668 ?        Ss   14:31   0:00 postgres: 15/main: logical replication launcher 
+root        1632  0.0  0.0  15908  6312 ?        Ss   14:31   0:00 /usr/sbin/apache2 -k start
+www-data    1633  0.0  0.0 2010620 11932 ?       Sl   14:31   0:00 /usr/sbin/apache2 -k start
+www-data    1634  0.0  0.0 2010620 11932 ?       Sl   14:31   0:00 /usr/sbin/apache2 -k start
+root        1751  0.0  0.0 312136  8000 ?        Ssl  14:31   0:00 /usr/libexec/upowerd
+rtkit       1777  0.0  0.0  22788  3200 ?        SNsl 14:31   0:00 /usr/libexec/rtkit-daemon
+root        2156  0.0  0.0      0     0 ?        S<   14:31   0:00 [krfcommd]
+cups-br+    2163  0.0  0.1 334336 18388 ?        Ssl  14:31   0:00 /usr/sbin/cups-browsed
+root        2181  0.2  0.5 3063980 86712 ?       Ssl  14:31   0:12 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+kernoops    2198  0.0  0.0  12520  1964 ?        Ss   14:31   0:00 /usr/sbin/kerneloops --test
+kernoops    2201  0.0  0.0  12520  2080 ?        Ss   14:31   0:00 /usr/sbin/kerneloops
+colord      3139  0.0  0.0 319088 12628 ?        Ssl  14:31   0:00 /usr/libexec/colord
+root        3373  0.0  0.0 242208 10328 ?        Sl   14:31   0:00 gdm-session-worker [pam/gdm-password]
+lp          3377  0.0  0.0  16260  6560 ?        S    14:31   0:00 /usr/lib/cups/notifier/dbus dbus://
+yusif       3391  0.0  0.0  19908 11840 ?        Ss   14:31   0:00 /lib/systemd/systemd --user
+yusif       3392  0.0  0.0 170620  6948 ?        S    14:31   0:00 (sd-pam)
+yusif       3398  0.0  0.0  61452 12344 ?        S<sl 14:31   0:01 /usr/bin/pipewire
+yusif       3401  0.1  0.2 491328 39400 ?        S<sl 14:31   0:09 /usr/bin/wireplumber
+yusif       3402  0.0  0.0  39716 14308 ?        S<sl 14:31   0:04 /usr/bin/pipewire-pulse
+yusif       3408  0.0  0.0  10716  5120 ?        Ss   14:31   0:01 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+yusif       3410  0.0  0.0 316356  9280 ?        SLsl 14:31   0:00 /usr/bin/gnome-keyring-daemon --foreground --components=pkcs11,secrets --control-directory=/run/user/1000/keyring
+yusif       3414  0.0  0.0 313948  7680 ?        Ssl  14:31   0:00 /usr/libexec/gvfsd
+yusif       3425  0.0  0.0 454020  5760 ?        Sl   14:31   0:00 /usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f
+yusif       3444  0.0  0.0 536748  7520 ?        Ssl  14:31   0:00 /usr/libexec/xdg-document-portal
+yusif       3451  0.0  0.0 309712  5920 ?        Ssl  14:31   0:00 /usr/libexec/xdg-permission-store
+root        3459  0.0  0.0   2636  1760 ?        Ss   14:31   0:00 fusermount3 -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal -- /run/user/1000/doc
+yusif       3462  0.0  0.1 707136 29356 ?        SNsl 14:31   0:00 /usr/libexec/tracker-miner-fs-3
+yusif       3489  0.0  0.0 389660 10240 ?        Ssl  14:31   0:00 /usr/libexec/gvfs-udisks2-volume-monitor
+yusif       3495  0.0  0.0 310932  6560 ?        Ssl  14:31   0:00 /usr/libexec/gvfs-gphoto2-volume-monitor
+yusif       3500  0.0  0.0 309912  6400 ?        Ssl  14:31   0:00 /usr/libexec/gvfs-goa-volume-monitor
+yusif       3505  0.0  0.2 641696 36000 ?        Sl   14:31   0:00 /usr/libexec/goa-daemon
+yusif       3513  0.0  0.0 389048  8800 ?        Sl   14:31   0:00 /usr/libexec/goa-identity-service
+yusif       3520  0.0  0.0 388688  7680 ?        Ssl  14:31   0:00 /usr/libexec/gvfs-afc-volume-monitor
+yusif       3526  0.0  0.0 309848  6240 ?        Ssl  14:31   0:00 /usr/libexec/gvfs-mtp-volume-monitor
+yusif       3543  0.0  0.0 235824  5920 tty2     Ssl+ 14:31   0:00 /usr/libexec/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu
+yusif       3545  3.4  1.0 28234164 163244 tty2  Sl+  14:31   3:28 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty -novtswitch -verbose 3
+yusif       3667  0.0  0.0 298012 15680 tty2     Sl+  14:31   0:00 /usr/libexec/gnome-session-binary --session=ubuntu
+yusif       3760  0.0  0.0 382768  7680 ?        Ssl  14:31   0:00 /usr/libexec/at-spi-bus-launcher
+yusif       3767  0.0  0.0   9356  4320 ?        S    14:31   0:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 11 --address=unix:path=/run/user/1000/at-spi/bus_1
+yusif       3790  0.0  0.0 162056  7040 ?        Ssl  14:31   0:00 /usr/libexec/gcr-ssh-agent /run/user/1000/gcr
+yusif       3791  0.0  0.0  91360  5280 ?        Ssl  14:31   0:00 /usr/libexec/gnome-session-ctl --monitor
+yusif       3793  0.0  0.0   7576  4960 ?        Ss   14:31   0:00 ssh-agent -D -a /run/user/1000/openssh_agent
+yusif       3803  0.0  0.1 594252 17280 ?        Ssl  14:31   0:00 /usr/libexec/gnome-session-binary --systemd-service --session=ubuntu
+yusif       3822  3.3  2.0 6991192 323148 ?      Ssl  14:31   3:19 /usr/bin/gnome-shell
+yusif       3854  0.0  0.0  76252 14080 ?        Ss   14:31   0:00 /snap/snapd-desktop-integration/83/usr/bin/snapd-desktop-integration
+yusif       3918  0.0  0.7 2184552 116500 ?      Sl   14:31   0:02 /usr/libexec/mutter-x11-frames
+yusif       3952  0.0  0.1 306120 24444 ?        Sl   14:31   0:00 /snap/snapd-desktop-integration/83/usr/bin/snapd-desktop-integration
+yusif       3988  0.0  0.0 697536 13440 ?        Ssl  14:31   0:00 /usr/libexec/xdg-desktop-portal
+yusif       4000  0.0  0.6 2307304 99172 ?       Ssl  14:31   0:01 /usr/libexec/xdg-desktop-portal-gnome
+yusif       4047  0.0  0.1 416592 26508 ?        Ssl  14:31   0:00 /usr/libexec/xdg-desktop-portal-gtk
+yusif       4067  0.0  0.0 235884  7680 ?        Sl   14:31   0:01 /usr/libexec/at-spi2-registryd --use-gnome-session
+yusif       4069  0.0  0.1 2792684 26560 ?       Sl   14:31   0:00 /usr/bin/gjs /usr/share/gnome-shell/org.gnome.ScreenSaver
+yusif       4086  0.0  0.1 654904 16640 ?        Sl   14:31   0:00 /usr/libexec/gnome-shell-calendar-server
+yusif       4093  0.0  0.2 1256008 41760 ?       Ssl  14:31   0:00 /usr/libexec/evolution-source-registry
+yusif       4108  0.0  0.1 891084 23360 ?        Ssl  14:31   0:00 /usr/libexec/evolution-calendar-factory
+yusif       4109  0.0  0.0 230380  5760 ?        Ssl  14:31   0:00 /usr/libexec/dconf-service
+yusif       4156  0.0  0.1 820056 27680 ?        Ssl  14:31   0:00 /usr/libexec/evolution-addressbook-factory
+yusif       4161  0.0  0.1 2727152 26096 ?       Sl   14:31   0:00 /usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications
+yusif       4189  0.0  0.0 388476  8640 ?        Sl   14:31   0:00 /usr/libexec/gvfsd-trash --spawner :1.5 /org/gtk/gvfs/exec_spaw/0
+yusif       4245  0.0  0.0   2732  1440 ?        Ss   14:31   0:00 sh -c /usr/bin/ibus-daemon --panel disable $([ "$XDG_SESSION_TYPE" = "x11" ] && echo "--xim")
+yusif       4246  0.0  0.0 383936  6560 ?        Ssl  14:31   0:00 /usr/libexec/gsd-a11y-settings
+yusif       4248  0.2  0.0 389072 11744 ?        Sl   14:31   0:13 /usr/bin/ibus-daemon --panel disable --xim
+yusif       4251  0.0  0.1 416028 24220 ?        Ssl  14:31   0:00 /usr/libexec/gsd-color
+yusif       4253  0.0  0.0 432260 12320 ?        Ssl  14:31   0:00 /usr/libexec/gsd-datetime
+yusif       4258  0.0  0.0 459432  7360 ?        Ssl  14:31   0:00 /usr/libexec/gsd-housekeeping
+yusif       4262  0.0  0.1 414364 22260 ?        Ssl  14:31   0:00 /usr/libexec/gsd-keyboard
+yusif       4263  0.0  0.1 597592 28664 ?        Ssl  14:31   0:00 /usr/libexec/gsd-media-keys
+yusif       4266  0.0  0.1 526928 27064 ?        Ssl  14:31   0:00 /usr/libexec/gsd-power
+yusif       4270  0.0  0.0 323644 10880 ?        Ssl  14:31   0:00 /usr/libexec/gsd-print-notifications
+yusif       4272  0.0  0.0 531200  6400 ?        Ssl  14:31   0:00 /usr/libexec/gsd-rfkill
+yusif       4275  0.0  0.0 309748  5760 ?        Ssl  14:31   0:00 /usr/libexec/gsd-screensaver-proxy
+yusif       4277  0.0  0.0 539796 10880 ?        Ssl  14:31   0:00 /usr/libexec/gsd-sharing
+yusif       4279  0.0  0.0 459560  8000 ?        Ssl  14:31   0:00 /usr/libexec/gsd-smartcard
+yusif       4283  0.0  0.0 393964  9760 ?        Ssl  14:31   0:00 /usr/libexec/gsd-sound
+yusif       4289  0.0  0.1 414788 23108 ?        Ssl  14:31   0:00 /usr/libexec/gsd-wacom
+yusif       4292  0.0  0.1 416988 26560 ?        Ssl  14:31   0:00 /usr/libexec/gsd-xsettings
+yusif       4309  0.0  0.0 305292  6880 ?        Sl   14:31   0:00 /usr/libexec/gsd-disk-utility-notify
+yusif       4318  0.0  0.3 878788 62544 ?        Sl   14:31   0:00 /usr/libexec/evolution-data-server/evolution-alarm-notify
+yusif       4361  0.0  0.0 236916  7200 ?        Sl   14:31   0:00 /usr/libexec/ibus-memconf
+yusif       4363  0.0  0.1 344276 26216 ?        Sl   14:31   0:04 /usr/libexec/ibus-extension-gtk3
+yusif       4366  0.0  0.1 266972 22972 ?        Sl   14:31   0:00 /usr/libexec/ibus-x11 --kill-daemon
+yusif       4371  0.0  0.0 310664  7040 ?        Sl   14:31   0:00 /usr/libexec/ibus-portal
+yusif       4407  0.0  0.5 719744 92544 ?        Sl   14:31   0:01 /snap/snap-store/959/usr/bin/snap-store --gapplication-service
+yusif       4431  0.0  0.0 237048  7040 ?        Sl   14:31   0:04 /usr/libexec/ibus-engine-simple
+yusif       4477  0.0  0.0 415600 14560 ?        Sl   14:31   0:00 /usr/libexec/gsd-printer
+root        4658  0.0  0.2 476076 38968 ?        Ssl  14:31   0:01 /usr/libexec/fwupd/fwupd
+yusif       4667  0.0  0.3 3147728 60016 ?       Sl   14:31   0:02 gjs /usr/share/gnome-shell/extensions/ding@rastersoft.com/ding.js -E -P /usr/share/gnome-shell/extensions/ding@rastersoft.com
+yusif       4683  0.0  0.0 236368  6080 ?        Ssl  14:31   0:00 /usr/libexec/gvfsd-metadata
+yusif       5450 18.8  4.3 14575736 690788 ?     Sl   14:31  18:47 /snap/firefox/3600/usr/lib/firefox/firefox
+yusif       5667  0.0  0.3 201928 48480 ?        Sl   14:31   0:00 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -parentBuildID 20231220194509 -prefsLen 36500 -prefMapSize 238761 -appDir /snap/firefox/3600/usr/lib/firefox/browser {db18f3b4-61f1-4f81-af5c-4e657bbc4d94} 5450 true socket
+yusif       5713  0.5  0.8 2556620 136384 ?      Sl   14:31   0:32 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 1 -isForBrowser -prefsLen 36603 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {ba531b6c-d8ad-49b3-96ca-2332c752089b} 5450 true tab
+yusif       5757  0.0  0.1 1977000 19520 ?       Sl   14:31   0:00 /usr/bin/snap userd
+yusif       5840  4.7  3.2 28711728 518372 ?     Sl   14:31   4:42 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 2 -isForBrowser -prefsLen 41876 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {8164d272-912e-4b20-95fb-eb33bc833597} 5450 true tab
+yusif       6029  0.3  0.3 322416 60320 ?        Sl   14:31   0:22 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -parentBuildID 20231220194509 -sandboxingKind 0 -prefsLen 41906 -prefMapSize 238761 -appDir /snap/firefox/3600/usr/lib/firefox/browser {145621e7-4f28-4aec-9391-e243cdbd39d6} 5450 true utility
+yusif       6045  6.7  1.6 3154900 255548 ?      Sl   14:31   6:42 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 4 -isForBrowser -prefsLen 32091 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {144c4975-8578-4b98-acb3-6c671d899f1c} 5450 true tab
+yusif       6050  2.5  3.4 3234600 540716 ?      Sl   14:31   2:34 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 5 -isForBrowser -prefsLen 32091 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {80047b6d-85ac-45bf-ba94-afe42b0ebdd0} 5450 true tab
+yusif       6310  1.1  0.7 649736 118828 ?       Sl   14:31   1:08 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -parentBuildID 20231220194509 -prefsLen 42066 -prefMapSize 238761 -appDir /snap/firefox/3600/usr/lib/firefox/browser {f84d2f6c-705e-49cb-bad3-1667ab1f93df} 5450 true rdd
+yusif       6480  0.0  0.1 489176 24960 ?        Sl   14:32   0:00 /usr/bin/update-notifier
+root        6745  0.0  0.0      0     0 ?        I    14:37   0:00 [kworker/13:0-rcu_gp]
+root        6747  0.0  0.0      0     0 ?        I    14:37   0:01 [kworker/0:0-mm_percpu_wq]
+root        6998  0.0  0.0      0     0 ?        I    14:46   0:00 [kworker/17:2-mm_percpu_wq]
+yusif       7615  3.8  1.9 2895596 311724 ?      Sl   15:03   2:39 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 24 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {c6c1a4e3-3139-41a3-85b3-8a1f2d2b1b58} 5450 true tab
+yusif       7894  0.1  0.8 2533044 141600 ?      Sl   15:04   0:05 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 28 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {a3e739c1-34af-4c78-9eea-78536ea1edd2} 5450 true tab
+root        8237  0.2  0.0      0     0 ?        I<   15:14   0:09 [kworker/u41:0-i915_flip]
+yusif       8245  2.3  3.4 3216436 538476 ?      Sl   15:14   1:19 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 31 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {c68ca88f-154c-4a49-8027-0cf6f32887d7} 5450 true tab
+yusif       8387  0.6  2.6 11524832 413832 ?     Sl   15:15   0:21 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 33 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {a53967a4-adbe-4be6-bf82-44dad76ae9df} 5450 true tab
+root        8588  0.1  0.0      0     0 ?        I    15:24   0:04 [kworker/u40:0-writeback]
+yusif       8667  0.7  0.9 1177561300 154576 ?   SLl  15:31   0:18 /usr/share/code/code --unity-launch
+yusif       8672  0.0  0.2 33769520 45440 ?      S    15:31   0:00 /usr/share/code/code --type=zygote --no-zygote-sandbox
+yusif       8673  0.0  0.2 33769508 45280 ?      S    15:31   0:00 /usr/share/code/code --type=zygote
+yusif       8675  0.0  0.0 33769536 11012 ?      S    15:31   0:00 /usr/share/code/code --type=zygote
+yusif       8689  0.0  0.0 33575744 3040 ?       Sl   15:31   0:00 /usr/share/code/chrome_crashpad_handler --monitor-self-annotation=ptype=crashpad-handler --no-rate-limit --database=/home/yusif/.config/Code/Crashpad --url=appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=718c3083-91ef-468a-8b39-3d4007e9c587&iid=718c3083-91ef-468a-8b39-3d4007e9c587&sid=718c3083-91ef-468a-8b39-3d4007e9c587 --annotation=_companyName=Microsoft --annotation=_productName=VSCode --annotation=_version=1.85.1 --annotation=lsb-release=Ubuntu 23.04 --annotation=plat=Linux --annotation=prod=Electron --annotation=ver=25.9.7 --initial-client-fd=47 --shared-client-connection
+yusif       8705  1.5  0.8 34338380 129940 ?     Rl   15:31   0:36 /usr/share/code/code --type=gpu-process --crashpad-handler-pid=8689 --enable-crash-reporter=6e8aabc6-845c-45e7-b952-e892bfbb477c,no_channel --user-data-dir=/home/yusif/.config/Code --gpu-preferences=WAAAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAABgAAAAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAGAAAAAAAAAAYAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAA== --shared-files --field-trial-handle=0,i,8789040778528995426,4055511215524250443,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess
+yusif       8712  0.0  0.4 33827432 63704 ?      Sl   15:31   0:00 /usr/share/code/code --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=8689 --enable-crash-reporter=6e8aabc6-845c-45e7-b952-e892bfbb477c,no_channel --user-data-dir=/home/yusif/.config/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --bypasscsp-schemes --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --streaming-schemes --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8789040778528995426,4055511215524250443,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess
+yusif       8725  3.6  1.5 1190096212 237664 ?   Sl   15:31   1:27 /usr/share/code/code --type=renderer --crashpad-handler-pid=8689 --enable-crash-reporter=6e8aabc6-845c-45e7-b952-e892bfbb477c,no_channel --user-data-dir=/home/yusif/.config/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --bypasscsp-schemes --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --streaming-schemes --app-path=/usr/share/code/resources/app --enable-sandbox --enable-blink-features=HighlightAPI --first-renderer-process --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=4 --time-ticks-at-unix-epoch=-1704709864465689 --launch-time-ticks=3646615677 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8789040778528995426,4055511215524250443,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess --vscode-window-config=vscode:a4d73c2d-ca1d-454f-97c9-065f9801c6e1
+yusif       8815  0.1  0.5 1177348772 90324 ?    Sl   15:31   0:03 /usr/share/code/code --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=8689 --enable-crash-reporter=6e8aabc6-845c-45e7-b952-e892bfbb477c,no_channel --user-data-dir=/home/yusif/.config/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --bypasscsp-schemes --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --streaming-schemes --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8789040778528995426,4055511215524250443,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess
+yusif       8816  0.0  0.5 1177365728 81236 ?    Sl   15:31   0:01 /usr/share/code/code --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=8689 --enable-crash-reporter=6e8aabc6-845c-45e7-b952-e892bfbb477c,no_channel --user-data-dir=/home/yusif/.config/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --bypasscsp-schemes --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --streaming-schemes --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8789040778528995426,4055511215524250443,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess
+yusif       8817  0.3  1.1 1177368916 182136 ?   Sl   15:31   0:07 /usr/share/code/code --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --dns-result-order=ipv4first --inspect-port=0 --crashpad-handler-pid=8689 --enable-crash-reporter=6e8aabc6-845c-45e7-b952-e892bfbb477c,no_channel --user-data-dir=/home/yusif/.config/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --bypasscsp-schemes --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --streaming-schemes --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8789040778528995426,4055511215524250443,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess
+yusif       8883  0.0  0.4 1177279284 70372 ?    Sl   15:31   0:00 /usr/share/code/code --ms-enable-electron-run-as-node /home/yusif/.vscode/extensions/ms-azuretools.vscode-docker-1.28.0/dist/dockerfile-language-server-nodejs/lib/server.js --node-ipc --node-ipc --clientProcessId=8817
+yusif       8884  0.0  0.4 1177279284 71888 ?    Sl   15:31   0:00 /usr/share/code/code --ms-enable-electron-run-as-node /home/yusif/.vscode/extensions/ms-azuretools.vscode-docker-1.28.0/dist/compose-language-service/lib/server.js --node-ipc --node-ipc --clientProcessId=8817
+yusif       8955  0.0  0.3 135324 48892 ?        Sl   15:31   0:00 /home/yusif/My_Web_project/btk.az_chat_fastapi/.venv/bin/python /home/yusif/.vscode/extensions/ms-python.black-formatter-2023.6.0/bundled/tool/lsp_server.py
+yusif       9001  3.6  1.3 2725376 217292 ?      Sl   15:31   1:26 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 35 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {1f8da3ff-5389-4d99-980b-4ebe15aafe92} 5450 true tab
+yusif       9023  0.1  0.8 1179384644 139240 ?   Sl   15:31   0:04 /usr/share/code/code --ms-enable-electron-run-as-node /home/yusif/.vscode/extensions/ms-python.vscode-pylance-2023.12.1/dist/server.bundle.js --cancellationReceive=file:cc6da60fdeca52628e58409cfd3633ae53f488325d --node-ipc --clientProcessId=8817
+yusif       9151  0.7  1.6 2831544 262700 ?      Sl   15:32   0:17 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 37 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {e8de6b97-7f00-48bd-aa86-0507e20f45c7} 5450 true tab
+yusif       9432  1.3  1.6 2841572 259368 ?      Sl   15:32   0:31 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 40 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {5bbd09a7-ba12-40ce-9aad-6b75a6d96d07} 5450 true tab
+yusif       9497  0.6  1.5 2715980 247652 ?      Sl   15:32   0:14 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 41 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {d890d2fc-cb09-48a5-998b-bd4a18a29374} 5450 true tab
+yusif       9808  0.3  1.3 2672056 215324 ?      Sl   15:34   0:07 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 44 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {456144ad-1d15-42c3-9156-64e0c2f3d2c9} 5450 true tab
+yusif       9817  0.4  1.2 2622820 191020 ?      Sl   15:34   0:09 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 45 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {63a9f5a6-b8ba-4c7f-90b3-b42a25f9bb3e} 5450 true tab
+yusif       9983  0.6  1.4 2763480 235108 ?      Sl   15:35   0:14 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 48 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {28cb2b26-2042-46d1-8117-7ac691b52159} 5450 true tab
+yusif      10274  5.6  3.3 3405028 525816 ?      Sl   15:36   1:58 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 50 -isForBrowser -prefsLen 32229 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {a51d693b-9672-4daf-a2c1-ed6c6b5270f8} 5450 true tab
+root       10292  0.0  0.0      0     0 ?        I    15:36   0:00 [kworker/6:2-events]
+yusif      10461  0.0  0.5 1177279284 92252 ?    Sl   15:38   0:00 /usr/share/code/code --ms-enable-electron-run-as-node /home/yusif/.vscode/extensions/vue.volar-1.8.27/server.js --node-ipc --clientProcessId=8817
+yusif      10468  0.0  0.5 1177279284 92780 ?    Sl   15:38   0:00 /usr/share/code/code --ms-enable-electron-run-as-node /home/yusif/.vscode/extensions/vue.volar-1.8.27/server.js --node-ipc --clientProcessId=8817
+yusif      10681  0.1  1.0 3154100 168672 ?      Sl   15:40   0:02 /usr/bin/nautilus --gapplication-service
+yusif      10745  0.0  0.0 388464  8640 ?        Sl   15:40   0:00 /usr/libexec/gvfsd-recent --spawner :1.5 /org/gtk/gvfs/exec_spaw/1
+root       10816  0.0  0.0      0     0 ?        I    15:40   0:00 [kworker/4:2-mm_percpu_wq]
+root       11058  0.0  0.0      0     0 ?        I    15:42   0:00 [kworker/11:0-events]
+root       11074  0.1  0.0      0     0 ?        I    15:42   0:02 [kworker/u40:1-events_unbound]
+root       11085  0.0  0.0      0     0 ?        I    15:42   0:00 [kworker/18:0-mm_percpu_wq]
+root       11087  0.0  0.0      0     0 ?        I    15:42   0:00 [kworker/19:3-events]
+root       11433  0.0  0.0      0     0 ?        I    15:44   0:00 [kworker/1:2-events]
+yusif      11524  0.4  0.5 1177357540 90692 ?    Sl   15:47   0:05 /usr/share/code/code --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=8689 --enable-crash-reporter=6e8aabc6-845c-45e7-b952-e892bfbb477c,no_channel --user-data-dir=/home/yusif/.config/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --bypasscsp-schemes --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --streaming-schemes --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8789040778528995426,4055511215524250443,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess
+yusif      11539  0.0  0.0  11420  5600 pts/0    Ss   15:47   0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/browser/media/shellIntegration-bash.sh
+root       11589  0.0  0.0      0     0 ?        I    15:47   0:00 [kworker/8:2-events]
+root       11831  0.0  0.0      0     0 ?        I    15:49   0:00 [kworker/16:1-events]
+yusif      11956  0.3  1.5 2730468 244616 ?      Sl   15:50   0:03 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 58 -isForBrowser -prefsLen 32296 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {b4ffc4e3-521a-42e8-aaf0-8bd6a3314321} 5450 true tab
+root       12376  0.0  0.0      0     0 ?        I    15:52   0:00 [kworker/17:0-mm_percpu_wq]
+root       12450  0.0  0.0      0     0 ?        I    15:53   0:00 [kworker/7:0-events]
+root       12463  0.0  0.0      0     0 ?        I    15:53   0:00 [kworker/2:2-events]
+root       12468  0.0  0.0      0     0 ?        I    15:53   0:00 [kworker/5:1-rcu_par_gp]
+root       12477  0.0  0.0      0     0 ?        I    15:53   0:00 [kworker/9:0-rcu_par_gp]
+yusif      12745  0.2  1.1 2634440 176828 ?      Sl   15:55   0:02 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 59 -isForBrowser -prefsLen 32296 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {5d6a330d-8228-4af7-a90d-bd5baa5d7911} 5450 true tab
+root       12794  0.0  0.0      0     0 ?        I    15:55   0:00 [kworker/10:1-mm_percpu_wq]
+yusif      12829  0.9  1.4 2684836 233604 ?      Sl   15:55   0:08 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 60 -isForBrowser -prefsLen 32296 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {56636dc8-6dc2-4ebc-ad7c-1d5705b6c3c6} 5450 true tab
+root       12852  0.0  0.0      0     0 ?        I    15:56   0:00 [kworker/13:2-rcu_par_gp]
+root       13684  0.0  0.2  60020 41600 ?        S    15:57   0:00 python3 /usr/lib/software-properties/software-properties-dbus
+root       14142  0.1  0.0      0     0 ?        I    15:57   0:01 [kworker/u40:4-flush-259:0]
+root       14985  0.0  0.0      0     0 ?        I    16:00   0:00 [kworker/7:1-events]
+root       15043  0.0  0.0      0     0 ?        I<   16:00   0:00 [kworker/u41:2-hci0]
+root       15234  0.0  0.0      0     0 ?        I    16:01   0:00 [kworker/14:1-rcu_par_gp]
+root       15306  0.0  0.0      0     0 ?        I    16:01   0:00 [kworker/4:0-rcu_par_gp]
+root       15319  0.0  0.0      0     0 ?        I    16:01   0:00 [kworker/0:3-events]
+root       15323  0.0  0.0      0     0 ?        I    16:01   0:00 [kworker/12:0-events]
+root       15594  0.0  0.0      0     0 ?        I    16:02   0:00 [kworker/10:0-events]
+root       15614  0.0  0.0      0     0 ?        I    16:02   0:00 [kworker/11:1-events]
+root       15636  0.0  0.0      0     0 ?        I    16:02   0:00 [kworker/9:2-mm_percpu_wq]
+root       15729  0.0  0.0      0     0 ?        I    16:03   0:00 [kworker/18:1-cgroup_destroy]
+root       15742  0.0  0.0      0     0 ?        I    16:03   0:00 [kworker/3:0]
+root       15805  0.0  0.0      0     0 ?        I    16:03   0:00 [kworker/13:1-mm_percpu_wq]
+root       15867  0.0  0.0      0     0 ?        I    16:04   0:00 [kworker/19:0]
+root       15947  0.0  0.0      0     0 ?        I    16:04   0:00 [kworker/16:2-mm_percpu_wq]
+root       15949  0.0  0.0      0     0 ?        I    16:04   0:00 [kworker/15:1-mm_percpu_wq]
+root       15964  0.0  0.0      0     0 ?        I    16:05   0:00 [kworker/6:0-events]
+root       15965  0.0  0.0      0     0 ?        I    16:05   0:00 [kworker/2:0-events]
+root       15975  0.1  0.0      0     0 ?        I    16:05   0:00 [kworker/u40:2-flush-259:0]
+root       16054  0.1  0.0      0     0 ?        I    16:05   0:00 [kworker/u40:5-events_unbound]
+root       16055  0.0  0.0      0     0 ?        I    16:05   0:00 [kworker/5:2-mm_percpu_wq]
+root       16056  0.0  0.0      0     0 ?        I    16:05   0:00 [kworker/8:3-events]
+root       16067  0.0  0.0      0     0 ?        I    16:05   0:00 [kworker/15:4-mm_percpu_wq]
+root       16107  0.0  0.0 1156112 3360 ?        Sl   16:05   0:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 6379 -container-ip 172.18.0.2 -container-port 6379
+root       16114  0.0  0.0 1082124 3360 ?        Sl   16:05   0:00 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 6379 -container-ip 172.18.0.2 -container-port 6379
+root       16143  0.0  0.0 720328 10240 ?        Sl   16:05   0:00 /usr/bin/containerd-shim-runc-v2 -namespace moby -id de70debe5a647deb529dd2d354c781ceebc0f8f7b59c08440ea193eba5deb727 -address /run/containerd/containerd.sock
+999        16164  0.1  0.0  55584 10240 ?        Ssl  16:05   0:00 redis-server *:6379
+root       16346  0.0  0.0      0     0 ?        I    16:06   0:00 [kworker/14:0-mm_percpu_wq]
+root       16347  0.0  0.0      0     0 ?        I    16:06   0:00 [kworker/13:3]
+root       16397  0.0  0.0 1155856 3040 ?        Sl   16:06   0:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 5433 -container-ip 172.18.0.3 -container-port 5432
+root       16404  0.0  0.0 1082124 3040 ?        Sl   16:06   0:00 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 5433 -container-ip 172.18.0.3 -container-port 5432
+root       16423  0.0  0.0 720072 10400 ?        Sl   16:06   0:00 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 491f9a42774e03c3586da509223ea0778ff07ce921dcdc7b4d3f6735fc27a51f -address /run/containerd/containerd.sock
+999        16447  0.0  0.1 220048 29280 ?        Ss   16:06   0:00 postgres
+root       16471  0.0  0.0      0     0 ?        I    16:06   0:00 [kworker/4:1-mm_percpu_wq]
+999        16550  0.0  0.0 220184  8396 ?        Ss   16:06   0:00 postgres: checkpointer 
+999        16551  0.0  0.0 220200  6796 ?        Ss   16:06   0:00 postgres: background writer 
+999        16553  0.0  0.0 220048  9996 ?        Ss   16:06   0:00 postgres: walwriter 
+999        16554  0.0  0.0 221640  8876 ?        Ss   16:06   0:00 postgres: autovacuum launcher 
+999        16555  0.0  0.0 221628  8076 ?        Ss   16:06   0:00 postgres: logical replication launcher 
+root       16609  0.0  0.0      0     0 ?        I<   16:06   0:00 [kworker/u41:1-i915_flip]
+yusif      16681  0.0  0.4 2382368 71200 ?       Sl   16:07   0:00 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 61 -isForBrowser -prefsLen 32296 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {bbed79e2-5577-4666-990f-3465685f2a74} 5450 true tab
+root       16698  0.0  0.0      0     0 ?        I    16:07   0:00 [kworker/0:1-events]
+root       16702  0.0  0.0      0     0 ?        I    16:07   0:00 [kworker/7:2-events]
+yusif      16737  0.0  0.4 2382368 72320 ?       Sl   16:07   0:00 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 62 -isForBrowser -prefsLen 32296 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {bc73304e-f748-4f70-b97f-0508ae848c25} 5450 true tab
+root       16796  0.0  0.0      0     0 ?        I    16:07   0:00 [kworker/12:2-events]
+root       16814  0.0  0.0      0     0 ?        I    16:08   0:00 [kworker/10:2]
+root       16961  0.0  0.0      0     0 ?        I    16:08   0:00 [kworker/11:2-events]
+root       16970  0.0  0.0      0     0 ?        I    16:08   0:00 [kworker/17:1-mm_percpu_wq]
+yusif      17027  0.0  0.4 2382368 70400 ?       Sl   16:09   0:00 /snap/firefox/3600/usr/lib/firefox/firefox -contentproc -childID 63 -isForBrowser -prefsLen 32296 -prefMapSize 238761 -jsInitLen 229864 -parentBuildID 20231220194509 -greomni /snap/firefox/3600/usr/lib/firefox/omni.ja -appomni /snap/firefox/3600/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/3600/usr/lib/firefox/browser {5d797742-429e-4ab1-ad3b-7cc093fed770} 5450 true tab
+root       17093  0.0  0.0      0     0 ?        I    16:10   0:00 [kworker/16:0-events]
+root       17097  0.0  0.0      0     0 ?        I    16:10   0:00 [kworker/2:1-events]
+root       17098  0.0  0.0      0     0 ?        I    16:10   0:00 [kworker/6:1-events]
+root       17099  0.0  0.0      0     0 ?        I    16:10   0:00 [kworker/8:0-events]
+root       17101  0.0  0.0      0     0 ?        I    16:10   0:00 [kworker/1:0]
+root       17102  0.0  0.0      0     0 ?        I    16:10   0:00 [kworker/15:0-events]
+yusif      17130  0.0  0.0   2732  1440 ?        S    16:11   0:00 /bin/sh -c "/usr/share/code/resources/app/out/vs/base/node/cpuUsage.sh" 11539
+yusif      17131  0.0  0.0   9872  3360 ?        S    16:11   0:00 /bin/bash /usr/share/code/resources/app/out/vs/base/node/cpuUsage.sh 11539
+yusif      17134  0.0  0.0   8232  1760 ?        S    16:11   0:00 sleep 1
+yusif      17136  100  0.0  15804  5760 pts/0    R+   16:11   0:00 ps -aux
+yusif      17137  0.0  0.0   8620  2400 pts/0    S+   16:11   0:00 less
