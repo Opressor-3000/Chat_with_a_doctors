@@ -27,9 +27,9 @@ services:
     ports:
       - 5433:5432
     environment:
-      POSTGRES_USER: Chatbtk
-      POSTGRES_PASSWORD: P@wshop2023
-      POSTGRES_DB: btkchat
+      POSTGRES_USER: yusif
+      POSTGRES_PASSWORD: BTKChat
+      POSTGRES_DB: btk_db
       PGDATA: ~/BTK_Chat_DB/
       POSTGRES_INITDB_ARGS: "-A md5"
     volumes:
@@ -41,3 +41,6 @@ services:
     restart: always
     ports:
       - 6379:6379
+
+
+

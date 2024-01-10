@@ -1,7 +1,7 @@
 __all__ = (
    "Base",
    "DataBaseConnector",
-   "bd_connect"
+   "bd_connect",
 )
 
 
