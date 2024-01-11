@@ -4,9 +4,8 @@ __all__ = (
     "Certificate",
     "GovAgency",
     "Feedback",
-    "Speciality",
 )
 
 
-from .speciality import Speciality
+# from .speciality import Speciality
 from .doctor import Doctor, CurrentDoctor, Certificate, GovAgency, Feedback
