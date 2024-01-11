@@ -8,8 +8,8 @@ from core.models.base import Base
 
 
 
-class Speciality(Base):
-    title: Mapped[str]
-    code: Mapped[str]
-    created_at: Mapped[datetime]
+# class Speciality(Base):
+#     title: Mapped[str]
+#     code: Mapped[str]
+#     created_at: Mapped[datetime]
     
