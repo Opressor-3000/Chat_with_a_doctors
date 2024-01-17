@@ -1,11 +1,18 @@
 __all__ = (
     "Doctor",
-    "CurrentDoctor",
     "Certificate",
-    "GovAgency",
+    "Agency",
     "Feedback",
+    'Speciality',
+    'SpecialityRelationMixin',
+    'DoctorRelationMixin',
+    'UserDocSpecMixin'
 )
 
 
 # from .speciality import Speciality
-from .doctor import Doctor, CurrentDoctor, Certificate, GovAgency, Feedback
+from .doctor import Doctor, Feedback
+from .certificate import Certificate
+from .speciality import Speciality
+from .agency import Agency
+from .mixin import SpecialityRelationMixin, DoctorRelationMixin, UserDocSpecMixin

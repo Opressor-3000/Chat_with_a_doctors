@@ -5,8 +5,10 @@ from sqlalchemy import pool
 
 from alembic import context
 
-
+from account.models.user import *
+from chat.models.chat import *
 from core.models.base import Base
+
 from core.config import settings
 
 

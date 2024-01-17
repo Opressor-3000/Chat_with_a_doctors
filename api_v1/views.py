@@ -1,5 +1,3 @@
-from fastapi import FastAPI
-
 from fastapi import APIRouter
 
 
@@ -15,3 +13,4 @@ router = APIRouter(prefix='/api/v1', tags=['api_v1'])
 router.include_router(auth_router, tags=['Auth'])
 router.include_router(account_router, tags=['Account'])
 router.include_router(chat_router, tags=['Chat'])
+

@@ -1,39 +1,24 @@
 from datetime import datetime
 
-from sqlalchemy.orm import Mapped
-
-
+from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import ForeignKey, String
 from core.models.base import Base
+from doctors.models import UserDocSpecMixin
+from account.models import CreaterRelationMixin
+
+
+class Chat(UserDocSpecMixin, Base):
+    active:Mapped[bool]
+    previous_chat:Mapped[int] = mapped_column(ForeignKey('chat.id'), unique=True)
+
+
+class ChatUser(Base):
+    chat_id:Mapped[int]
+    user_id:Mapped[int]
+
+
+class Status(CreaterRelationMixin, Base):
+    title: Mapped[str] = mapped_column(String(50))
 
 
 
-# class Chat(Base):
-#     created_at: Mapped[int]
-#     user_created: Mapped[datetime]
-
-
-# class UserOfChat(Base):
-#     chat_id:Mapped[int]
-#     user_id:Mapped[int]
-
-
-# class Message(Base):
-#     chat_id:Mapped[int]
-#     user_chat: Mapped[int]
-#     text:Mapped[int]
-#     created_at:Mapped[datetime]
-#     deleted_at:Mapped[datetime]
-#     user_deleted:Mapped[int]
-
-
-class Status(Base):
-    title: Mapped[str]
-    user_id: Mapped[int]
-    created_at: Mapped[datetime]
-
-
-# class MessageStatus(Base):
-#     message_id:Mapped[int]
-#     chat_user:Mapped[int]
-#     status_id:Mapped[int]
-#     created_at:Mapped[datetime]

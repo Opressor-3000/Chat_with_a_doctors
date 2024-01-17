@@ -1,34 +1,28 @@
 from datetime import datetime
 
-
-from sqlalchemy.orm import Mapped
+from sqlalchemy import String, ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 
 from core.models.base import Base
+from account.models import CreaterRelationMixin, Account
+from chat.models import Chat
+from .speciality import Speciality
 
 
+class Doctor(CreaterRelationMixin, Base):
+    account_id:Mapped[int] = mapped_column(ForeignKey('account.id')) # create if exist current sertificate CHECH
+    speciality:Mapped[int] 
 
-# class Doctor(Base):
-#     user_id: Mapped[int]
-#     sepiciality:Mapped[int]
-#     rating:Mapped[int]
-
-
-# class CurrentDoctor(Base):
-#     cetificate:Mapped[int]
-#     doctor: Mapped[int]
+    account:Mapped['Account'] = relationship(back_populates='account.id')
 
 
-# class Certificate(Base):
-#     agency:Mapped[int]
-#     numder: Mapped[str]
+class Feedback(Base):
+    chat_id: Mapped[int]
+    doctor_id:Mapped[int]
+    user_id:Mapped[int]
 
 
-# class GovAgency(Base):
-#     title: Mapped[str]
-
-
-# class Feedback(Base):
-#     chat_id: Mapped[int]
-#     doctor_id:Mapped[int]
-#     user_id:Mapped[int]
+class Rating(Base):
+    chat_id:Mapped[int]
+    point:Mapped[int]
