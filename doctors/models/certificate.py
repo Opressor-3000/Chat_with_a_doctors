@@ -8,15 +8,17 @@ from pydantic import EmailStr
 from sqlalchemy import ForeignKey
 
 from core.models import Base
-from account.models import CreaterRelationMixin
+from doctors.models import CreaterDocSpecMixin
 from .speciality import Speciality
 from .agency import Agency
 
-class Certificate(CreaterRelationMixin, Base):
-    doctor_id: Mapped[int] = mapped_column(ForeignKey('account.id'))
-    speciality: Mapped[int] = mapped_column(ForeignKey('speciality.id'))
-    validity: Mapped[datetime]  # constrain не более 5 лет
-    agency: Mapped[str] = mapped_column(ForeignKey('agency.id'))
+class Certificate(CreaterDocSpecMixin, Base):
+    _creater_back_populates = 'certificate'
+    _doc_back_populate = 'certificate'
+    _spec_back_populate = 'certificate'
+    
+    validity: Mapped[datetime]   # constrain не более 5 лет
+    agency_id: Mapped[str] = mapped_column(ForeignKey('agency.id'))
 
 
 

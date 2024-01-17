@@ -6,7 +6,8 @@ __all__ = (
     'Speciality',
     'SpecialityRelationMixin',
     'DoctorRelationMixin',
-    'UserDocSpecMixin'
+    'CreaterDocSpecMixin',
+    'DocSpecRelationMixin',
 )
 
 
@@ -15,4 +16,4 @@ from .doctor import Doctor, Feedback
 from .certificate import Certificate
 from .speciality import Speciality
 from .agency import Agency
-from .mixin import SpecialityRelationMixin, DoctorRelationMixin, UserDocSpecMixin
+from .mixin import SpecialityRelationMixin, DoctorRelationMixin, CreaterDocSpecMixin, DocSpecRelationMixin

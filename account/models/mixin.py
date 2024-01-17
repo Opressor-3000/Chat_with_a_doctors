@@ -1,14 +1,14 @@
 from typing import TYPE_CHECKING
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import declared_attr, Mapped, mapped_column, relationship
-from core.models import RelationMixin
+
 
 if TYPE_CHECKING:
-   from account.models import User, Account
+   from account.models import User, Permission
 
 
-class UserRelationMixin(RelationMixin):
-   _id_unique: bool = False
+class UserRelationMixin:
+   _user_unique: bool = False
    _user_back_populates: str | None = None
    _user_id_nullable: bool = False
 
@@ -22,16 +22,16 @@ class UserRelationMixin(RelationMixin):
 
 
 class CreaterRelationMixin:
-   _unique: bool = False
-   _account_back_populates: str | None = 'account'
-   _account_id_nullable: bool = False
+   _creater_unique: bool = False
+   _creater_back_populates: str | None = None
+   _creater_id_nullable: bool = False
 
    @declared_attr
    def creater_id(cls) -> Mapped[int]:
-      return mapped_column(ForeignKey("account.id"), nullable=cls._account_id_nullable, unique=cls._unique)
+      return mapped_column(ForeignKey("permisson.id"), nullable=cls._creater_id_nullable, unique=cls._creater_unique)
 
    @declared_attr
-   def account_creater(cls) -> Mapped["Account"]:
-      return relationship("Account", back_populates=cls._account_back_populates)
+   def creater(cls) -> Mapped["Permission"]:
+      return relationship("Permission", back_populates=cls._creater_back_populates)
    
 

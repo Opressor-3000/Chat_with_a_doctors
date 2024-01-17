@@ -9,5 +9,6 @@ from account.models import CreaterRelationMixin
 
 
 class Agency(CreaterRelationMixin, Base):
-    id:Mapped[int] = mapped_column(primary_key=True)
+    _creater_back_populates = 'agency'
+    
     title: Mapped[str] = mapped_column(String(150))

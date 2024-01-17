@@ -1,32 +1,49 @@
-from sqlalchemy.orm import declared_attr, mapped_column
+from sqlalchemy.orm import declared_attr, mapped_column, relationship, Mapped
 from sqlalchemy import ForeignKey
 
-from account.models import UserRelationMixin
+from account.models import CreaterRelationMixin
+from .doctor import Doctor
+from .speciality import Speciality
 
 
 
 class SpecialityRelationMixin:
-    _spec_back_populate: str = 'speciality'
+    _spec_back_populate: str | None = None
+    _spec_nullable: bool = False
+    _spec_unique: bool = False
     
     @declared_attr
-    def speciality_id(cls):
-        return mapped_column(ForeignKey('speciality.id'), back_populates=cls._spec_back_populate)
+    def speciality_id(cls) -> Mapped[int]:
+        return mapped_column(ForeignKey('speciality.id'), unique=cls._spec_unique, nullable=cls._spec_nullable)
+    
+
+    @declared_attr
+    def speciality(cls) -> Mapped['Speciality']:
+        return relationship('Speciality', back_populates=cls._spec_back_populate)
 
 
 class DoctorRelationMixin:
-    _doc_back_populate: str = 'doctor'
+    _doc_back_populate: str | None = None
+    _doc_nullable: bool = False
+    _doc_unique: bool = False
 
     @declared_attr
-    def doctor_id(cls):
-        return mapped_column(ForeignKey('doctor.id'), back_populates=cls._doc_back_populate)
+    def doctor_id(cls) -> Mapped[int]:
+        return mapped_column(ForeignKey('doctor.id'), nullable=cls._doc_nullable, unique=cls._doc_unique)
+    
+    @declared_attr
+    def user(cls) -> Mapped['Doctor']:
+        return relationship('Doctor', back_populates=cls._doc_back_populate)
     
 
-
 class DocSpecRelationMixin(DoctorRelationMixin, SpecialityRelationMixin):
+    # _all_back_populate: str | None = None  # написать метод который будет устанавливать во все back_populate родителей указанно значение 
     pass
+        
 
 
-class UserDocSpecMixin(DocSpecRelationMixin, UserRelationMixin):
+class CreaterDocSpecMixin(DocSpecRelationMixin, CreaterRelationMixin):
+    # _all_back_populate: str | None = None
     pass
 
 

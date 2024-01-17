@@ -7,40 +7,39 @@ from sqlalchemy.schema import UniqueConstraint
 from pydantic import EmailStr
 
 from core.models import Base
-from .mixin import CreaterRelationMixin, UserRelationMixin
-
+from .mixin import CreaterRelationMixin
+from .qr import QR
+from .user import User
 import uuid
 from uuid import UUID as sqluuid
 
 
 class User(Base):
    cookie: Mapped[str] = mapped_column(String(150), unique=True)
-   username: Mapped[str] = mapped_column(String(60))
-   account_id: Mapped[int] = mapped_column(ForeignKey('account.id'), nullable=True)
-   last_enter: Mapped[datetime] = mapped_column()
-   qr_id:Mapped[int]
-   avatar:Mapped[bytes]
+   username: Mapped[str] = mapped_column(String(60), nullable=False)
+   account_id: Mapped[int] = mapped_column(ForeignKey('account.id'))
+   last_enter: Mapped[datetime] = mapped_column(default=datetime.utcnow(), nullable=False)
+   qr_id:Mapped[int] = mapped_column(ForeignKey('qr.id'))
+   avatar:Mapped[bytes] = mapped_column()
    is_active:Mapped[bool]
-   gender:Mapped[int]
-   birthday:Mapped[datetime]
+   gender_id:Mapped[int] = mapped_column(ForeignKey('gender.id'))
+   birthday:Mapped[datetime] = mapped_column()
+
+   gender: Mapped['Gender'] = relationship('Gender', back_populates='user')
+   qr: Mapped['QR'] = relationship('QR', back_populates='user')
+   account: Mapped['User'] = relationship('User', back_populates='user')
 
       
 class Account(Base):
-   _user_back_populates = 'user'
-   _id_unique = True
-   _user_id_nullable = False
-
    uuid: Mapped[sqluuid] = mapped_column(
       default=uuid.uuid4,
       )
-   last_enter: Mapped[datetime] = mapped_column()
+   last_enter: Mapped[datetime] = mapped_column(default=datetime.utcnow())
    btk_db_id: Mapped[int] = mapped_column(unique=True)
    phone:Mapped[str] = mapped_column(unique=True)
-   email:Mapped[str]
-   password:Mapped[str]
-   is_active:Mapped[bool]
-   groups:Mapped[int]
-   role:Mapped[int]
+   email:Mapped[str] = mapped_column(unique=True)
+   password:Mapped[bytes]
+   is_active:Mapped[bool] = mapped_column(default=False)
 
 
 class Group(CreaterRelationMixin, Base):
@@ -48,7 +47,6 @@ class Group(CreaterRelationMixin, Base):
     _account_back_populates = 'account'
     
     title:Mapped[str] = mapped_column(String(60))
-    creater:Mapped[int]
 
 
 class Gender(Base):
