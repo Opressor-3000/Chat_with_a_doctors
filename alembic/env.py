@@ -5,9 +5,31 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from account.models.user import *
-from chat.models.chat import *
-from core.models.base import Base
+from core.models import Base
+from account.models import (
+    User,
+    Account,
+    Gender,
+    Group,
+    QR,
+    Permission
+)
+
+from chat.models import (
+    Chat,
+    ChatUser,
+    Message,
+    MessageStatus,
+)
+
+from doctors.models import (
+    Doctor,
+    Speciality,
+    Certificate,
+    Rating,
+    Agency,
+    Feedback,
+)
 
 from core.config import settings
 

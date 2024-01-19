@@ -1,10 +1,9 @@
 from sqlalchemy.orm import declared_attr, mapped_column, relationship, Mapped
 from sqlalchemy import ForeignKey
 
-from account.models import CreaterRelationMixin
+from account.models.mixin import UserRelationMixin
 from .doctor import Doctor
-from .speciality import Speciality
-
+from .speciality import Speciality, CreaterRelationMixin
 
 
 class SpecialityRelationMixin:
@@ -34,16 +33,22 @@ class DoctorRelationMixin:
     @declared_attr
     def user(cls) -> Mapped['Doctor']:
         return relationship('Doctor', back_populates=cls._doc_back_populate)
-    
+
 
 class DocSpecRelationMixin(DoctorRelationMixin, SpecialityRelationMixin):
     # _all_back_populate: str | None = None  # написать метод который будет устанавливать во все back_populate родителей указанно значение 
     pass
         
 
+class UserDocSpecMixin(DocSpecRelationMixin, UserRelationMixin):
+    pass
+    
 
 class CreaterDocSpecMixin(DocSpecRelationMixin, CreaterRelationMixin):
     # _all_back_populate: str | None = None
     pass
 
+
+class UserDocRelationMixin(DoctorRelationMixin, UserRelationMixin):
+    pass
 

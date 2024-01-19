@@ -1,9 +1,12 @@
 from sqlalchemy.orm import mapped_column, Mapped
+from sqlalchemy import String
 
 from core.models import Base
-from .mixin import UserRelationMixin
+from account.models.mixin import CreaterRelationMixin
 
 
-class QR(UserRelationMixin, Base):
-    qr: Mapped[str] = mapped_column(unique=True, nullable=False)
+class QR(CreaterRelationMixin, Base):
+    _creater_back_populates = 'qr'
+    
+    qr: Mapped[str] = mapped_column(String(200), unique=True, nullable=False)
 

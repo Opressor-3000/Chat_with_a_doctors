@@ -1,18 +1,18 @@
 __all__ = ("User", 
            'Account', 
-           'Group', 
-           'CreaterRelationMixin', 
-           'UserRelationMixin', 
+           'Group',
            'QR',
            'Permission',
-           'Gender'
+           'Gender',
            )
 
-
-from .mixin import CreaterRelationMixin, UserRelationMixin
-from .user import User, Account, Group, Gender
-from .qr import QR
+from .user import User
+from .account import Account
 from .permission import Permission
+from .gender import Gender
+from .group import Group
+from .qr import QR
+
 
 
 

@@ -23,13 +23,8 @@ class Phone(BaseModel):
    num: int
 
 
-class Role(BaseModel):
-   title: str
-
-
 class UserRole(BaseModel):
    uuid: uuid4
-   roles: Role
    
 
 class Speciality(BaseModel):
@@ -59,6 +54,5 @@ class CreateUser(NewUser):
    avatar: bytes
    is_active: bool
    groups_id: Groupe
-   role_id: Role
    created_at: datetime
 

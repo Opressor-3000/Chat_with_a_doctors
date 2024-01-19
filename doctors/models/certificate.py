@@ -8,9 +8,8 @@ from pydantic import EmailStr
 from sqlalchemy import ForeignKey
 
 from core.models import Base
-from doctors.models import CreaterDocSpecMixin
-from .speciality import Speciality
-from .agency import Agency
+from doctors.models.mixin import CreaterDocSpecMixin
+
 
 class Certificate(CreaterDocSpecMixin, Base):
     _creater_back_populates = 'certificate'
