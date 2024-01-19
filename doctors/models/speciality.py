@@ -6,7 +6,8 @@ from core.models.base import Base
 from account.models.mixin import CreaterRelationMixin
 
 
-
 class Speciality(CreaterRelationMixin, Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(50))
+
+

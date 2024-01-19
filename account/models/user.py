@@ -1,4 +1,3 @@
-from typing import TYPE_CHECKING
 from datetime import datetime
 from sqlalchemy import Column, String, Boolean, Integer, Constraint, CheckConstraint, Index, UniqueConstraint, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
@@ -9,8 +8,8 @@ from sqlalchemy.schema import UniqueConstraint
 
 from core.models import Base
 from .qr import QR
-if TYPE_CHECKING:
-   from gender import Gender
+from .account import Account
+from .gender import Gender
 
 
 
@@ -27,5 +26,5 @@ class User(Base):
 
    gender: Mapped['Gender'] = relationship('Gender', back_populates='user')
    qr: Mapped['QR'] = relationship('QR', back_populates='user')
-   account: Mapped['User'] = relationship('User', back_populates='user')
+   account: Mapped['Account'] = relationship('Account', back_populates='user')
 

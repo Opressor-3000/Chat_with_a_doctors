@@ -1,7 +1,7 @@
 from .mixin import DoctorRelationMixin, UserDocRelationMixin, UserDocSpecMixin
 from chat.models.mixin_ import ChatUserCreaterRelationMixin, ChatRelationMixin
 from chat.models.mixin import ChatUserRelationMixin
-
+from account.models.mixin import CreaterRelationMixin
 
 
 class DocChatUserCreaterMixin(DoctorRelationMixin, ChatUserCreaterRelationMixin):
@@ -14,5 +14,5 @@ class DocChatUserRelationMixin(ChatRelationMixin, UserDocRelationMixin):
 
 
 
-class ChatUserDocRelationMixin(ChatUserRelationMixin, UserDocSpecMixin):
+class ChatUserCreaterRelationMixin(ChatUserRelationMixin, CreaterRelationMixin):
     pass

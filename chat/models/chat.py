@@ -13,7 +13,7 @@ class Chat(UserDocSpecMixin, Base):
     _spec_nullable = True
 
     active:Mapped[bool]
-    previous_chat:Mapped[int] = mapped_column(ForeignKey('chat.id'), unique=True)
-
+    previous_chat_id:Mapped[int] = mapped_column(ForeignKey('chat.id'), unique=True)
+    previous_chat:Mapped['Chat'] = relationship('Chat', back_populates='chat', remote_side=[id])
 
 
