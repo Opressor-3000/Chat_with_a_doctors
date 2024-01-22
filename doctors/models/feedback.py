@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import String
+from sqlalchemy import String, Boolean, DateTime, Integer
 from sqlalchemy.orm import Mapped, mapped_column
 
 
@@ -15,8 +15,8 @@ class Feedback(DocChatUserCreaterMixin, Base):
     _user_back_populates = 'feedback'  
 
     text:Mapped[str] = mapped_column(String(500))
-    delete:Mapped[bool] = mapped_column(default=False)
-    deleted_at:Mapped[datetime] = mapped_column()
+    delete:Mapped[bool] = mapped_column(Boolean, default=False)
+    deleted_at:Mapped[datetime] = mapped_column(DateTime)
 
 
 class Rating(DocChatUserRelationMixin, Base):
@@ -24,4 +24,4 @@ class Rating(DocChatUserRelationMixin, Base):
     _chat_back_populate = 'rating'
     _doc_back_populate = 'rating'
     
-    point:Mapped[int]
+    point:Mapped[int] = mapped_column(Integer)

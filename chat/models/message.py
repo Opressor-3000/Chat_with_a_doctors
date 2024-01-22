@@ -2,7 +2,7 @@ from datetime import datetime
 
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, Integer, Boolean, DateTime
 
 
 from core.models.base import Base
@@ -15,9 +15,9 @@ class Message(ChatUserCreaterRelationMixin, Base):
     _chatuser_back_populate = 'message'
     _creater_back_populates = 'message'
     
-    text:Mapped[int] = mapped_column()
-    delete:Mapped[bool] = mapped_column(default=False)
-    deleted_at:Mapped[datetime]
+    text:Mapped[int] = mapped_column(Integer)
+    delete:Mapped[bool] = mapped_column(Boolean, default=False)
+    deleted_at:Mapped[datetime] = mapped_column(DateTime)
 
 
 class MessageStatus(ChatUserRelationMixin, Base):

@@ -15,10 +15,10 @@ from .agency import Agency
 class Certificate(CreaterDocSpecMixin, Base):
     _creater_back_populates = 'certificate'
     _doc_back_populate = 'certificate'
-    _spec_back_populate = 'certificate'
     
+    cretificate_id: Mapped[str] = mapped_column(String(64), unique=True)
     validity: Mapped[datetime]   # constrain не более 5 лет
-    agency_id: Mapped[int] = mapped_column(ForeignKey('agency.id'))
+    agency_id: Mapped[int] = mapped_column(Integer, ForeignKey('agency.id'))
     agency:Mapped['Agency'] = relationship('Agency', back_populates='certificate')
 
-
+    # __table_args__ = (CheckConstraint())
