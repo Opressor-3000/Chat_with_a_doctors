@@ -5,7 +5,8 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 
 from core.models.base import Base
-from .mixin_1 import DocChatUserCreaterMixin, DocChatUserRelationMixin
+from .mixin_1 import DocChatUserRelationMixin
+from .cucr_mixin import DocChatUserCreaterMixin
 
 
 class Feedback(DocChatUserCreaterMixin, Base):

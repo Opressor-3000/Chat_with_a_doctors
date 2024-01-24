@@ -2,45 +2,47 @@ from fastapi import APIRouter
 
 router = APIRouter(prefix="/account", tags=["account"])
 
+'''
+    router for user 
+'''
 
 
-@router.post("/")
-async def create_user():
+@router.post('/registration/')  #
+async def create_account(create_account_scheme):
+    '''
+        возвращает account если есть :
+            1. user в БД, иначе создает -> redirect
+            2. все поля заполнены правильно 
+            3. удачно отправлена смс на телефон
+            4. верно указан код из смс
+            5. создает account присваивает Bearer token
+    '''
+    pass
+
+@router.get('/{uuid}/')
+async def get_account():
+    '''
+        return account if is auth
+    '''
     pass
 
 
-@router.put('/')
+@router.put('/edit/{uuid}/')  # after click edit account 
 async def update_account():
+    '''
+        возвращает форму с заполненными полями для редактирования если:
+            1. Account 
+            
+    '''
     pass 
 
 
-@router.get('/chat/{chat_id}')
-async def get_chats():
-    pass
-
-
-@router.get('/docs')
-async def get_docs():
-    pass
-
-
-@router.get('doc/{doc_id}')
-async def get_doc():
-    pass
-
-
-@router.get('/feedbacks')
-async def get_feedback():
-    pass
-
-
-@router.get('/feedback/{feedback_id}')
-async def get_feedback():
-    pass
-
-
-@router.patch('feedback/{feedback_id}')
-async def putch_feedback():
+@router.get('/my_doctors/')
+async def get_doctors():
+    '''
+        return doctor with which chats 
+            1. count chats with doctors
+    '''
     pass
 
 

@@ -29,12 +29,12 @@ from .gender import Gender
 class User(Base):
    cookie: Mapped[str] = mapped_column(String(150), unique=True)
    username: Mapped[str] = mapped_column(String(60), nullable=False)
-   account_id: Mapped[int] = mapped_column(Integer, ForeignKey('account.id', onupdate='CASCADE', ondelete='RESTRICT'), nullable=True)
+   account_id: Mapped[int] = mapped_column(Integer, ForeignKey('account.id', onupdate='CASCADE', ondelete='RESTRICT', name='account_user_fk'), nullable=True)
    last_enter: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow(), nullable=False)
-   qr_id:Mapped[int] = mapped_column(Integer, ForeignKey('qr.id', onupdate='CASCADE', ondelete='RESTRICT'))
+   qr_id:Mapped[int] = mapped_column(Integer, ForeignKey('qr.id', onupdate='CASCADE', ondelete='RESTRICT', name='qr_user_fk'))
    avatar:Mapped[str] = mapped_column(String(250), nullable=True)
    is_active:Mapped[bool] = mapped_column(Boolean, default=True)
-   gender_id:Mapped[int] = mapped_column(Integer, ForeignKey('gender.id', onupdate='CASCADE', ondelete='RESTRICT'))
+   gender_id:Mapped[int] = mapped_column(Integer, ForeignKey('gender.id', onupdate='CASCADE', ondelete='RESTRICT', name='user_gender_fk'))
    birthday:Mapped[datetime] = mapped_column(DateTime)
 
    gender: Mapped['Gender'] = relationship('Gender', back_populates='user')

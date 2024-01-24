@@ -15,7 +15,7 @@ class Base(DeclarativeBase):
    # def foo(cls) -> Mapped["Model"]:
    #    return rel
 
-   id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+   id: Mapped[int] = mapped_column(primary_key=True)
    created_at: Mapped[datetime] = mapped_column(
       DateTime,
       default=datetime.utcnow(), 

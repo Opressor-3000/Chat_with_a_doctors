@@ -16,7 +16,7 @@ class Permission(Base):
     account:Mapped['Account'] = relationship('Account', back_populates='permission')
     group:Mapped['Group'] = relationship('Group', back_populates='permission')
     creater:Mapped['Permission'] = relationship('Permission', back_populates='permission', remote_side=[id])
-    is_active:Mapped[bool] = mapped_column(Boolean, default=True, server_default=True)
+
 
     __table_args__ = (UniqueConstraint('account_id', 'group_id', name='account_of_group_uc'),)
 

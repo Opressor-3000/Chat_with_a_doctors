@@ -7,6 +7,7 @@ if TYPE_CHECKING:
     from .chatuser import ChatUser
 from account.models.mixin import CreaterRelationMixin
 
+
 class ChatRelationMixin:
     _chat_back_populate: str | None = None
     _chat_nullable: bool = False

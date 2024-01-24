@@ -18,7 +18,5 @@ class Certificate(CreaterDocSpecMixin, Base):
     
     cretificate_id: Mapped[str] = mapped_column(String(64), unique=True)
     validity: Mapped[datetime]   # constrain не более 5 лет
-    agency_id: Mapped[int] = mapped_column(Integer, ForeignKey('agency.id'))
+    agency_id: Mapped[int] = mapped_column(Integer, ForeignKey('agency.id', name='certificate_agency'))
     agency:Mapped['Agency'] = relationship('Agency', back_populates='certificate')
-
-    # __table_args__ = (CheckConstraint())

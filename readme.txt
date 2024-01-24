@@ -21,7 +21,7 @@ class Person(db.Model):
     children  = db.relationship('Person', back_populates='parent', passive_deletes='all')
 
 
-
+    # is_active:Mapped[bool] = mapped_column(Boolean, default=True, server_default=True)
 
 
 from sqlalchemy import CheckConstraint, func, String

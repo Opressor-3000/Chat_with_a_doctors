@@ -10,7 +10,7 @@ class Group(CreaterRelationMixin, Base):
     _creater_back_populates = 'group'
     
     title:Mapped[str] = mapped_column(String(60), unique=True)
-    is_active:Mapped[bool] = mapped_column(Boolean, default=True, server_default=True)
+    is_active:Mapped[bool] = mapped_column(Boolean, default=True)
     
 
 class AccessGroup(CreaterRelationMixin, Base):
@@ -22,12 +22,12 @@ class AccessGroup(CreaterRelationMixin, Base):
     group:Mapped['Group'] = relationship('Group', back_populates='group')
     access:Mapped['Access'] = relationship('Access', back_populates='access')
 
-    __table_args__ = (UniqueConstraint('group_id', 'access_id', name='access_group_uc'))
+    __table_args__ = (UniqueConstraint('group_id', 'access_id', name='access_group_uc'),)
 
 
 class Access(Base):
     title:Mapped[str] = mapped_column(String(32), unique=True)
-    parent_id:Mapped[int] = mapped_column(ForeignKey('accesse.id'), nullable=True)
+    parent_id:Mapped[int] = mapped_column(Integer, ForeignKey('access.id', name='access_parent_fk'), nullable=True)
 
     parent:Mapped['Access'] = relationship('Access', back_populates='permission', remote_side=[id])
 

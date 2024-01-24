@@ -12,7 +12,12 @@ from account.models import (
     Gender,
     Group,
     QR,
-    Permission
+    Permission,
+    AccessGroup,
+    Access,
+    Disease,
+    Diagnosis,
+    Anamnesis,
 )
 
 from chat.models import (

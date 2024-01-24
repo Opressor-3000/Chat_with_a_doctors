@@ -4,13 +4,17 @@ __all__ = ('Gender',
            'Group',
            'QR',
            'Permission',
+           'Access',
+           'AccessGroup',
+           'Anamnesis',
+           'Disease',
+           'Diagnosis',
            )
-# from .gender import Gender
+
 from .user import User, QR, Account, Gender
-# from .account import Account
 from .permission import Permission
-from .group import Group
-# from .qr import QR
+from .group import Group, Access, AccessGroup
+from .disease import Diagnosis, Disease, Anamnesis
 
 
 
