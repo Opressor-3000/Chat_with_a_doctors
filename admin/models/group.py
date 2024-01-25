@@ -3,7 +3,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKeyConstraint, UniqueConstraint, ForeignKey
 
 from core.models import Base
-from .mixin import CreaterRelationMixin
+from admin.models.mixin import CreaterRelationMixin
 
 
 class Group(CreaterRelationMixin, Base):

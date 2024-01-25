@@ -1,4 +1,5 @@
-from .mixin import UserRelationMixin, CreaterRelationMixin
+from .mixin import UserRelationMixin
+from admin.models.mixin import CreaterRelationMixin
 
 
 class UserCreaterRelationMixin(UserRelationMixin, CreaterRelationMixin):

@@ -21,7 +21,7 @@ from sqlalchemy.schema import UniqueConstraint
 
 
 from core.models import Base
-from .qr import QR
+from admin.models import QR
 from .account import Account
 from .gender import Gender
 

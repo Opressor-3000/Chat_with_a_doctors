@@ -35,15 +35,6 @@ class DoctorRelationMixin:
         return relationship('Doctor', back_populates=cls._doc_back_populate)
 
 
-# class DocSpecRelationMixin(DoctorRelationMixin, SpecialityRelationMixin):
-#     # _all_back_populate: str | None = None  # написать метод который будет устанавливать во все back_populate родителей указанно значение 
-#     pass
-        
-
-# class UserDocRelationMixin(DoctorRelationMixin, UserRelationMixin):
-#     pass
-    
-
 class CreaterDocSpecMixin(DoctorRelationMixin, CreaterRelationMixin):
     pass
 

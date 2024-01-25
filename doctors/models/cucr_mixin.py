@@ -1,6 +1,6 @@
 from .mixin import DoctorRelationMixin
 from chat.models.mixin import ChatUserRelationMixin
-from account.models.mixin import CreaterRelationMixin
+from admin.models.mixin import CreaterRelationMixin
 
 
 

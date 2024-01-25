@@ -5,7 +5,7 @@ from sqlalchemy import ForeignKey
 if TYPE_CHECKING:
     from .chat import Chat
     from .chatuser import ChatUser
-from account.models.mixin import CreaterRelationMixin
+from admin.models.mixin import CreaterRelationMixin
 
 
 class ChatRelationMixin:

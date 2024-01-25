@@ -5,7 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from core.models.base import Base
 from account.models import Account
-from account.models.mixin import CreaterRelationMixin
+from admin.models.mixin import CreaterRelationMixin
 from .speciality import Speciality
 
 

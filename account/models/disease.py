@@ -3,7 +3,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKeyConstraint, UniqueConstraint, ForeignKey
 
 from core.models import Base
-from .mixin import CreaterRelationMixin, UserRelationMixin
+from .mixin import UserRelationMixin
+from admin.models.mixin import CreaterRelationMixin
 from .account import Account
 from doctors.models.mixin import DoctorRelationMixin
 

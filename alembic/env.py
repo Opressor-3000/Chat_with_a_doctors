@@ -10,14 +10,16 @@ from account.models import (
     User,
     Account,
     Gender,
+    Disease,
+    Diagnosis,
+    Anamnesis,
+)
+from admin.models import (
     Group,
     QR,
     Permission,
     AccessGroup,
     Access,
-    Disease,
-    Diagnosis,
-    Anamnesis,
 )
 
 from chat.models import (
