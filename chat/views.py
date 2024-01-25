@@ -8,7 +8,7 @@ router = APIRouter(prefix="/chat", tags=["Chats"])
 '''
 
 
-@router.get('/')
+@router.get('')
 async def get_chats():
     '''
         Вернуть all chats user  if:
@@ -41,9 +41,6 @@ async def get_doctor(doctor_id):
     pass
 
 
-@router.patch('/doctor/{feedback_id}/')
-async def putch_feedback():
-    pass
 
 
 

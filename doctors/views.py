@@ -15,7 +15,7 @@ async def get_doc(doctor_id):
 
 
 @router.get('/{doctor_id}/feedbacks/')
-async def get_feedback():
+async def get_feedbacks():
     '''
         return all doctor feedbacks 
     '''

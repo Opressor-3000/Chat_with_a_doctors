@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 
-router = APIRouter(prefix='/adminpanel', tags=['Admin_Panel'])
+router = APIRouter(prefix='/admin', tags=['Admin'])
 
 
 #  --------   ALL STATICTICS   -----------

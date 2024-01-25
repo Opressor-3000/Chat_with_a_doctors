@@ -1,8 +1,13 @@
 from datetime import datetime
 import uuid
+
+from sqlalchemy import select
+from sqlalchemy.engine import Result
+from sqlalchemy.ext.asyncio import AsyncSession
 from typing import Optional
 from uuid import uuid4
 from pydantic import BaseModel, EmailStr 
+
 
 '''
 описываем взаимодействия с 
@@ -47,12 +52,16 @@ from pydantic import BaseModel, EmailStr
                rating
 '''
 
+
+#  -----------------------------   USER  SCHEMES   --------------------------
+
+
 class GenderBase(BaseModel):
    title:str
 
 
 class Gender(GenderBase):
-   id: str
+   id: int
 
 
 class UserBase(BaseModel):   # поля по умолчанию
@@ -62,38 +71,43 @@ class UserBase(BaseModel):   # поля по умолчанию
    username: str
 
 
-class User(UserBase): # присваивается при входе
+class UserId(UserBase): # присваивается при входе
    cookie_id: str
 
 
-class NewUser(User):  #  обязательное поле для открытия чата 
+class NewUser(UserId):  #  обязательное поле для открытия чата 
    qr: str | None = None
 
 
 class UserUpdate(UserBase):
-   pass
+   username: str | None = None
+
+
+# -------------------------   ACCOUNT  SCHEMES   ---------------------
 
 
 class AccountBase(BaseModel):
    first_name: str
    last_name: str
+   phone: int
+   email: EmailStr | None = None
 
 
-class Account(AccountBase):
+class AccountId(AccountBase):
    id: int
 
 
 class CreateAccount(AccountBase):
-   phone: int
-   email: EmailStr | None = None
    password: bytes
 
 
 
-class UserAccount():
-   pass
+class AccountUpdate(AccountBase):
+   first_name: str | None = None
+   last_name: str | None = None
+   email: EmailStr | None = None
 
 
-class Speciality(BaseModel):
-    title: str
-    user: 'UserBase.uuid'
+class ChangePassword(AccountBase):
+   phone: int | None = None
+   password: bytes

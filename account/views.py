@@ -27,6 +27,15 @@ async def get_account():
     pass
 
 
+@router.get('/{uuid}/users/')
+async def get_account():
+    '''
+        return list user referance account_id 
+            divice users , status users, 
+    '''
+    pass
+
+
 @router.put('/edit/{uuid}/')  # after click edit account 
 async def update_account():
     '''
@@ -37,7 +46,7 @@ async def update_account():
     pass 
 
 
-@router.get('/my_doctors/')
+@router.get('/{uuid}/my_doctors/')
 async def get_doctors():
     '''
         return doctor with which chats 
@@ -46,6 +55,17 @@ async def get_doctors():
     pass
 
 
-@router.post('/support')
+@router.post('/support/')
 async def create_issue():
+    pass
+
+
+
+@router.get('/{user_id}/')
+async def get_user():
+    pass
+
+
+@router.patch('/{uuid}/{feedback_id}/')
+async def patch_feedback():
     pass
