@@ -3,4 +3,7 @@
 /.venv
 .env
 /datebase
-datebase
+datebase/
+certs/
+/certs
+.pem

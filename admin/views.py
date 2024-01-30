@@ -169,7 +169,7 @@ async def permission_delete():
 
 
 @router.patch('/{permission_id}/')
-async def update_permission():
+async def permission_active():
     '''
         deactivate permission 
     '''
@@ -201,7 +201,7 @@ async def get_group():
 
 
 @router.patch('/{group_id}/')
-async def update_group():
+async def group_active():
     '''
         edit group name and access group
     '''

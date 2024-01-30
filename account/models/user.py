@@ -1,4 +1,7 @@
 from datetime import datetime
+
+from fastapi import Cookie
+from auth.views import response
 from sqlalchemy import (
     Column, 
     String, 
@@ -13,7 +16,6 @@ from sqlalchemy import (
     ForeignKeyConstraint,
     func
 )
-    
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.ext.indexable import index_property
@@ -24,10 +26,11 @@ from core.models import Base
 from admin.models import QR
 from .account import Account
 from .gender import Gender
+from main import session_id_generate, COOKIE_SESSION_ID
 
 
 class User(Base):
-   cookie: Mapped[str] = mapped_column(String(150), unique=True)
+   cookie: Mapped[str] = mapped_column(String(150), unique=True, default=Cookie(alias=COOKIE_SESSION_ID))
    username: Mapped[str] = mapped_column(String(60), nullable=False)
    account_id: Mapped[int] = mapped_column(Integer, ForeignKey('account.id', onupdate='CASCADE', ondelete='RESTRICT', name='account_user_fk'), nullable=True)
    last_enter: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow(), nullable=False)

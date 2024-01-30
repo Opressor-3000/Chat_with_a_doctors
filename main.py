@@ -22,14 +22,11 @@ app = FastAPI(lifespan=lifespan, title="BTK chat")
 app.include_router(main_router, tags=["Main"])
 
 
-@app.get('/')
-async def get_cookie(cookie: Annotated[ str | None, Cookie()] = None):
-   if cookie:
-      return cookie
-   
-
 async def session_id_generate() -> str:
    return uuid5().hex
+
+
+COOKIE_SESSION_ID = 'web_app_hekim_chat_uid'
 
 
 if __name__ == "__main__":

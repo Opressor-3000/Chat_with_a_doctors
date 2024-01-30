@@ -1,4 +1,8 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+
+from sqlalchemy.ext.asyncio import AsyncSession
+from .schemes import UserCreate, UserScheme
+from .crud import create_user
 
 router = APIRouter(prefix="/account", tags=["account"])
 
@@ -19,6 +23,7 @@ async def create_account(create_account_scheme):
     '''
     pass
 
+
 @router.get('/{uuid}/')
 async def get_account():
     '''
@@ -36,14 +41,14 @@ async def get_account():
     pass
 
 
-@router.put('/edit/{uuid}/')  # after click edit account 
-async def update_account():
-    '''
-        возвращает форму с заполненными полями для редактирования если:
-            1. Account 
+# @router.patch('/edit/{uuid}/')  # after click edit account 
+# async def account_active():
+#     '''
+#         возвращает форму с заполненными полями для редактирования если:
+#             1. Account 
             
-    '''
-    pass 
+#     '''
+#     pass 
 
 
 @router.get('/{uuid}/my_doctors/')
@@ -60,7 +65,6 @@ async def create_issue():
     pass
 
 
-
 @router.get('/{user_id}/')
 async def get_user():
     pass
@@ -69,3 +73,12 @@ async def get_user():
 @router.patch('/{uuid}/{feedback_id}/')
 async def patch_feedback():
     pass
+
+
+@router.post('/create_user/', response_model=UserScheme)
+async def create_user_view(session, user: UserCreate):
+    #  передаем cookie и username
+    await create_user(session=session, user=user)
+    return 
+
+

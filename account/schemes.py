@@ -6,7 +6,7 @@ from sqlalchemy.engine import Result
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import Optional
 from uuid import uuid4
-from pydantic import BaseModel, EmailStr 
+from pydantic import BaseModel, EmailStr, ConfigDict
 
 
 '''
@@ -71,12 +71,18 @@ class UserBase(BaseModel):   # поля по умолчанию
    username: str
 
 
-class UserId(UserBase): # присваивается при входе
-   cookie_id: str
+class UserCookie(UserBase):
+   cookie: str
 
 
-class NewUser(UserId):  #  обязательное поле для открытия чата 
-   qr: str | None = None
+class UserScheme(UserCookie): # присваивается при входе
+   model_config = ConfigDict(from_attributes=True)
+
+   id: str
+
+
+class UserCreate(UserScheme):
+   pass
 
 
 class UserUpdate(UserBase):
@@ -111,3 +117,5 @@ class AccountUpdate(AccountBase):
 class ChangePassword(AccountBase):
    phone: int | None = None
    password: bytes
+
+
