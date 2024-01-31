@@ -4,6 +4,7 @@ from chat.models import Chat, Message, MessageStatus
 from chat.schemes import MessageStatusID, ChatId, CurrenChatId
 from account.schemes import UserID, AccountId
 from doctors.schemes import DoctorId
+from doctors.models import Doctor
 
 
 async def get_chat_id(
@@ -38,10 +39,24 @@ async def get_doctor_current_chat(
     return 
 
 
-async def get_doctors_from_chats(
+async def get_user_doctors(
+        session: AsyncSession,
+        user: UserID,
+) -> list[Doctor]:
+    return 
+
+
+async def get_account_doctors(
         session: AsyncSession,
         account_id: AccountId,
-        ):
+) -> list[Doctor]:
+    return
+
+
+async def get_chat_doctor(
+        session: AsyncSession,
+        chat_id: ChatId,
+) -> Doctor:
     return
 
 
