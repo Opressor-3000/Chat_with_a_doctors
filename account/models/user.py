@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from fastapi import Cookie
-from auth.views import response
 from sqlalchemy import (
     Column, 
     String, 
@@ -26,7 +25,7 @@ from core.models import Base
 from admin.models import QR
 from .account import Account
 from .gender import Gender
-from main import session_id_generate, COOKIE_SESSION_ID
+from auth.utils import COOKIE_SESSION_ID
 
 
 class User(Base):
@@ -34,11 +33,11 @@ class User(Base):
    username: Mapped[str] = mapped_column(String(60), nullable=False)
    account_id: Mapped[int] = mapped_column(Integer, ForeignKey('account.id', onupdate='CASCADE', ondelete='RESTRICT', name='account_user_fk'), nullable=True)
    last_enter: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow(), nullable=False)
-   qr_id:Mapped[int] = mapped_column(Integer, ForeignKey('qr.id', onupdate='CASCADE', ondelete='RESTRICT', name='qr_user_fk'))
+   qr_id:Mapped[int] = mapped_column(Integer, ForeignKey('qr.id', onupdate='CASCADE', ondelete='RESTRICT', name='qr_user_fk'), nullable=True)
    avatar:Mapped[str] = mapped_column(String(250), nullable=True)
    is_active:Mapped[bool] = mapped_column(Boolean, default=True)
-   gender_id:Mapped[int] = mapped_column(Integer, ForeignKey('gender.id', onupdate='CASCADE', ondelete='RESTRICT', name='user_gender_fk'))
-   birthday:Mapped[datetime] = mapped_column(DateTime)
+   gender_id:Mapped[int] = mapped_column(Integer, ForeignKey('gender.id', onupdate='CASCADE', ondelete='RESTRICT', name='user_gender_fk'), nullable=True)
+   birthday:Mapped[datetime] = mapped_column(DateTime, nullable=True)
 
    gender: Mapped['Gender'] = relationship('Gender', back_populates='user')
    qr: Mapped['QR'] = relationship('QR', back_populates='user')

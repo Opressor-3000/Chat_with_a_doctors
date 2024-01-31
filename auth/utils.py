@@ -6,6 +6,9 @@ import bcrypt
 jwt = JWT()
 
 
+COOKIE_SESSION_ID = 'web_app_hekim_chat_uid'
+
+
 from core.config import settings
 
 

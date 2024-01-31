@@ -26,9 +26,6 @@ async def session_id_generate() -> str:
    return uuid5().hex
 
 
-COOKIE_SESSION_ID = 'web_app_hekim_chat_uid'
-
-
 if __name__ == "__main__":
    uvicorn.run("main:app", reload=True)
 

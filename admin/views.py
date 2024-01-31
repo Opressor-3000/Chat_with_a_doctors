@@ -200,6 +200,11 @@ async def get_group():
     pass
 
 
+@router.get('/{group_id}/user_list/')
+async def get_group_employees():
+    pass
+
+
 @router.patch('/{group_id}/')
 async def group_active():
     '''
@@ -215,11 +220,6 @@ async def create_access_group():
 
 @router.delete('/{accessgroup_id}/')
 async def delete_accessgroup():
-    pass
-
-
-@router.get('/qr_s/')
-async def get_qrs():
     pass
 
 

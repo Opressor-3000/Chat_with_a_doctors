@@ -11,9 +11,6 @@ from typing import Optional
 from uuid import uuid4
 from pydantic import BaseModel, EmailStr, ConfigDict
 
-from account.models import User
-
-
 
 class AuthJWTScheme(BaseModel):
    model_config = ConfigDict(strict=True)

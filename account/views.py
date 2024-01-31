@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from .schemes import UserCreate, UserScheme
-from .crud import create_user
 
 router = APIRouter(prefix="/account", tags=["account"])
 
@@ -74,11 +73,5 @@ async def get_user():
 async def patch_feedback():
     pass
 
-
-@router.post('/create_user/', response_model=UserScheme)
-async def create_user_view(session, user: UserCreate):
-    #  передаем cookie и username
-    await create_user(session=session, user=user)
-    return 
 
 

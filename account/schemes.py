@@ -1,12 +1,10 @@
 from datetime import datetime
-import uuid
 
-from sqlalchemy import select
-from sqlalchemy.engine import Result
-from sqlalchemy.ext.asyncio import AsyncSession
 from typing import Optional
 from uuid import uuid4
 from pydantic import BaseModel, EmailStr, ConfigDict
+from admin.schemes import PermissionId
+from doctors.schemes import DoctorId
 
 
 '''
@@ -53,40 +51,47 @@ from pydantic import BaseModel, EmailStr, ConfigDict
 '''
 
 
-#  -----------------------------   USER  SCHEMES   --------------------------
-
-
 class GenderBase(BaseModel):
    title:str
 
 
-class Gender(GenderBase):
+class GenderID(GenderBase):
    id: int
 
 
+class GenderCreate(GenderID):
+   creater_id: PermissionId
+
+
+class GenderUpdate(GenderCreate):
+      title:str
+      creater_id: PermissionId
+
+#  -----------------------------   USER  SCHEMES   --------------------------
+
+
 class UserBase(BaseModel):   # поля по умолчанию
-   gender: Gender | None = None
-   birthday: datetime | None = None
-   avatar: str | None = None
    username: str
+   avatar: str | None = None
+   birthday: datetime | None = None
+   gender_id: GenderID | None = None
 
 
-class UserCookie(UserBase):
-   cookie: str
+class UserID(UserBase): # присваивается при входе
+   id: int
 
 
-class UserScheme(UserCookie): # присваивается при входе
-   model_config = ConfigDict(from_attributes=True)
-
-   id: str
-
-
-class UserCreate(UserScheme):
-   pass
+class UserCreate(UserID):
+   account_id: 'AccountId' | None = None
+   qr_id: int | None = None
 
 
-class UserUpdate(UserBase):
-   username: str | None = None
+class AccountUsers(UserID):
+   account_id: 'AccountId' | None = None
+
+
+# class UserUpdate(UserBase):
+#    username: str | None = None
 
 
 # -------------------------   ACCOUNT  SCHEMES   ---------------------
@@ -119,3 +124,66 @@ class ChangePassword(AccountBase):
    password: bytes
 
 
+class 
+
+
+# ----------------------  DISEASE  ---------------------
+   
+
+class DiseaseBase(BaseModel):
+   title: str
+   code: int
+
+
+class DiseaseID(DiseaseBase):
+   id: int
+
+
+class CreateDisease(DiseaseBase):
+   creater_id: PermissionId
+
+
+# --------------------- ANAMNESIS ---------------------
+   
+
+class AnamnesisBase(BaseModel):
+   account_id: AccountId
+   disease_id: DiseaseID
+   doctor_id: DoctorId
+
+
+class AnamnesisUpdate(AnamnesisBase):
+   account_id: AccountId | None = None
+   disease_id: DiseaseID | None = None
+   doctor_id: DoctorId | None = None
+
+
+class AnamnesisID(AnamnesisBase):
+   id: int
+
+
+class AnamnesisDelete(AnamnesisID):
+   pass
+
+
+# ------------------- DIAGNOSIS -----------------------
+
+
+class DiagnosisBase(BaseModel):
+   doctor_id: DoctorId
+   user_id: UserID
+   text: str
+
+
+class DiagnosisID(DiagnosisBase):
+   id: int
+
+
+class DiagnosisUpdate(DiagnosisID):
+   doctor_id: DoctorId | None = None
+   user_id: UserID | None = None
+   text: str | None = None
+
+
+class DiagnosisDelete(DiagnosisID):
+   doctor_id: DoctorId

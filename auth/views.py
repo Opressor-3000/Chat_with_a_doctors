@@ -5,12 +5,9 @@ from fastapi.responses import RedirectResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .schemes import BasicCookieAuth
-from account.models import User
-from account.schemes import UserCookie, UserScheme
+from account.schemes import UserCreate
 from account.crud import create_user
-from main import session_id_generate, COOKIE_SESSION_ID
-from core.models import db_connect
+from account.models import User
 
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -32,7 +29,7 @@ async def comfirmation_phone():
 
 
 @router.post('/add_cookie/', response_model=User, status_code=status.HTTP_201_CREATED)
-async def cookie_auth(session: AsyncSession, user_data: UserScheme):
+async def cookie_auth(session: AsyncSession, user_data: UserCreate):
     await create_user(session=session, user=user_data)
     return RedirectResponse(url='api/v1/chat', status_code=status.HTTP_302_FOUND)
 

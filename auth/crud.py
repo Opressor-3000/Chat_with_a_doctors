@@ -6,7 +6,9 @@ from fastapi import Depends, Cookie
 from schemes import AuthJWTScheme
 from core.models.db_connector import db_connect
 from account.schemes import UserScheme
-from account.models import Account, User
+from auth.utils import User, COOKIE_SESSION_ID
+from account.models import Account
+
 
 
 async def create_account(
@@ -30,4 +32,3 @@ async def create_user(
     session.add(user)
     await session.commit()
     return user
-

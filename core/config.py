@@ -1,3 +1,4 @@
+from datetime import datetime
 from pathlib import Path
 from pydantic_settings import BaseSettings
 from pydantic import BaseModel
@@ -26,7 +27,7 @@ class AuthJWT(BaseModel):
    public_key_dir: Path = BASE_DIR / 'certs' / 'jwt_public.pem'
    private_key_dir: Path = BASE_DIR / 'certs' / 'jwt_private/pem'
    algorithm: str = 'RS256'
-   access_token_expire_minuts = 15
+   access_token_expire_minuts: datetime = 15
 
 
 class Settings(BaseSettings):

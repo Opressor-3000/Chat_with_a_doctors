@@ -8,8 +8,8 @@ router = APIRouter(prefix="/chat", tags=["Chats"])
 '''
 
 
-@router.get('')
-async def get_chats():
+@router.get('/')
+async def get_user_chats():
     '''
         Вернуть all chats user  if:
             1. user is exist 
@@ -25,7 +25,7 @@ async def get_current_chat(chat_id):
         return current chat user if:
             1. if user chat exist
     '''
-    pass
+    return await chat_id
 
 
 @router.get('/doctors/')
