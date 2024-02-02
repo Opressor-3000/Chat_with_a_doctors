@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 
 from sqlalchemy.ext.asyncio import AsyncSession
-from .schemes import UserCreate, UserScheme
+# from .schemes.user import UserCreate, UserID
 
 router = APIRouter(prefix="/account", tags=["account"])
 

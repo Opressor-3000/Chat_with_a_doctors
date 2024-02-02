@@ -5,8 +5,8 @@ from doctors.models import Speciality, Doctor, Certificate
 from chat.models import Chat, Message
 from admin.models import Permission, Group, Access, QR
 from admin.schemes import PermissionId, GroupId, AccessGroupId, CreateQR
-from chat.schemes import ChatId, MessageID
-from doctors.schemes import DoctorId, CertificateId, SpecialityId, SpecialityUpdate
+from chat.schemes.schemes import ChatId, MessageID
+from doctors.schemes.schemes import DoctorId, CertificateId, SpecialityId, SpecialityUpdate
 from account.schemes import UserID, AccountId, AccountUpdate
 
 

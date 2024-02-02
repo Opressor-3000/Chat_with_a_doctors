@@ -20,11 +20,11 @@ async def get_user_cookie(
 
 
 
-@app.middleware("http")
-async def check_cookie(request: Request, call_next):
-    response = await call_next(request)
-    user_cookie = Cookie(alias=COOKIE_SESSION_ID)
-    if user_cookie:
-        if get_user_cookie(user_cookie):
-            return response
-    return RedirectResponse(url='/auth/add_cookie/', status_code=status.HTTP_401_UNAUTHORIZED,)
+# @app.middleware("http")
+# async def check_cookie(request: Request, call_next):
+#     response = await call_next(request)
+#     user_cookie = Cookie(alias=COOKIE_SESSION_ID)
+#     if user_cookie:
+#         if get_user_cookie(user_cookie):
+#             return response
+#     return RedirectResponse(url='/auth/add_cookie/', status_code=status.HTTP_401_UNAUTHORIZED,)

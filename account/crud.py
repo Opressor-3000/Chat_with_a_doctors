@@ -1,10 +1,11 @@
 from uuid import uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
-from .schemes import UserCreate, AccountUsers, AccountId, UserID
+from .schemes.user import UserCreate
+from account.schemes import  AccountId
 from account.models import User, Account
 from doctors.models import Feedback
-from doctors.models import Doctor
+from .schemes import UserID
 
 
 async def create_user(
@@ -34,7 +35,7 @@ async def get_account_users(
 
 async def create_issue(
         session: AsyncSession,
-        user: User
+        user: UserID
 ):
     return 
 
@@ -48,7 +49,7 @@ async def get_user(
 
 async def get_account_feedback(
         session: AsyncSession,
-        user_id: User,
+        user_id: UserID,
 ) -> Feedback:
     return 
 

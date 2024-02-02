@@ -3,7 +3,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from chat.models import Chat, Message, MessageStatus
 from chat.schemes import MessageStatusID, ChatId, CurrenChatId
 from account.schemes import UserID, AccountId
-from doctors.schemes import DoctorId
 from doctors.models import Doctor
 
 
@@ -26,7 +25,7 @@ async def get_current_chat(
 async def get_user_chats(
         session: AsyncSession,
         user_id: UserID,
-        ) -> list[ChatId]:
+        ) -> list[Chat]:
     return
 
 

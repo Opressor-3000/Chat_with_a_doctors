@@ -15,7 +15,7 @@ from sqlalchemy import (
     ForeignKeyConstraint,
     func
 )
-from sqlalchemy.dialects.postgresql import UUID
+
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.ext.indexable import index_property
 from sqlalchemy.schema import UniqueConstraint
