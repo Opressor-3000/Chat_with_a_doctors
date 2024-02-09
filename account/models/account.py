@@ -38,7 +38,7 @@ class Account(
     _groups_lazy = "joined"
     _groups_uselist = True
 
-    _doc_uselist = True
+    _doc_uselist = False
     _doc_lazy = "selectin"
     _doc_back_populate = "account"
 

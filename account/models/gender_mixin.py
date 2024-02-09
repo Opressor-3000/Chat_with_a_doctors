@@ -6,8 +6,8 @@ from .gender import Gender
 
 class GenderRelationMixin:
     _gender_foreignkey_name:str
-    _gender_ondelete: str
-    _gender_onupdate:str
+    _gender_ondelete: str = 'RESTRICT'
+    _gender_onupdate:str = "RESTRICT"
     _gender_back_populate: str
     _gender_uselist: bool
     _gender_lazy: str
@@ -19,7 +19,7 @@ class GenderRelationMixin:
             ForeignKey(
                 "gender.id", 
                 ondelete=cls._gender_ondelete, 
-                onupdate="CASCADE", 
+                onupdate=cls._gender_onupdate,
                 name=cls._gender_foreignkey_name,
             ),
         )
@@ -27,6 +27,7 @@ class GenderRelationMixin:
     @declared_attr
     def gender(cls) -> Mapped[Gender]:
         return relationship(
+            'Gender',
             back_populates=cls._gender_back_populate,
             lazy=cls._gender_lazy,
             uselist=cls._gender_uselist,

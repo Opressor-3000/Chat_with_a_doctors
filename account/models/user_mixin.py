@@ -28,7 +28,7 @@ class UserRelationMixin:
       ), 
       unique=cls._user_unique, 
       nullable=cls._user_id_nullable
-   )
+      )
 
    @declared_attr
    def user(cls) -> Mapped["User"]:
@@ -49,6 +49,7 @@ class UserListRelationMixin:
    @declared_attr
    def users(cls) -> Mapped[list[User]]:
       return relationship(
+         'User',
          back_populates=cls._users_back_populates, 
          lazy=cls._users_lazy, 
          secondary=cls._users_secondary, 

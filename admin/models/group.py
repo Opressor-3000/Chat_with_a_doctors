@@ -14,14 +14,9 @@ class Group(
     AccountListRelationMixin,
     Base,
 ):
-    _account_foreignkey_name = 'group_account_fk'
-    _account_nullable = False
-    _account_unique = True
-    _account_onupdate = 'CASCADE'
-    _account_ondelete = 'CASCADE'
-    _account_back_populate = 'group'
-    _account_lazy = 'joined'
-    _account_uselist = True
+    _accounts_back_populate = 'group'
+    _accounts_lazy = 'joined'
+    _accounts_uselist = True
     _accounts_secondary = 'permission'
 
     _creater_back_populates = "group"

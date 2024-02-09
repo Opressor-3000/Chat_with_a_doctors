@@ -2,20 +2,28 @@ from typing import TYPE_CHECKING
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey, Integer, Boolean
 
-if TYPE_CHECKING:
-    from account.models import User
 from core.models.base import Base
 from doctors.models.mixin import UserDocRelationMixin
-from doctors.models import Speciality
+from doctors.models.speclistmxn import SpecialityListRelationMixin
 
 
-class Chat(UserDocRelationMixin, Base):
+class Chat(
+    UserDocRelationMixin, 
+    SpecialityListRelationMixin,
+    Base,
+):
     _doc_back_populate = 'chat'
     _doc_lazy = 'joined'
+
     _user_back_populates = 'chat'
     _user_lazy = 'joined'
 
-    active:Mapped[bool] =mapped_column(Boolean, default=True)
+    _spec_back_populate = 'chat'
+    _spec_lazy = 'selectin'
+    _spec_uselist = False
+    _spec_secondary = 'doctor'
+
+    active:Mapped[bool] =mapped_column(Boolean, default=True, index=True)
     previous_chat_id:Mapped[int] = mapped_column(
         Integer, 
         ForeignKey(
@@ -27,8 +35,6 @@ class Chat(UserDocRelationMixin, Base):
         unique=True)
     
     previous_chat:Mapped['Chat'] = relationship('Chat', back_populates='chat', remote_side=[id], uselist=False, lazy='joined')
-
-    specialities:Mapped[list[Speciality]] = relationship('Speciality', back_populates='chat', uselist=True, lazy='selectin', secondary='doctor')
 
     def __repr__(self) -> str:
         return 

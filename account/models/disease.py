@@ -1,14 +1,13 @@
 from typing import TYPE_CHECKING
-from sqlalchemy import String, Boolean, Integer
+from sqlalchemy import String, Integer
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import UniqueConstraint, ForeignKey
 
 from core.models import Base
 from .accounts_mixin import AccountListRelationMixin, AccountRelationMixin
 
-if TYPE_CHECKING:
-    from admin.models.mixin import CreaterRelationMixin
-    from .account import Account
+# if TYPE_CHECKING:
+from admin.models.mixin import CreaterRelationMixin
 from doctors.models.mixin import DoctorRelationMixin
 
 
@@ -44,7 +43,7 @@ class Anamnesis(
     _account_ondelete = 'CASCADE'
     _account_back_populate = 'anmnesis'
     _account_lazy = 'joined'
-    _account_uselist = True
+    _account_uselist = False
 
     _doc_back_populate = "anamnesis"
     _doc_lazy = "joined"
@@ -65,7 +64,7 @@ class Anamnesis(
         ),
     )
     disease: Mapped[Disease] = relationship(
-        "Anamnesis", back_populates="anamnesis", uselist=False, lazy="joined"
+        "Anamnesis", back_populates="anamnesis", uselist=True, lazy="joined"
     )
 
     def __repr__(self) -> str:
@@ -84,7 +83,7 @@ class Diagnosis(
     _account_ondelete = 'CASCADE'
     _account_back_populate = 'diagnosis'
     _account_lazy = 'joined'
-    _account_uselist = True
+    _account_uselist = False
 
     _doc_back_populate = "diagnosis"
     _doc_lazy = "joined"

@@ -10,10 +10,9 @@ class CreaterRelationMixin:
     _creater_back_populates: str
     _creater_id_nullable: bool = False
     _creater_lazy: str | None = None
-    _creater_uselist: bool
     _creater_ondelete: str = "RESTRICT"
     _creater_onupdate: str = "RESTRICT"
-    _creater_foreignkey_name: str | None
+    _creater_foreignkey_name: str
 
     @declared_attr
     def creater_id(cls) -> Mapped[int]:
@@ -35,7 +34,6 @@ class CreaterRelationMixin:
             "Permission",
             back_populates=cls._creater_back_populates,
             lazy=cls._creater_lazy,
-            uselist=cls._creater_uselist,
         )
 
 
@@ -62,6 +60,7 @@ class QRRelationMixin:
     @declared_attr
     def qr(cls) -> Mapped[QR]:
         return relationship(
+            'qr',
             back_populates=cls._qr_back_populate,
             lazy=cls._qr_lazy,
             uselist=cls._qr_uselist,

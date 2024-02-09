@@ -12,6 +12,7 @@ class GroupListRelationMixin:
     @declared_attr
     def groups(cls) -> Mapped[list[Group]]:
         return relationship(
+            'Group',
             back_populates=cls._groups_back_populate,
             lazy=cls._groups_lazy,
             secondary=cls._groups_secondary,

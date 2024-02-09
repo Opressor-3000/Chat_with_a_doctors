@@ -12,6 +12,7 @@ class CertificateListRelationMixin:
     @declared_attr
     def certificate(cls) -> Mapped[list[Certificate]]:
         return relationship(
+            'Certificate',
             back_populates=cls._certificates_back_populate, 
             lazy=cls._certificates_lazy, 
             uselist=cls._certificates_uselist,

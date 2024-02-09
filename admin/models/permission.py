@@ -23,35 +23,17 @@ class Permission(
     _account_ondelete = 'CASCADE'
     _account_back_populate = 'permission'
     _account_lazy = 'selectin'
-    _account_uselist = True
-
-    _creater_unique = False
-    _creater_back_populates = 'permission'
-    _creater_id_nullable: bool = False
-    _creater_lazy: str | None = None
-    _creater_uselist: bool
-    _creater_ondelete: str = "RESTRICT"
-    _creater_onupdate: str = "RESTRICT"
-    _creater_foreignkey_name: str | None
+    _account_uselist = False
 
     _group_foreignkey_name = 'permission_group_fk'
     _group_nullable = False
     _group_unique = False
     _group_onupdate = 'CASCADE'
-    _group_ondelete = 'CASCADE'
+    _group_ondelete = 'RESTRICT'
     _group_back_populate = 'permission'
     _group_lazy = 'selectin'
-    _group_uselist = True
+    _group_uselist = False
 
-    group_id: Mapped[int] = mapped_column(
-        Integer,
-        ForeignKey(
-            "group.id",
-            name="permission_group_id",
-            ondelete="RESTRICT",
-            onupdate="CASCADE",
-        ),
-    )
     creater_id: Mapped[int] = mapped_column(
         Integer,
         ForeignKey(
@@ -64,9 +46,6 @@ class Permission(
     
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
 
-    group: Mapped["Group"] = relationship(
-        "Group", back_populates="permission", lazy="joined", uselist=True
-    )
     creater: Mapped["Permission"] = relationship(
         "Permission",
         back_populates="permission",

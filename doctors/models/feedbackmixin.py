@@ -31,6 +31,7 @@ class FeedbackRelationMixin:
     @declared_attr
     def feedback(cls) -> Mapped[Feedback]:
         return relationship(
+            'Feedback',
             back_populates=cls._feedback_back_populate,
             uselist=cls._feedback_uselist,
             lazy=cls._feedback_lazy,
@@ -46,6 +47,7 @@ class FeedbacksRelationMixin:
     @declared_attr
     def feedbacks(cls) -> Mapped[list[Feedback]]:
         return relationship(
+            'Feedback',
             back_populates=cls._feedback_back_populate,
             uselist=cls._feedback_uselist,
             lazy=cls._feedback_lazy,

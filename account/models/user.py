@@ -33,7 +33,7 @@ class User(
 ):
     _chats_back_populate = "user"
     _chats_lazy = "joined"
-    _chats_uselist = False
+    _chats_uselist = True
 
     _account_foreignkey_name = 'account_user_fk'
     _account_ondelete = 'RESTRICT'
@@ -44,7 +44,7 @@ class User(
 
     _messages_back_populate = "user"
     _messages_lazy = "joined"
-    _messages_uselist = False
+    _messages_uselist = True
 
     _doctors_back_populate = "user"
     _doctors_lazy = "selectin"
@@ -53,8 +53,8 @@ class User(
 
     _qr_foreignkey_name = 'user_qr_id'
     _qr_back_populate = 'user'
-    _qr_uselist = True
-    _qr_lazy = 'selectin'
+    _qr_uselist = False
+    _qr_lazy = 'joined'
 
     _gender_back_populate = 'user'
     _gender_foreignkey_name = 'user_gender_fk'

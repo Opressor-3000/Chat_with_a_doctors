@@ -13,6 +13,7 @@ class DiseaseListRelationMixin:
     @declared_attr
     def disease(cls) -> Mapped[list[Disease]]:
         return relationship(
+            'Disease',
             back_populates=cls._diseases_back_populate,
             secondary=cls._diseases_secondary,
             lazy=cls._diseases_lazy,

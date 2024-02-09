@@ -12,6 +12,7 @@ class AccountListRelationMixin:
     @declared_attr
     def accounts(cls) -> Mapped[list[Account]]:
         return relationship(
+            'Account',
             back_populates=cls._accounts_back_populate,
             secondary=cls._accounts_secondary,
             lazy=cls._accounts_lazy,
