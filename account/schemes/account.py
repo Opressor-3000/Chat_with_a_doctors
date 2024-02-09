@@ -2,8 +2,6 @@
 from pydantic import BaseModel, EmailStr
 
 
-
-
 class AccountBase(BaseModel):
    first_name: str
    last_name: str
@@ -29,7 +27,7 @@ class AccountUpdate(AccountBase):
    email: EmailStr | None = None
 
 
-class ChangePassword(AccountBase):
+class ChangePassword(BaseModel):
    phone: int | None = None
    password: bytes
 

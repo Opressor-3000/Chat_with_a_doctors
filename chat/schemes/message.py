@@ -6,7 +6,8 @@ from typing import Optional
 
 from pydantic import BaseModel
 from admin.schemes import PermissionId
-from chat.schemes import ChatUserId
+from chat.schemes.chatuser import ChatUserId
+
 
 class BaseMessage(BaseModel):
    chatuser_id: ChatUserId

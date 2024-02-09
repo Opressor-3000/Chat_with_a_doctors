@@ -3,7 +3,6 @@ from chat.models.mixin import ChatUserRelationMixin
 from admin.models.mixin import CreaterRelationMixin
 
 
-
 class ChatUserCreaterRelationMixin(ChatUserRelationMixin, CreaterRelationMixin):
     pass
 

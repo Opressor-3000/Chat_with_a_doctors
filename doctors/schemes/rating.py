@@ -3,7 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel
 
 from chat.schemes import ChatId
-from doctors.schemes import DoctorId
+from doctors.schemes.doctor import DoctorId
 from account.schemes.user import UserID
 
 

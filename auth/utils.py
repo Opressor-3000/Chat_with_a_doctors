@@ -43,7 +43,6 @@ from core.config import settings
 #     )
 #     return decoded
 
-
 def hash_password(
         password: str,
 ) -> bytes:

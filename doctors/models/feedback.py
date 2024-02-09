@@ -5,15 +5,17 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 
 from core.models.base import Base
-from .mixin_1 import DocChatUserRelationMixin
+from .doc_chatuser_mxn import DocChatUserRelationMixin
 from .cucr_mixin import DocChatUserCreaterMixin
 
 
 class Feedback(DocChatUserCreaterMixin, Base):
     _creater_back_populates = 'feedback'
-    _chat_back_populate = 'feedback'   
+    _creater_lazy = 'joined'
+    _chat_back_populate = 'feedback'
+    _chatuser_lazy = 'joined'
     _doc_back_populate = 'feedback'   # unique together for doc & user
-    _user_back_populates = 'feedback'  
+    _doc_lazy = 'joined'
 
     text:Mapped[str] = mapped_column(String(500))
     delete:Mapped[bool] = mapped_column(Boolean, default=False)

@@ -7,7 +7,7 @@ router = APIRouter(prefix="/doctor", tags=['Doctor'])
 '''
 
 @router.get('/{doctor_id}/')
-async def get_doc(doctor_id):
+async def get_doctor(doctor_id):
     '''
         return doctor profile if it exist (check account)
     '''
@@ -19,6 +19,11 @@ async def get_feedbacks():
     '''
         return all doctor feedbacks 
     '''
+    pass
+
+
+@router.get('/{doctor_id}/{feedback}/')
+async def get_feedback():
     pass
 
 
@@ -38,8 +43,17 @@ async def get_feedback(feedback_id):
     pass
 
 
-@router.get('/current_chats/{doctor_id}/')
-async def get_doctor_chats():
+@router.get('/{doctor_id}/chat_list/')
+async def get_doctor_chat_list():
+    '''
+        return one current (active) chats doctors 
+            показывать в каких чатах user online
+    '''
+    pass
+
+
+@router.get('/{doctor_id}/current_chat_list/')
+async def get_doctor_current_chat_list():
     '''
         return all current (active) chats doctors 
             показывать в каких чатах user online
@@ -57,13 +71,6 @@ async def get_current_chat(chat_id):
 async def send_message(chat_id):
     pass
 
-
-@router.get('/chats/')
-async def get_doctor_chats():
-    '''
-        show all chats (filters 1 raiting(1,2,3,4,5), datetiem,(year, mount, day), feedback(yes,no))
-    '''
-    pass
 
 
 @router.get('/{user_id}/')

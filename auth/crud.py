@@ -3,12 +3,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Depends, Cookie
 
 
-from schemes import AuthJWTScheme
+from .schemes import AuthJWTScheme
 from core.models.db_connector import db_connect
-from account.schemes import UserScheme
-from auth.utils import User, COOKIE_SESSION_ID
+from account.schemes import UserID
+from auth.utils import COOKIE_SESSION_ID
 from account.models import Account
-
+from account.models import User
 
 
 async def create_account(
@@ -26,7 +26,7 @@ async def create_account(
 
 async def create_user(
         session: AsyncSession, 
-        user: UserScheme,
+        user: UserID,
         ) -> User:
     user = User(**user.model_dump())
     session.add(user)

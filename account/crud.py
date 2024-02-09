@@ -5,7 +5,7 @@ from .schemes.user import UserCreate
 from account.schemes import  AccountId
 from account.models import User, Account
 from doctors.models import Feedback
-from .schemes import UserID
+from .schemes.user import UserID
 
 
 async def create_user(

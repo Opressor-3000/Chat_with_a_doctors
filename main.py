@@ -19,7 +19,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan, title="BTK chat")
 
 
-app.include_router(main_router, tags=["Main"])
+app.include_router(main_router)
 
 
 async def session_id_generate() -> str:

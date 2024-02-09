@@ -1,5 +1,5 @@
 
-from account.schemes import UserID
+from account.schemes.user import UserID
 from pydantic import BaseModel
 from chat.schemes import ChatId
 

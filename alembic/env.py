@@ -6,13 +6,12 @@ from sqlalchemy import pool
 from alembic import context
 
 from core.models import Base
-from account.models import (
-    User,
-    Account,
-    Gender,
-    Disease,
-    Diagnosis,
-    Anamnesis,
+
+from chat.models import (
+    ChatUser,
+    Chat,
+    Message,
+    MessageStatus,
 )
 from admin.models import (
     Group,
@@ -21,14 +20,6 @@ from admin.models import (
     AccessGroup,
     Access,
 )
-
-from chat.models import (
-    Chat,
-    ChatUser,
-    Message,
-    MessageStatus,
-)
-
 from doctors.models import (
     Doctor,
     Speciality,
@@ -36,6 +27,14 @@ from doctors.models import (
     Rating,
     Agency,
     Feedback,
+)
+from account.models import (
+    User,
+    Account,
+    Gender,
+    Disease,
+    Diagnosis,
+    Anamnesis,
 )
 
 from core.config import settings

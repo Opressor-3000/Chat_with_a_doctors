@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 from admin.schemes import PermissionId
 from .doctor import DoctorId
-from doctors.schemes import AgencyID
+from doctors.schemes.agency import AgencyID
 
 
 class BaseCertificate(BaseModel):
