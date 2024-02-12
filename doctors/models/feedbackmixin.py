@@ -1,6 +1,12 @@
+from typing import TYPE_CHECKING
+
+
 from sqlalchemy.orm import declared_attr, Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey, Integer
-from .feedback import Feedback
+
+
+if TYPE_CHECKING:
+    from .feedback import Feedback
 
 
 class FeedbackRelationMixin:
@@ -29,7 +35,7 @@ class FeedbackRelationMixin:
         )
 
     @declared_attr
-    def feedback(cls) -> Mapped[Feedback]:
+    def feedback(cls) -> Mapped['Feedback']:
         return relationship(
             'Feedback',
             back_populates=cls._feedback_back_populate,
@@ -45,7 +51,7 @@ class FeedbacksRelationMixin:
     _feedback_secondary: str | None = None
 
     @declared_attr
-    def feedbacks(cls) -> Mapped[list[Feedback]]:
+    def feedbacks(cls) -> Mapped[list['Feedback']]:
         return relationship(
             'Feedback',
             back_populates=cls._feedback_back_populate,

@@ -2,7 +2,6 @@ from pydantic import BaseModel
 
 
 from account.schemes import AccountId
-from admin.schemes import PermissionId
 from doctors.schemes import SpecialityId
 
 
@@ -15,9 +14,11 @@ class DoctorId(BaseDoctor):
     id: int
 
 
-class ActiveDoctor(BaseDoctor):
+class ChangeDoctorActive(BaseDoctor):
     is_active: bool
 
 
 class CreateDoctor(BaseDoctor):
-    creater_id: PermissionId
+    creater_id: AccountId
+
+

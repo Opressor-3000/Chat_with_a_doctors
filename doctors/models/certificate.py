@@ -16,12 +16,11 @@ class Certificate(
 
     _creater_back_populates = 'certificate'
     _creater_foreignkey_name = 'cretificate_creater_id'
-    _creater_lazy = 'joined',
-    _creater_uselist = False
 
     _doc_back_populate = 'certificate'
     _doc_foreignkey_name = 'cretificate_doctor_id'
     _doc_lazy = 'joined'
+    _doc_uselist = False
     
     cretificate_id: Mapped[str] = mapped_column(String(64), unique=True)
     validity: Mapped[datetime] = mapped_column(DateTime) # constrain не более 5 лет

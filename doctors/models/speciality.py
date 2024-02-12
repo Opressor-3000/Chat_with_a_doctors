@@ -2,11 +2,10 @@ from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from core.models.base import Base
+
+from .doc_list_mxn import DoctorListRelationMixin
 from admin.models.mixin import CreaterRelationMixin
-from .doctor import Doctor
-from chat.models import Chat
 from chat.models.chatlistmxn import ChatListRelationMixin
-from doc_list_mxn import DoctorListRelationMixin
 
 class Speciality(
     CreaterRelationMixin, 
@@ -24,7 +23,7 @@ class Speciality(
     _doctors_uselist = True
 
     _creater_back_populates = 'speciality'
-    _creater_lazy = 'joined'
+    _creater_foreignkey_name = 'speciality_creater_fk'
 
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(50), unique=True)

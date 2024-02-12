@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 from fastapi import Cookie
 from sqlalchemy import (
@@ -15,7 +16,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 from chat.models.chatlistmxn import ChatListRelationMixin
 from chat.models.mixin_ import MessageListRelationMixin
 from core.models import Base
-from admin.models.mixin import QRRelationMixin
+from admin.models.qr_mixin import QRRelationMixin
 from doctors.models.doc_list_mxn import DoctorListRelationMixin
 from .accounts_mixin import AccountRelationMixin
 from .gender_mixin import GenderRelationMixin
@@ -25,7 +26,6 @@ from auth.utils import COOKIE_SESSION_ID
 class User(
     AccountRelationMixin,
     ChatListRelationMixin,
-    MessageListRelationMixin,
     DoctorListRelationMixin,
     GenderRelationMixin,
     QRRelationMixin,
@@ -35,11 +35,11 @@ class User(
     _chats_lazy = "joined"
     _chats_uselist = True
 
-    _account_foreignkey_name = 'account_user_fk'
-    _account_ondelete = 'RESTRICT'
-    _account_onupdate = 'CASCADE'
-    _account_back_populate = 'user'
-    _account_lazy = 'joined'
+    _account_foreignkey_name = "account_user_fk"
+    _account_ondelete = "RESTRICT"
+    _account_onupdate = "CASCADE"
+    _account_back_populate = "user"
+    _account_lazy = "joined"
     _account_uselist = False
 
     _messages_back_populate = "user"
@@ -51,16 +51,16 @@ class User(
     _doctors_secondary = "chat"
     _doctors_uselist = True
 
-    _qr_foreignkey_name = 'user_qr_id'
-    _qr_back_populate = 'user'
+    _qr_foreignkey_name = "user_qr_id"
+    _qr_back_populate = "user"
     _qr_uselist = False
-    _qr_lazy = 'joined'
+    _qr_lazy = "joined"
 
-    _gender_back_populate = 'user'
-    _gender_foreignkey_name = 'user_gender_fk'
-    _gender_ondelete = 'RESTRICT'
-    _gender_onupdate = 'CASCADE'
-    _gender_lazy = 'join'
+    _gender_back_populate = "user"
+    _gender_foreignkey_name = "user_gender_fk"
+    _gender_ondelete = "RESTRICT"
+    _gender_onupdate = "CASCADE"
+    _gender_lazy = "joined"
     _gender_uselist = False
 
     cookie: Mapped[str] = mapped_column(

@@ -11,7 +11,6 @@ class Gender(CreaterRelationMixin, Base):
    _creater_id_nullable = True 
    _creater_foreignkey_name = 'gender_creater_fk'
    _creater_back_populates = 'gender'
-   _creater_lazy = 'joined'
    
    title:Mapped[str] = mapped_column(String(30), unique=True)
 

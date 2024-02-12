@@ -3,39 +3,58 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey, Integer, Boolean
 
 from core.models.base import Base
-from doctors.models.mixin import UserDocRelationMixin
-from doctors.models.speclistmxn import SpecialityListRelationMixin
+from doctors.models.mixin import UserDocRelationMixin, SpecialityRelationMixin
+from account.models.accounts_mixin import AccountRelationMixin
+from chat.models.mixin_ import MessageListRelationMixin
 
 
 class Chat(
-    UserDocRelationMixin, 
-    SpecialityListRelationMixin,
+    UserDocRelationMixin,
+    MessageListRelationMixin,
+    SpecialityRelationMixin,
+    AccountRelationMixin,
     Base,
 ):
-    _doc_back_populate = 'chat'
-    _doc_lazy = 'joined'
+    _messages_back_populate = 'chat'
+    _messages_lazy = 'joined'
+    _messages_uselist = True
+    _messages_secondary = 'chatuser'
 
-    _user_back_populates = 'chat'
-    _user_lazy = 'joined'
+    _doc_back_populate = "chat"
+    _doc_lazy = "joined"
+    _doc_foreignkey_name = "chat_doctor_fk"
+    _doc_uselist = False
+    _doc_nullable = True
 
-    _spec_back_populate = 'chat'
-    _spec_lazy = 'selectin'
+    _user_back_populates = "chat"
+    _user_lazy = "joined"
+    _user_foreignkey_name = "chat_user_fk"
+    _user_uselist = False
+
+    _spec_foreignkey_name = "chat_speciality_fk"
+    _spec_back_populate = "chat"
+    _spec_lazy = "selectin"
     _spec_uselist = False
-    _spec_secondary = 'doctor'
+    _spec_secondary = "doctor"
+    _spec_nullable = True
 
-    active:Mapped[bool] =mapped_column(Boolean, default=True, index=True)
-    previous_chat_id:Mapped[int] = mapped_column(
-        Integer, 
+    _account_back_populate = "chat"
+    _account_foreignkey_name = "chat_account_fk"
+    _account_nullable = True
+    _account_uselist = False
+
+    active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    previous_chat_id: Mapped[int] = mapped_column(
+        Integer,
         ForeignKey(
-            'chat.id', 
-            name='previous_chat_id', 
-            ondelete='RESTRICT', 
-            onupdate='RESTRICT'
-            ), 
-        unique=True)
-    
-    previous_chat:Mapped['Chat'] = relationship('Chat', back_populates='chat', remote_side=[id], uselist=False, lazy='joined')
+            "chat.id", name="previous_chat_id", ondelete="RESTRICT", onupdate="RESTRICT"
+        ),
+        unique=True,
+    )
+
+    previous_chat: Mapped["Chat"] = relationship(
+        "Chat", back_populates="chat", remote_side=[id], uselist=False, lazy="joined"
+    )
 
     def __repr__(self) -> str:
-        return 
-
+        return f"{self.user} {self.speciality} {self.created_at}"

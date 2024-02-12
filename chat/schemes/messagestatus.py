@@ -9,8 +9,8 @@ from chat.schemes import ChatUserId, MessageID
 class MessageStatusBase(BaseModel):
    chatuser_id: ChatUserId
    message_id: MessageID
-   received: datetime
-   read: datetime
+   received: Optional[datetime]
+   read: Optional[datetime]
    
 
 class MessageStatusID(BaseModel):

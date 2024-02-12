@@ -53,7 +53,7 @@ class ChatUserRelationMixin:
     _chatuser_foreignkey_name: str
 
     @declared_attr
-    def chatuserr_id(cls) -> Mapped[int]:
+    def chatuser_id(cls) -> Mapped[int]:
         return mapped_column(
             Integer, 
             ForeignKey(

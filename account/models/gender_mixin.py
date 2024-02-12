@@ -1,7 +1,9 @@
+from typing import TYPE_CHECKING
 from sqlalchemy.orm import declared_attr, Mapped, relationship, mapped_column
 from sqlalchemy import Integer, ForeignKey
 
-from .gender import Gender
+if TYPE_CHECKING:
+    from .gender import Gender
 
 
 class GenderRelationMixin:
@@ -25,7 +27,7 @@ class GenderRelationMixin:
         )
 
     @declared_attr
-    def gender(cls) -> Mapped[Gender]:
+    def gender(cls) -> Mapped['Gender']:
         return relationship(
             'Gender',
             back_populates=cls._gender_back_populate,

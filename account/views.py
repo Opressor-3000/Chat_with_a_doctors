@@ -38,27 +38,27 @@ async def comfirmation_phone():
 async def get_account():
     """
     return account if is auth
+    
+        1. id
+        2. First Name
+        3. Last Name
+        4. avatar
+        5. chatsuser_list(user.account = account)(get_chat_list, chatuser=user_id)
+        6. accesses-list
+        7. sertificates(doctor.account=account)(doctor.is_active-true)
+
     """
     pass
 
 
-@router.get("/{uuid}/users/")
-async def get_account_users():
-    """
-    return list user referance account_id
-        divice users , status users,
-    """
+@router.patch('/edit/{uuid}/')  # after click edit account
+async def account_active():
+    '''
+        возвращает форму с заполненными полями для редактирования если:
+            1. Account
+
+    '''
     pass
-
-
-# @router.patch('/edit/{uuid}/')  # after click edit account
-# async def account_active():
-#     '''
-#         возвращает форму с заполненными полями для редактирования если:
-#             1. Account
-
-#     '''
-#     pass
 
 
 @router.get("/{uuid}/my_doctors/")

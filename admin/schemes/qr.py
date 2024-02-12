@@ -10,3 +10,5 @@ class BaseQR(BaseModel):
 
 class CreateQR(BaseQR):
     creater_id:PermissionId
+
+

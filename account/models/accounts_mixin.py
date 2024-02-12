@@ -1,6 +1,9 @@
+from typing import TYPE_CHECKING
 from sqlalchemy.orm import declared_attr, Mapped, relationship, mapped_column
 from sqlalchemy import ForeignKey, Integer
-from .account import Account
+
+if TYPE_CHECKING:
+    from .account import Account
 
 
 class AccountListRelationMixin:
@@ -10,7 +13,7 @@ class AccountListRelationMixin:
     _accounts_secondary: str | None = None
 
     @declared_attr
-    def accounts(cls) -> Mapped[list[Account]]:
+    def accounts(cls) -> Mapped[list['Account']]:
         return relationship(
             'Account',
             back_populates=cls._accounts_back_populate,
@@ -27,8 +30,8 @@ class AccountRelationMixin:
     _account_onupdate: str = "CASCADE"
     _account_ondelete: str = "RESTRICT"
     _account_back_populate: str
-    _account_lazy: str
-    _account_uselist: bool
+    _account_lazy: str | None = None
+    _account_uselist: bool = False
     _account_secondary: str | None = None
 
     @declared_attr
@@ -46,7 +49,7 @@ class AccountRelationMixin:
         )
     
     @declared_attr
-    def account(cls) -> Mapped[Account]:
+    def account(cls) -> Mapped['Account']:
         return relationship(
             'Account',
             back_populates=cls._account_back_populate,

@@ -1,4 +1,6 @@
 from typing import TYPE_CHECKING
+
+
 from sqlalchemy import ForeignKey, Integer
 from sqlalchemy.orm import declared_attr, Mapped, mapped_column, relationship
 
@@ -9,13 +11,13 @@ if TYPE_CHECKING:
 
 class UserRelationMixin:
    _user_unique: bool = False
-   _user_back_populates: str | None = None
+   _user_back_populates: str 
    _user_id_nullable: bool = False
-   _user_lazy: str | None = None
-   _user_uselist: bool = True
+   _user_lazy: str 
+   _user_uselist: bool 
    _user_ondelete: str = 'RESTRICT'
    _user_onupdate: str = 'CASCADE'
-   _user_foreignkey_name: str | None
+   _user_foreignkey_name: str
    _user_secondary:str | None = None
 
    @declared_attr
@@ -47,7 +49,7 @@ class UserListRelationMixin:
    _users_secondary:str | None = None
 
    @declared_attr
-   def users(cls) -> Mapped[list[User]]:
+   def users(cls) -> Mapped[list['User']]:
       return relationship(
          'User',
          back_populates=cls._users_back_populates, 

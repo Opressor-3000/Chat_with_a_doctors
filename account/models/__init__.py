@@ -1,14 +1,12 @@
-__all__ = ('Gender',
-           'User', 
-           'Account',
-           'Anamnesis',
-           'Disease',
-           'Diagnosis',
-           )
+__all__ = (
+    "Gender",
+    "User",
+    "Account",
+    "Disease",
+    "Diagnosis",
+)
 
-from .user import User, Account, Gender
-from .disease import Diagnosis, Disease, Anamnesis
-
-
-
-
+from .user import User
+from .account import Account
+from .gender import Gender
+from .disease import Diagnosis, Disease

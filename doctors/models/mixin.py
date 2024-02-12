@@ -1,21 +1,26 @@
+from typing import TYPE_CHECKING
+
+
 from sqlalchemy.orm import declared_attr, mapped_column, relationship, Mapped
 from sqlalchemy import ForeignKey, Integer
 
-
 from account.models.user_mixin import UserRelationMixin
-from .doctor import Doctor
-from .speciality import Speciality, CreaterRelationMixin
+from admin.models.mixin import CreaterRelationMixin
+if TYPE_CHECKING:
+    from account.models.user_mixin import UserRelationMixin
+    from .doctor import Doctor
+    from .speciality import Speciality
 
 
 class SpecialityRelationMixin:
-    _spec_back_populate: str | None = None
+    _spec_back_populate: str
     _spec_nullable: bool = False
     _spec_unique: bool = False
     _spec_lazy: str | None = None
     _spec_uselist: bool
     _spec_ondelete: str = 'RESTRICT'
     _spec_onupdate: str = 'CASCASE'
-    _spec_foreignkey_name: str | None
+    _spec_foreignkey_name: str
     
     @declared_attr
     def speciality_id(cls) -> Mapped[int]:
@@ -42,15 +47,33 @@ class SpecialityRelationMixin:
         )
 
 
+class DocRelationMixin:
+    _doc_back_populate: str
+    _doc_lazy: str 
+    _doc_uselist: bool
+    _doc_secondary:str | None = None
+
+
+    @declared_attr
+    def doctor(cls) -> Mapped['Doctor']:
+        return relationship(
+            'Doctor', 
+            back_populates=cls._doc_back_populate, 
+            lazy=cls._doc_lazy, 
+            uselist=cls._doc_uselist,
+            secondary=cls._doc_secondary,
+        )
+
+
 class DoctorRelationMixin:
-    _doc_back_populate: str | None = None
+    _doc_back_populate: str
     _doc_nullable: bool = False
     _doc_unique: bool = False
-    _doc_lazy: str | None = None
+    _doc_lazy: str 
     _doc_uselist: bool
     _doc_ondelete: str = 'RESTRICT'
     _doc_onupdate: str = 'CASCADE'
-    _doc_foreignkey_name: str | None
+    _doc_foreignkey_name: str
     _doc_secondary:str | None = None
 
     @declared_attr

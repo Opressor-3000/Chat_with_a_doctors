@@ -11,11 +11,10 @@ from doctors.models.cucr_mixin import ChatUserCreaterRelationMixin
 
 
 class Message(ChatUserCreaterRelationMixin, Base):
-    _chatuser_back_populate = 'message'
     _creater_back_populates = 'message'
-    _creater_foreignkey_name = 'message_creater_id'
-    _creater_lazy = 'joined'
-    _creater_uselist = False
+    _creater_foreignkey_name = 'message_creater_id' 
+
+    _chatuser_back_populate = 'message'
     _chatuser_lazy = 'joined'
     _chatuser_uselist = False
     _chatuser_foreignkey_name = 'message_chatuser_id'
@@ -29,6 +28,7 @@ class MessageStatus(ChatUserRelationMixin, Base):
     _chatuser_back_populate = 'messagestatus'
     _chatuser_foreignkey_name = 'MessageStetus_chatuser_id'
     _chatuser_lazy = 'joined'
+    _chatuser_uselist = False
 
     message_id:Mapped[int] = mapped_column(
         Integer, 

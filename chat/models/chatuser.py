@@ -1,6 +1,3 @@
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import ForeignKey, Integer
-
 from chat.models.mixin import ChatRelationMixin
 from core.models.base import Base
 from account.models.user_mixin import UserRelationMixin

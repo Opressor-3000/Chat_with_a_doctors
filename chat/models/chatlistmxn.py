@@ -1,6 +1,8 @@
+from typing import TYPE_CHECKING
 from sqlalchemy.orm import declared_attr, Mapped, relationship
 
-from .chat import Chat
+if TYPE_CHECKING:
+    from chat.models import Chat
 
 
 class ChatListRelationMixin:
@@ -10,7 +12,7 @@ class ChatListRelationMixin:
     _chats_secondary: str | None = None
 
     @declared_attr
-    def chats(cls) -> Mapped[list[Chat]]:
+    def chats(cls) -> Mapped[list['Chat']]:
         return relationship(
             'Chat',
             back_populates=cls._chats_back_populate,

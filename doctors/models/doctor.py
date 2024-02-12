@@ -5,22 +5,21 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from core.models.base import Base
 from account.models.accounts_mixin import AccountRelationMixin
-from account.models.user_mixin import UserRelationMixin
 from chat.models.chatlistmxn import ChatListRelationMixin
 from .certificatemxn import CertificateListRelationMixin
 from .mixin import SpecialityRelationMixin
-
+from .feedbackmixin import FeedbacksRelationMixin
 from admin.models.mixin import CreaterRelationMixin
 from .feedback import Feedback
 
 
 class Doctor(
     CreaterRelationMixin,
-    UserRelationMixin, 
     AccountRelationMixin,
     SpecialityRelationMixin,
     CertificateListRelationMixin,
     ChatListRelationMixin,
+    FeedbacksRelationMixin,
     Base,
 ):
 
@@ -38,21 +37,18 @@ class Doctor(
 
     _creater_back_populates = "doctor"
     _creater_foreignkey_name = "doctor_creater_id"
-    _creater_lazy = "joined"
-    _creater_uselist = False
 
     _certificates_back_populate = 'doctor'
     _certificates_lazy = 'selectin'
     _certificates_uselist = True
 
-    _users_back_populates = 'doctor'
-    _users_lazy = 'subquery'
-    _users_uselist = True
-    _users_secondary = 'chat'
-
     _chats_back_populate = 'doctor'
     _chats_lazy = 'subquery'
     _chats_uselist = True
+
+    _feedback_back_populate = 'doctor'
+    _feedback_uselist = True
+    _feedback_lazy = 'joined'
 
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
 

@@ -7,35 +7,32 @@ from alembic import context
 
 from core.models import Base
 
-from chat.models import (
-    ChatUser,
-    Chat,
-    Message,
-    MessageStatus,
-)
-from admin.models import (
-    Group,
-    QR,
-    Permission,
-    AccessGroup,
-    Access,
-)
-from doctors.models import (
-    Doctor,
-    Speciality,
-    Certificate,
-    Rating,
-    Agency,
-    Feedback,
-)
+# from admin.models import (
+#     QR,
+#     Access,
+#     AccessAccount,
+# )
+# from chat.models import (
+#     ChatUser,
+#     Chat,
+#     Message,
+#     MessageStatus,
+# )
+# from doctors.models import (
+#     Doctor,
+#     Speciality,
+#     Certificate,
+#     Rating,
+#     Agency,
+#     Feedback,
+# )
 from account.models import (
     User,
-    Account,
-    Gender,
-    Disease,
-    Diagnosis,
-    Anamnesis,
+    # Gender,
+    # Disease,
+    # Diagnosis,
 )
+# from account.models import Account
 
 from core.config import settings
 
