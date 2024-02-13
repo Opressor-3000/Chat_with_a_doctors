@@ -10,7 +10,10 @@ from .mixin import ChatUserRelationMixin
 from doctors.models.cucr_mixin import ChatUserCreaterRelationMixin
 
 
-class Message(ChatUserCreaterRelationMixin, Base):
+class Message(
+    ChatUserCreaterRelationMixin, 
+    Base
+):
     _creater_back_populates = 'message'
     _creater_foreignkey_name = 'message_creater_id' 
 
@@ -24,7 +27,10 @@ class Message(ChatUserCreaterRelationMixin, Base):
     deleted_at:Mapped[datetime] = mapped_column(DateTime)
 
 
-class MessageStatus(ChatUserRelationMixin, Base):
+class MessageStatus(
+    ChatUserRelationMixin, 
+    Base
+):
     _chatuser_back_populate = 'messagestatus'
     _chatuser_foreignkey_name = 'MessageStetus_chatuser_id'
     _chatuser_lazy = 'joined'

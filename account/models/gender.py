@@ -7,7 +7,10 @@ from admin.models.mixin import CreaterRelationMixin
 from .user import User
 
 
-class Gender(CreaterRelationMixin, Base):
+class Gender(
+   CreaterRelationMixin, 
+   Base
+):
    _creater_id_nullable = True 
    _creater_foreignkey_name = 'gender_creater_fk'
    _creater_back_populates = 'gender'

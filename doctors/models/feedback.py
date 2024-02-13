@@ -9,7 +9,10 @@ from .doc_chatuser_mxn import DocChatUserRelationMixin
 from .cucr_mixin import DocChatUserCreaterMixin
 
 
-class Feedback(DocChatUserCreaterMixin, Base):
+class Feedback(
+    DocChatUserCreaterMixin, 
+    Base
+):
     _creater_back_populates = 'feedback'
     _creater_foreignkey_name = 'feedback_creater_fk'
 
@@ -28,7 +31,10 @@ class Feedback(DocChatUserCreaterMixin, Base):
     deleted_at:Mapped[datetime] = mapped_column(DateTime)
 
 
-class Rating(DocChatUserRelationMixin, Base):
+class Rating(
+    DocChatUserRelationMixin, 
+    Base
+):
     _user_back_populates = 'rating'
     _user_foreignkey_name = 'rating_user_fk'
     _user_lazy = 'joined'

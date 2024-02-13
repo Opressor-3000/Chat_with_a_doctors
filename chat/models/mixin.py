@@ -15,7 +15,7 @@ class ChatRelationMixin:
     _chat_uselist: bool
     _chat_lazy:str | None = None
     _chat_ondelete: str = 'RESTRICT'
-    _chat_onupdate: str = 'CASCASE'
+    _chat_onupdate: str = 'CASCADE'
     _chat_foreignkey_name: str | None
 
     @declared_attr

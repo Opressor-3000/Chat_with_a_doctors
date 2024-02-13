@@ -51,8 +51,8 @@ class Account(
         default=uuid.uuid4,
         unique=True,
     )
-    first_name: Mapped[str] = mapped_column(String(60), nullable=True)
-    last_name: Mapped[str] = mapped_column(String(100), nullable=True)
+    first_name: Mapped[str] = mapped_column(String(60), nullable=False)
+    last_name: Mapped[str] = mapped_column(String(100), nullable=False)
     last_enter: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow())
     btk_db_id: Mapped[int] = mapped_column(Integer, unique=True)
     phone: Mapped[int] = mapped_column(Integer, unique=True)

@@ -6,10 +6,13 @@ from sqlalchemy import UniqueConstraint, ForeignKey
 from core.models import Base
 from admin.models.mixin import CreaterRelationMixin
 from account.models.accounts_mixin import AccountListRelationMixin
-# from account.models.accounts_mixin import AccountListRelationMixin
+from account.models.accounts_mixin import AccountListRelationMixin
 
 
-class Access(AccountListRelationMixin, Base):
+class Access(
+    AccountListRelationMixin, 
+    Base
+):
     _accounts_back_populate = 'access'
     _accounts_secondary = 'accessaccount'
     _accounts_uselist = True
@@ -21,7 +24,10 @@ class Access(AccountListRelationMixin, Base):
         return f"{self.title}"
 
 
-class AccessAccount(CreaterRelationMixin, Base):
+class AccessAccount(
+    CreaterRelationMixin, 
+    Base
+):
     _creater_back_populates = "accessgroup"
     _creater_foreignkey_name = 'accessgroup_creater_fk'
 
@@ -52,6 +58,31 @@ class AccessAccount(CreaterRelationMixin, Base):
             name="access_account_uc",
         ),
     )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # class Group(

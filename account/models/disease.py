@@ -74,6 +74,29 @@ class Diagnosis(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # class Anamnesis(
 #     AccountRelationMixin,
 #     DoctorRelationMixin,
@@ -98,7 +121,7 @@ class Diagnosis(
 #         ForeignKey(
 #             "disease.id",
 #             name="disesase_anamnesis",
-#             ondelete="CASCASE",
+#             ondelete="CASCADE",
 #         ),
 #     )
 

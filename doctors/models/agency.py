@@ -6,7 +6,10 @@ from core.models.base import Base
 from admin.models.mixin import CreaterRelationMixin
 
 
-class Agency(CreaterRelationMixin, Base):
+class Agency(
+    CreaterRelationMixin, 
+    Base
+):
     _creater_back_populates = 'agency'
     _creater_foreignkey_name = 'creater_agency_id'
     

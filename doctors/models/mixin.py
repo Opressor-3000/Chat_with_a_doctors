@@ -19,7 +19,7 @@ class SpecialityRelationMixin:
     _spec_lazy: str | None = None
     _spec_uselist: bool
     _spec_ondelete: str = 'RESTRICT'
-    _spec_onupdate: str = 'CASCASE'
+    _spec_onupdate: str = 'CASCADE'
     _spec_foreignkey_name: str
     
     @declared_attr
