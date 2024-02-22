@@ -3,7 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel
 
 from chat.schemes import ChatId
-from account.schemes.user import UserID
+from account.schemes.user import User
 from admin.schemes import PermissionId
 from .doctor import DoctorId
 
@@ -11,7 +11,7 @@ from .doctor import DoctorId
 class BaseFeedback(BaseModel):
     chat_id: ChatId
     dcotor_id: DoctorId
-    user_id: UserID
+    user_id: User
     text: str
 
 

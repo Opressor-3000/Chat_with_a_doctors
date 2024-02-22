@@ -4,33 +4,19 @@ from fastapi import APIRouter
 router = APIRouter(prefix="/doctor", tags=['Doctor'])
 '''
     router for doctors 
+
+    #########     DOCTOR      #########
+
 '''
 
-@router.get('/{doctor_id}/')
-async def get_doctor(doctor_id):
-    '''
-        return doctor profile if it exist (check account)
-    '''
-    pass
+#    FEEDBACK
 
-
-@router.get('/{doctor_id}/feedbacks/')
-async def get_feedbacks():
+@router.get('/{uuid}/feedbacks/')
+async def get_feedback_list():
     '''
         return all doctor feedbacks 
-    '''
-    pass
-
-
-@router.get('/{doctor_id}/{feedback}/')
-async def get_feedback():
-    pass
-
-
-@router.get('/{chat_id}/')
-async def get_doctor_chat():
-    '''
-        return all doctor feedbacks 
+            1. feedback chat speciality title
+            2. feedback chat created_at
     '''
     pass
 
@@ -43,17 +29,19 @@ async def get_feedback(feedback_id):
     pass
 
 
-@router.get('/{doctor_id}/chat_list/')
-async def get_doctor_chat_list():
+#   CHAT
+
+
+@router.get('/{chat_id}/')
+async def get_chat():
     '''
-        return one current (active) chats doctors 
-            показывать в каких чатах user online
+        return chat
     '''
     pass
 
 
-@router.get('/{doctor_id}/current_chat_list/')
-async def get_doctor_current_chat_list():
+@router.get('/current_chat_list/')
+async def get_current_chat_list():
     '''
         return all current (active) chats doctors 
             показывать в каких чатах user online
@@ -61,22 +49,38 @@ async def get_doctor_current_chat_list():
     pass
 
 
-@router.get('/{doctor_id}/{active_chat_id}/')
-async def get_current_chat(chat_id):
+@router.get('/{doctor_id}/chat_list/')
+async def get_all_chat_list():
+    '''
+        return one current (active) chats doctors 
+            показывать в каких чатах user online
+    '''
     pass
+
+
+
+#   USER
+
+
+@router.get('/{user_id}/')
+async def get_user_from_chat():
+    '''
+        return user (username, chats, diagnosis, anamnesis, )
+    '''
+    pass
+
+
+#     MESSAGE
 
 
 
 @router.post('/{doctor_id}/{active_chat_id}/')
-async def send_message(chat_id):
-    pass
-
-
-
-@router.get('/{user_id}/')
-async def get_user_chats():
+async def doctor_post_message_to_chat(chat_id):
     '''
-        return user (username, chats, diagnosis, anamnesis, )
+        chat is active True
+        chat doctor = account.doctor
+        text > 0
+
     '''
     pass
 

@@ -22,6 +22,9 @@ class AuthJWTScheme(BaseModel):
    email: EmailStr | None = None
 
 
+class TokenInfo(BaseModel):
+   access_token:str
+   token_type: str
 
 
 class BasicCookieAuth(HTTPBasicCredentials):

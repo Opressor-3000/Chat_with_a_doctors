@@ -7,11 +7,13 @@ from sqlalchemy import ForeignKey, Integer, Boolean, DateTime, String
 
 from core.models.base import Base
 from .mixin import ChatUserRelationMixin
+from account.models.user_mixin import UserRelationMxn
 from doctors.models.cucr_mixin import ChatUserCreaterRelationMixin
 
 
 class Message(
     ChatUserCreaterRelationMixin, 
+    UserRelationMxn,
     Base
 ):
     _creater_back_populates = 'message'
@@ -21,6 +23,11 @@ class Message(
     _chatuser_lazy = 'joined'
     _chatuser_uselist = False
     _chatuser_foreignkey_name = 'message_chatuser_id'
+
+    _user_back_populates = 'message'
+    _user_lazy = 'joined'
+    _user_uselist = True
+    _user_secondary = 'chatuser'
     
     text:Mapped[str] = mapped_column(String(512),index=True)
     delete:Mapped[bool] = mapped_column(Boolean, default=False)

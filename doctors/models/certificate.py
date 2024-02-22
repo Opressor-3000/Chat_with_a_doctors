@@ -13,7 +13,6 @@ class Certificate(
     CreaterDocSpecMixin, 
     Base
 ):
-
     _creater_back_populates = 'certificate'
     _creater_foreignkey_name = 'cretificate_creater_id'
 

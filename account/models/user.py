@@ -14,7 +14,6 @@ from sqlalchemy import (
 from sqlalchemy.orm import Mapped, mapped_column
 
 from chat.models.chatlistmxn import ChatListRelationMixin
-from chat.models.mixin_ import MessageListRelationMixin
 from core.models import Base
 from admin.models.qr_mixin import QRRelationMixin
 from doctors.models.doc_list_mxn import DoctorListRelationMixin
@@ -41,10 +40,6 @@ class User(
     _account_back_populate = "user"
     _account_lazy = "joined"
     _account_uselist = False
-
-    _messages_back_populate = "user"
-    _messages_lazy = "joined"
-    _messages_uselist = True
 
     _doctors_back_populate = "user"
     _doctors_lazy = "selectin"

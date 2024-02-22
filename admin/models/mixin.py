@@ -16,7 +16,7 @@ class CreaterRelationMixin:
     _creater_foreignkey_name: str
 
     @declared_attr
-    def creater_id(cls) -> Mapped[int]:
+    def creater_id(cls) -> Mapped[int | None]:
         return mapped_column(
             Integer,
             ForeignKey(

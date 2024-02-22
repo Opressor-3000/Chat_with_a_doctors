@@ -9,19 +9,17 @@ router = APIRouter(prefix="/chat", tags=["Chats"])
 
 
 @router.get("/chats/")
-async def get_chat_list():
+async def get_user_chat_list():
     """ 
         return chat_list (date, {speciality}, {doctor})
     """
-    
-
     return
 
 
 @router.post("/")
-async def set_chat_lent():
+async def set_all_chat_message_list():
     """
-        return история messsages
+        return история messages
     """
     return
 

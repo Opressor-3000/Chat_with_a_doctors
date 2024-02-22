@@ -16,7 +16,7 @@ class ChatRelationMixin:
     _chat_lazy:str | None = None
     _chat_ondelete: str = 'RESTRICT'
     _chat_onupdate: str = 'CASCADE'
-    _chat_foreignkey_name: str | None
+    _chat_foreignkey_name: str
 
     @declared_attr
     def chat_id(cls):

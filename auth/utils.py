@@ -1,15 +1,47 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
-from jwt import JWT
+# from jwt import JWT
 import bcrypt
-
-jwt = JWT()
+import jwt
+# jwt = JWT()
 
 
 COOKIE_SESSION_ID = 'web_app_hekim_chat_uid'
 
 
 from core.config import settings
+
+
+def encode_jwt(
+        payload: dict,
+        private_key: str = settings.auth_jwt.private_key_dir.read_text(),
+        algorithm: str = settings.auth_jwt.algorithm,
+):
+        return jwt.encode(payload, private_key, algorithm=algorithm,)
+
+
+def decode_jwt(
+        token: str | bytes,
+        public_key: str = settings.auth_jwt.public_key.read_text(),
+        algorithm: list[str] = [settings.auth_jwt.algorithm],
+):
+    return jwt.decode(token, public_key, algorithm,)
+
+
+def hash_password(
+        password: str,
+) -> bytes:
+    salt = bcrypt.gensalt()
+    pwd_bcrypt: bytes = password.encode()
+    return bcrypt.hashpw(pwd_bcrypt, salt)
+
+
+def validate_password(
+        password: str,
+        hashed_password: bytes,
+) -> bool:
+    return bcrypt.checkpw(password.encode(), hashed_password)
+
 
 
 # def encode_jwt(
@@ -43,16 +75,9 @@ from core.config import settings
 #     )
 #     return decoded
 
-def hash_password(
-        password: str,
-) -> bytes:
-    salt = bcrypt.gensalt()
-    pwd_bcrypt: bytes = password.encode()
-    return bcrypt.hashpw(pwd_bcrypt, salt)
-
-
-def validate_password(
-        password: str,
-        hashed_password: bytes,
-) -> bool:
-    return bcrypt.checkpw(password.encode(), hashed_password)
+# def hash_password(
+#         password: str,
+# ) -> bytes:
+#     salt = bcrypt.gensalt()
+#     pwd_bcrypt: bytes = password.encode()
+#     return bcrypt.hashpw(pwd_bcrypt, salt)

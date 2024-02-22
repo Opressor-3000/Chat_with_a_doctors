@@ -13,7 +13,8 @@ __all__ =(
     'GenderID',
     'GenderUpdate',
     'UserCreate',
-    'UserID',
+    'User',
+    'UserAccount'
     'AccountUsers',
     'DiseaseID',
     'CreateDisease',
@@ -42,8 +43,9 @@ from .gender import (
 )
 from .user import (
     UserCreate,
-    UserID,
+    User,
     AccountUsers,
+    UserAccount,
 )
 from .disease import (
     DiseaseID,

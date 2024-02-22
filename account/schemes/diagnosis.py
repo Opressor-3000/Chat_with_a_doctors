@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 from doctors.schemes import DoctorId
-from .user import UserID
+from .user import User
 
 class DiagnosisBase(BaseModel):
    doctor_id: DoctorId
-   user_id: UserID
+   user_id: User
    text: str
 
    class Config:
@@ -17,7 +17,7 @@ class DiagnosisID(DiagnosisBase):
 
 class DiagnosisUpdate(DiagnosisID):
    doctor_id: DoctorId | None = None
-   user_id: UserID | None = None
+   user_id: User | None = None
    text: str | None = None
 
 

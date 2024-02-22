@@ -59,4 +59,19 @@ class UserListRelationMixin:
       )
 
 
+class UserRelationMxn:
+   _user_back_populates: str 
+   _user_lazy: str 
+   _user_uselist: bool 
+   _user_secondary:str | None = None
 
+
+   @declared_attr
+   def user(cls) -> Mapped["User"]:
+      return relationship(
+         "User", 
+         back_populates=cls._user_back_populates, 
+         lazy=cls._user_lazy, 
+         uselist=cls._user_uselist,
+         secondary=cls._user_secondary
+      )

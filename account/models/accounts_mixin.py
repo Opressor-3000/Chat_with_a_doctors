@@ -35,7 +35,7 @@ class AccountRelationMixin:
     _account_secondary: str | None = None
 
     @declared_attr
-    def account_id(cls) -> Mapped[int]:
+    def account_id(cls) -> Mapped[int | None]:
         return mapped_column(
             Integer,
             ForeignKey(

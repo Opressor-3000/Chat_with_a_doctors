@@ -4,11 +4,11 @@ from pydantic import BaseModel
 
 from chat.schemes import ChatId
 from doctors.schemes.doctor import DoctorId
-from account.schemes.user import UserID
+from account.schemes.user import User
 
 
 class BaseRating(BaseModel):
-    user_id: UserID
+    user_id: User
     chat_id: ChatId
     doctor_id: DoctorId
     point: int

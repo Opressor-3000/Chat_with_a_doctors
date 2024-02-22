@@ -23,7 +23,7 @@ class SpecialityRelationMixin:
     _spec_foreignkey_name: str
     
     @declared_attr
-    def speciality_id(cls) -> Mapped[int]:
+    def speciality_id(cls) -> Mapped[int | None]:
         return mapped_column(
             Integer, 
             ForeignKey(
@@ -77,7 +77,7 @@ class DoctorRelationMixin:
     _doc_secondary:str | None = None
 
     @declared_attr
-    def doctor_id(cls) -> Mapped[int]:
+    def doctor_id(cls) -> Mapped[int | None]:
         return mapped_column(
             Integer, 
             ForeignKey(

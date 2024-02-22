@@ -6,19 +6,24 @@ router = APIRouter(prefix='/admin', tags=['Admin'])
 
 #  --------   ALL STATICTICS   -----------
 
-
-@router.get('/users_online/')
-async def get_online_user():
+@router.get('/online_statistic/')
+async def get_online_statistic():
     '''
-        online statistic data filters and sort
+        count user online type INT
+`       count docotor online Type INT
+        count current_chat
+        count all account
+        count all user 
+        count all doctor
     '''
     pass
 
 
-@router.get('/messages/')
-async def get_messages():
+@router.get('/users_online/')
+async def get_online_user_list():
     '''
-        all message statictics filters sort 
+        online statistic data filters and sort
+            1. list user.username  online  
     '''
     pass
 
@@ -27,6 +32,7 @@ async def get_messages():
 async def get_online_doctors():
     '''
         online statistic data with filter and sort 
+            1. list doctor.account_id.last name, first_name  online 
     '''
     pass
 
@@ -47,24 +53,27 @@ async def current_chats():
 
 
 @router.get('/users/')
-async def get_users():
+async def get_all_users_list():
     '''
-        get all user banned user, banned account, 
+        get all user list
+            1. user.username  
     '''
     pass
 
-@router.get('/{user_id}/')
-async def get_panel():
-    '''
-        online? last_entres? userdata, chats, doctors, feedbacks, ratings
-    '''
-    pass
+# @router.get('/{user_id}/')
+# async def get_panel():
+#     '''
+#         online? last_entres? userdata, chats, doctors, feedbacks, ratings
+#     '''
+#     pass
 
 
 @router.patch('/{user_id}/')
 async def user_active():
     '''
         is_active true/false
+            1. return user
+            2. form update user.is_active checkbox
     '''
     pass
 
