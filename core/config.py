@@ -5,7 +5,9 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
+
 
 DB_HOST = os.environ.get("DB_HOST")
 DB_PASS = os.environ.get("DB_PASS")
@@ -32,7 +34,7 @@ class AuthJWT(BaseModel):
     public_key_dir: Path = BASE_DIR / "certs" / "jwt_public.pem"
     private_key_dir: Path = BASE_DIR / "certs" / "jwt_private/pem"
     algorithm: str = "RS256"
-    access_token_expire_minuts: datetime = 15
+    access_token_expire_minutes: datetime = 15
 
 
 class Settings(BaseSettings):

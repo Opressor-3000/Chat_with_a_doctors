@@ -15,11 +15,7 @@ class GenderID(GenderBase):
    id: int
 
 
-class GenderCreate(GenderID):
-   creater_id: PermissionId
-
-
-class GenderUpdate(GenderCreate):
+class GenderUpdate(GenderID):
       title:str
       creater_id: PermissionId
 

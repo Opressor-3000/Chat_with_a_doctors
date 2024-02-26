@@ -1,7 +1,8 @@
 __all__ =(
-    'AccountId',
+    'AccountPhone',
+    'AccountID',
+    'AccountLogin',
     'CreateAccount',
-    'AccountUpdate',
     'ChangePassword',
     'AnamnesisID',
     'AnamnesisDelete',
@@ -14,17 +15,14 @@ __all__ =(
     'GenderUpdate',
     'UserCreate',
     'User',
-    'UserAccount'
-    'AccountUsers',
     'DiseaseID',
     'CreateDisease',
 )
 
 from .account import (
-    AccountId, 
     CreateAccount, 
-    AccountUpdate, 
-    ChangePassword,
+    AccountID,
+    AccountLogin
 )
 from .anamnesis import (
     AnamnesisID,
@@ -37,15 +35,11 @@ from .diagnosis import (
     DiagnosisUpdate,
 )
 from .gender import (
-    GenderCreate,
     GenderID,
     GenderUpdate,
 )
 from .user import (
-    UserCreate,
     User,
-    AccountUsers,
-    UserAccount,
 )
 from .disease import (
     DiseaseID,

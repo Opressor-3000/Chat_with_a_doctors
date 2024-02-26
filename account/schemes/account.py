@@ -1,18 +1,15 @@
 from datetime import datetime
 
-from typing import Optional, List
+from typing import Optional, List, Annotated
+from annotated_types import MaxLen, MinLen
 from pydantic import BaseModel, EmailStr
 from .user import User
 
-from doctors.schemes.doctor import DoctorId
+from doctors.schemes import DoctorId
 from .disease import DiseaseID
 from admin.schemes import Accessid
-from chat.schemes.chat import ChatId
+from chat.schemes import ChatId
 from .user import User
-
-
-class AccountIDforUpdate(BaseModel):
-    id: int
 
 
 class AccountBase(BaseModel):  #  1
@@ -23,78 +20,33 @@ class AccountBase(BaseModel):  #  1
         orm_mode = True
 
 
-"""
-   ##############    ACCOUNT  MENU    ###############
-"""
-
-
-class AccountId(AccountBase):  #  1     id, first_name, last_name,
-    id: int
-    last_enter: datetime
-    btk_db_id: int | None
-    phone: int 
-    email: EmailStr | None
-    password: bytes
-    is_active: bool
-    is_staff:  bool
-
-
-class AccountUserChatList(AccountId):  #
-    messages: Optional[List[ChatId]]
-
-
 class CreateAccount(AccountBase):
     phone: int
-    email: Optional[str] = None
+    email: EmailStr
     password: bytes
 
 
-class AccountUpdate(AccountBase):
-    first_name: str | None = None
-    last_name: str | None = None
-    email: EmailStr | None = None
-
-
-class ChangePassword(BaseModel):
-    phone: int | None = None
+class AccountID(AccountBase):
+    btk_db_id: int | None = None
+    phone: int
+    email: EmailStr
     password: bytes
+    is_active: bool
+    is_staff: bool
+    
+
+class AccountLogin(BaseModel):
+    phone: Annotated[int, MaxLen(10), MinLen(10)]
+    password: str
 
 
-class AccountUsers(AccountBase):
-    users: List[User]
+class AccountAddBTKID(AccountID):
+    btk_db_id: int
 
 
-class AccountDoctor(AccountBase):
-    doctor_id: Optional[DoctorId]
-
-
-class AccountDisease(AccountBase):
-    diseases: Optional[List[DiseaseID]]
-
-
-class AccountAccesses(AccountBase):
-    accesses: Optional[List[Accessid]]
-
-
-class AccountBTKID(AccountBase):
-    btk_db: Optional[int]
-
-
-class AccountActiveStatus(AccountBase):
+class SetAccountActive(AccountID):
     is_active: bool
 
 
-class AccountStaffStaus(AccountBase):
+class SetAccountIsStaff(AccountID):
     is_staff: bool
-
-
-class AccountFullData(AccountId):
-    doctor_id: Optional[DoctorId]
-    accesses: Optional[List[Accessid]]
-    btk_db: Optional[int]
-    is_active: bool
-    is_staff: bool
-
-
-class AccountDoctorChat(AccountDoctor):
-    chats: Optional[List[ChatId]]

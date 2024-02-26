@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List, Optional
 
 from pydantic import BaseModel
-from .account import AccountId
+from .account import AccountID
 from .gender import GenderID
 from chat.schemes.chat import ChatId
 from doctors.schemes.doctor import AccountDoctorData
@@ -16,7 +16,7 @@ class UserUpdateID(BaseModel):
 
 
 class UserIDAccount(UserUpdateID): # id
-    account: Optional[AccountId]
+    account: Optional[AccountID]
 
 
 class UserBase(BaseModel):   # 1, 2 
@@ -36,7 +36,7 @@ class User(UserBase):  #  1     username, avatar
 
 
 class UserBaseAccount(UserBase):
-    account: Optional[AccountId]
+    account: Optional[AccountID]
 
 
 '''
@@ -50,7 +50,7 @@ class UserInfo(User): #  2   username, avatar, id
 
 
 class UserAccountInfo(UserInfo):
-    account: AccountId
+    account: AccountID
 
 
 class CreateUserModel(UserBase):  # username, avatar
@@ -62,7 +62,7 @@ class UserAccountData(User):
 
 
 class AccountUsersAdd(User): # username, avatar, id
-    account_id: Optional[AccountId] = None
+    account_id: Optional[AccountID] = None
 
 
 class CreateAccountGender(UserUpdateID): # id 

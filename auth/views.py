@@ -4,11 +4,16 @@ from typing import Annotated, List
 from fastapi import APIRouter, Depends, Response, status, HTTPException
 from fastapi.responses import RedirectResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
+from sqlalchemy import TIMESTAMP
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
-from account.schemes.user import UserCreate
+from .schemes import TokenInfo
+from core.models.db_connector import db_connect
+from account.schemes import AccountID, CreateAccount, AccountLogin
 from account.crud import create_user
+from .utils import encode_jwt, validation_auth_jwt
+from .crud import get_account
 
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
@@ -40,27 +45,37 @@ async def create_user(
     pass
 
 
-async def validation_auth_jwt(phone: int, password: bytes):
+@router.post("/jwt_singin/")
+async def account_singin(
+    session: AsyncSession = Depends(db_connect.scope_session_dependency),
+    account: CreateAccount = Depends(validation_auth_jwt),
+    ):
+    unregister_exc = HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail="Register Except Message"
+    )
+    
+    
+
+
+@router.post("/jwt_login/")
+async def auth_account_jwt(
+    session: AsyncSession = Depends(db_connect.scope_session_dependency),
+    login_data:AccountLogin = Depends(validation_auth_jwt()),
+):
     unauthed_exc = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="incorrectly entered phone number and/or password",
     )
-    return unauthed_exc
+    validate_data = validation_auth_jwt(session=session, login_data=login_data)
+    if not validate_data:
+        raise unauthed_exc
+    jwt_payload = {
+        "account": login_data.first_name,
+    }
+    token = encode_jwt(jwt_payload)
+    return TokenInfo(
+        access_token=token,
+        token_type="Bearer",
+    )
 
-
-async def validation_phone(account: dict):
-    phone: str = account.phone
-    if phone.isdigit:
-        return True
-    else:
-        return "phone number does not consist only of numbers"
-
-
-@router.post("/jwt_logig/")
-async def auth_account_jwt():
-    pass
-
-
-@router.post("/jwt_singin/")
-async def account_singin():
-    pass

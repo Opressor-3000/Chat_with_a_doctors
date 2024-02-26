@@ -1,16 +1,13 @@
 from uuid import uuid4
 
 from sqlalchemy.ext.asyncio import AsyncSession
-from .schemes.user import UserCreate
-from account.schemes import  AccountId
 from account.models import User, Account
 from doctors.models import Feedback
-from .schemes.user import UserID
-
+from account.schemes import AccountID, User
 
 async def create_user(
         session: AsyncSession, 
-        user: UserCreate
+        user: int
         ) -> User:
     user = User(**user.model_dump())
     session.add(user)
@@ -28,14 +25,14 @@ async def get_account_uuid(
 
 async def get_account_users(
         session: AsyncSession,
-        account_id: AccountId,
+        account_id: AccountID,
 ) -> list[User]:
     return
 
 
 async def create_issue(
         session: AsyncSession,
-        user: UserID
+        user: int
 ):
     return 
 
@@ -49,13 +46,13 @@ async def get_user(
 
 async def get_account_feedback(
         session: AsyncSession,
-        user_id: UserID,
+        user_id: int,
 ) -> Feedback:
     return 
 
 
 async def get_account_feedbacks(
         session: AsyncSession,
-        account_id: AccountId,
+        account_id: AccountID,
 ) -> list[Feedback]:
     return

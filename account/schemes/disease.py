@@ -10,9 +10,9 @@ class DiseaseBase(BaseModel):
       orm_mode = True
 
 
-class DiseaseID(DiseaseBase):
-   id: int
-
-
 class CreateDisease(DiseaseBase):
    creater_id: PermissionId
+
+
+class DiseaseID(CreateDisease):
+   id: int

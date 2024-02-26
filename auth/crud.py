@@ -1,15 +1,27 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from fastapi import Depends, Cookie
+from fastapi import Depends, Cookie, HTTPException, status
 
 
-from .schemes import AuthJWTScheme
 from core.models.db_connector import db_connect
-from account.schemes import User as UserSchemas
+from account.schemes import (
+    User as UserSchemas,
+    CreateAccount, 
+    AccountID,
+)
 from auth.utils import COOKIE_SESSION_ID
-from account.models import Account
-from account.models import User as UserModel
-from account.schemes import CreateAccount, AccountId
+from account.models import Account, User as UserModel
+
+
+async def get_account(
+        session: AsyncSession,
+        account: AccountID,
+) -> Account:
+    stmt = select(Account).where(Account.phone == account.phone)
+    return await session.execute(stmt)
+
+
+#    >>>>>>>>>>>>>>>>     CREATE    ACCOUNT    <<<<<<<<<<<<<<<<
 
 
 async def create_account(
@@ -17,12 +29,15 @@ async def create_account(
     create_account: CreateAccount,
 ) -> Account:
     account = Account(**create_account.model_dump())
-    if await account_validate(session, account):
+    if await get_account(session, create_account):
         session.add(account)
         await session.commit()
         return account
     else:
-        return "an account with this number has already been registered"
+        return HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="ian account with this number has already been registered",
+    )
 
 
 async def create_user(
@@ -35,12 +50,5 @@ async def create_user(
     return user
 
 
-async def account_validate(
-    session: AsyncSession,
-    account: CreateAccount,
-) -> bool:
-    stmt = select(Account).where(Account.phone == account.phone)
-    if await session.scalar(stmt):
-        return True
-    else:
-        return False
+
+

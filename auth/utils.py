@@ -1,83 +1,96 @@
 from datetime import datetime, timedelta
 
-# from jwt import JWT
+
+from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import Depends, HTTPException, status
+from jwt import JWT
 import bcrypt
 import jwt
-# jwt = JWT()
+from account.schemes import AccountID, CreateAccount, AccountLogin
 
+jwt = JWT()
+from .crud import get_account
 
-COOKIE_SESSION_ID = 'web_app_hekim_chat_uid'
+COOKIE_SESSION_ID = "web_app_hekim_chat_uid"
 
 
 from core.config import settings
 
 
 def encode_jwt(
-        payload: dict,
-        private_key: str = settings.auth_jwt.private_key_dir.read_text(),
-        algorithm: str = settings.auth_jwt.algorithm,
+    payload: dict,
+    private_key: str = settings.auth_jwt.private_key_dir.read_text(),
+    algorithm: str = settings.auth_jwt.algorithm,
+    expire_minutes: int = settings.auth_jwt.access_token_expire_minutes,
+    expire_timedelta: timedelta | None = None,
 ):
-        return jwt.encode(payload, private_key, algorithm=algorithm,)
+    to_encode = payload.copy()
+    now = datetime.utcnow()
+    if expire_timedelta:
+        expire = now + expire_minutes
+    else:
+        expire = now + timedelta(minutes=timedelta)
+    to_encode.update(exp=expire, iat=now)
+    return jwt.encode(
+        payload,
+        private_key,
+        algorithm=algorithm,
+    )
 
 
 def decode_jwt(
-        token: str | bytes,
-        public_key: str = settings.auth_jwt.public_key.read_text(),
-        algorithm: list[str] = [settings.auth_jwt.algorithm],
+    token: str | bytes,
+    public_key: str = settings.auth_jwt.public_key.read_text(),
+    algorithms: list[str] = [settings.auth_jwt.algorithm],
 ):
-    return jwt.decode(token, public_key, algorithm,)
+    return jwt.decode(
+        token,
+        public_key,
+        algorithms,
+    )
 
 
+# CREATE HASH PASSWORD
 def hash_password(
-        password: str,
+    password: str,
 ) -> bytes:
     salt = bcrypt.gensalt()
     pwd_bcrypt: bytes = password.encode()
     return bcrypt.hashpw(pwd_bcrypt, salt)
 
 
-def validate_password(
-        password: str,
-        hashed_password: bytes,
-) -> bool:
-    return bcrypt.checkpw(password.encode(), hashed_password)
+def validate_password(login_data: AccountLogin, hashed_password: bytes) -> bool:
+    return bcrypt.checkpw(login_data.password.encode(), hashed_password)
 
 
-
-# def encode_jwt(
-#         payload: dict,
-#         private_key: str = settings.auth_jwt.private_key_dir.read_text(),
-#         algorithm: str = settings.auth_jwt.algorithm,
-# ):
-#     to_encode = payload.copy()
-#     now = datetime.utcnow()
-#     if except_deltatime:
-#         expire = now + settings.auth_jwt.access_token_expire_minuts
-#     else:
-#         encoded = jwt.encode(
-#             expire = now + timedelta(minutes))
-#     encoded = jwt.encode(
-#         payload,
-#         key,
-#         algorithm=algorithm,
-#     )
+# CHECK PHONE NUMBER CONSIST ONLY DIGITS
+async def validation_phone(account: AccountID):
+    phone: str = account.phone
+    if phone.isdigit:
+        return True
+    else:
+        return "phone number does not consist only of numbers"
 
 
-# def decode_jwt(
-#         token str | bytes,
-#         public_key: str = settings.auth_jwt.public_key.read_text(),
-#         algorithm: list[str] = [settings.auth_jwt.algorithm],
-# ):
-#     decoded = jwt.decode(
-#         token,
-#         public_key,
-#         algorithm,
-#     )
-#     return decoded
+#  VALIDATE >>>  LOGIN  <<<
+async def validation_auth_jwt(
+    session: AsyncSession,
+    login_data: AccountLogin,
+):
 
-# def hash_password(
-#         password: str,
-# ) -> bytes:
-#     salt = bcrypt.gensalt()
-#     pwd_bcrypt: bytes = password.encode()
-#     return bcrypt.hashpw(pwd_bcrypt, salt)
+    
+    account = get_account(session, login_data)
+    if not account:
+        return False
+    if validate_password(login_data.password, account.password):
+        return login_data
+    else:
+        return False
+
+
+async def account_created_phone_validate(
+        session: AsyncSession,
+        singin_data: CreateAccount,
+):
+    phone_exist = get_account(session, singin_data)
+    if not phone_exist:
