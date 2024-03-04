@@ -6,7 +6,7 @@ from sqlalchemy import ForeignKey, Integer, Boolean, DateTime, String
 
 
 from core.models.base import Base
-from .mixin import ChatUserRelationMixin
+from .mixin import ChatUserRelationMixin, ChatRelationMxn
 from account.models.user_mixin import UserRelationMxn
 from doctors.models.cucr_mixin import ChatUserCreaterRelationMixin
 
@@ -14,6 +14,7 @@ from doctors.models.cucr_mixin import ChatUserCreaterRelationMixin
 class Message(
     ChatUserCreaterRelationMixin, 
     UserRelationMxn,
+    ChatRelationMxn,
     Base
 ):
     _creater_back_populates = 'message'
@@ -28,10 +29,18 @@ class Message(
     _user_lazy = 'joined'
     _user_uselist = True
     _user_secondary = 'chatuser'
+
+    _chat_back_populate = 'message'
+    _chat_lazy = 'joined'
+    _chat_uselist = False
+    _chat_secondary = 'chatuser'
     
     text:Mapped[str] = mapped_column(String(512),index=True)
     delete:Mapped[bool] = mapped_column(Boolean, default=False)
     deleted_at:Mapped[datetime] = mapped_column(DateTime)
+
+    def __repr__(self) -> str:
+        return f'{self.chatuser} {self.text} {self.created_at}'
 
 
 class MessageStatus(

@@ -4,12 +4,11 @@ from typing import Optional, List
 from pydantic import BaseModel
 from doctors.schemes.doctor import DoctorId
 from doctors.schemes.speciality import SpecialityId
-from account.schemes.account import AccountId
+from account.schemes.account import AccountID
 from account.schemes.user import UserInfo
 from .message import MessageList, MessageInfo, MessageUserChat
 from .message import CurrentMessageStatus
-from .chatuser import ChatUserId
-
+from .chatuser import ChatUserID
 
 
 class ChatId(BaseModel):  # chat_id
@@ -18,7 +17,7 @@ class ChatId(BaseModel):  # chat_id
 
 class BaseChat(BaseModel):  # doctor_id, list[speciality_id]
     doctor_id: Optional[DoctorId]
-    
+
 
 class ChatSpeciality(BaseChat):
     speciality_id: Optional[SpecialityId]
@@ -29,7 +28,7 @@ class ChatInfo(BaseChat):  # id, doctor_id, list[speciality_id]
 
 
 class DoctorChatList(ChatId):
-    chatusers: List[ChatUserId]
+    chatusers: List[ChatUserID]
 
 
 class CreateChat(BaseChat):  # doctor_id, list[speciality_id]
@@ -37,7 +36,7 @@ class CreateChat(BaseChat):  # doctor_id, list[speciality_id]
 
 
 class ChatUsers(ChatId):
-    user: List[ChatUserId]
+    user: List[ChatUserID]
 
 
 class CurrenChatId(ChatId):
@@ -51,7 +50,7 @@ class UserChats(ChatId):
 
 
 class UserChat(ChatId):
-    chatuser: list[ChatUserId]
+    chatuser: list[ChatUserID]
 
 
 class ChatIdForDoctor(ChatId):
@@ -68,20 +67,19 @@ class ChatUserMessageList(CurrentMessageStatus):
 #    Содержание одного чата
 
 
-class UserChatMessageDoctor(BaseModel):    #  1 
-    doctor: Optional[DoctorId]
-    message: MessageList
+class UserChatMessageDoctor(ChatId):  #  1
+    message: ChatUserID
 
 
 #    Список чатов с содержанием (сообщения в хронологическом порядке, имя доктора)
 
 
-class AllMessagesFromAllUserChats(BaseModel):   #  1
+class AllMessagesFromAllUserChats(BaseModel):  #  1
     chats: Optional[List[UserChatMessageDoctor]]
 
 
 #  -------------------------------------------------------------------------------------------------
-    
+
 
 class ChatUsernameMessage(ChatId):
     user: UserInfo

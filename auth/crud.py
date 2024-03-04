@@ -6,7 +6,7 @@ from fastapi import Depends, Cookie, HTTPException, status
 from core.models.db_connector import db_connect
 from account.schemes import (
     User as UserSchemas,
-    CreateAccount, 
+    CreateAccount,
     AccountID,
 )
 from auth.utils import COOKIE_SESSION_ID
@@ -14,8 +14,8 @@ from account.models import Account, User as UserModel
 
 
 async def get_account(
-        session: AsyncSession,
-        account: AccountID,
+    session: AsyncSession,
+    account: AccountID,
 ) -> Account:
     stmt = select(Account).where(Account.phone == account.phone)
     return await session.execute(stmt)
@@ -35,9 +35,9 @@ async def create_account(
         return account
     else:
         return HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="ian account with this number has already been registered",
-    )
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="ian account with this number has already been registered",
+        )
 
 
 async def create_user(
@@ -48,7 +48,3 @@ async def create_user(
     session.add(user)
     await session.commit()
     return user
-
-
-
-

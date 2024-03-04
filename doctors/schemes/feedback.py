@@ -2,16 +2,11 @@ from datetime import datetime
 
 from pydantic import BaseModel
 
-from chat.schemes import ChatId
-from account.schemes.user import User
-from admin.schemes import PermissionId
+from account.schemes import AccountID
 from .doctor import DoctorId
 
 
 class BaseFeedback(BaseModel):
-    chat_id: ChatId
-    dcotor_id: DoctorId
-    user_id: User
     text: str
 
 
@@ -19,7 +14,12 @@ class FeedbackID(BaseFeedback):
     id: int
 
 
-class BanFeedback(FeedbackID):
-    creater_id: PermissionId
+class CreateBanFeedback(FeedbackID):
+    creater_id: AccountID
     delete: bool
     deleted_at: datetime
+
+
+class FeedbackInfo(CreateBanFeedback):
+    id: int
+    doctor: DoctorId

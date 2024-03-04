@@ -10,7 +10,7 @@ from core.models import Base
 from admin.models import (
     QR,
     Access,
-    # AccessAccount,
+    AccessAccount,
 )
 from chat.models import (
     ChatUser,

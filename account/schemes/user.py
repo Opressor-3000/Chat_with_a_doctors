@@ -10,41 +10,35 @@ from chat.schemes.chat import UserChats
 from chat.schemes.chat import ChatUserMessageList
 
 
-#  only 
-class UserUpdateID(BaseModel):
-    id: int
-
-
-class UserIDAccount(UserUpdateID): # id
-    account: Optional[AccountID]
-
-
-class UserBase(BaseModel):   # 1, 2 
+class UserBase(BaseModel):  # 1, 2
     username: str
-
 
     class Config:
         orm_mode = True
+
+
+class UserIDAccount(UserBase):  # id
+    account: Optional[AccountID]
 
 
 class UserAvatar(UserBase):
     avatar: Optional[str] = None
 
 
-class User(UserBase):  #  1     username, avatar
+class UserID(UserBase):  #  1     username, avatar
     id: int
 
 
-class UserBaseAccount(UserBase):
+class UserBaseAccount(UserID):  # 2
     account: Optional[AccountID]
 
 
-'''
+"""
    ###########      USER MENU         ############
-'''
+"""
 
 
-class UserInfo(User): #  2   username, avatar, id
+class UserInfo(UserID):  #  2   username, avatar, id
     birthday: Optional[datetime] = None
     gender_id: Optional[GenderID] = None
 
@@ -57,33 +51,33 @@ class CreateUserModel(UserBase):  # username, avatar
     qr_id: Optional[int] = None
 
 
-class UserAccountData(User):
-    account:AccountDoctorData
+class UserAccountData(UserID):
+    account: AccountDoctorData
 
 
-class AccountUsersAdd(User): # username, avatar, id
+class AccountUsersAdd(UserID):  # username, avatar, id
     account_id: Optional[AccountID] = None
 
 
-class CreateAccountGender(UserUpdateID): # id 
-    gender:Optional[GenderID]
+class CreateAccountGender(UserID):  # id
+    gender: Optional[GenderID]
 
 
-class UserChat(UserUpdateID): 
-    chats:Optional[List[ChatId]]
+class UserChat(UserID):
+    chats: Optional[List[ChatId]]
 
 
-class UserDoctors(UserUpdateID):
-    doctors:Optional[List[AccountDoctorData]]
+class UserDoctors(UserID):
+    doctors: Optional[List[AccountDoctorData]]
 
 
-class UserChatListList(UserUpdateID):
-    chats:Optional[List[UserChats]]
+class UserChatListList(UserID):
+    chats: Optional[List[UserChats]]
 
 
-class UserChatMessagesList(UserUpdateID):
-    messages:List[ChatUserMessageList]
+class UserChatMessagesList(UserID):
+    messages: List[ChatUserMessageList]
 
 
-class UserDashboardInfo(UserUpdateID):
+class UserDashboardInfo(UserID):
     pass

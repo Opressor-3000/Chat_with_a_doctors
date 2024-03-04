@@ -1,6 +1,6 @@
 
 from pydantic import BaseModel
-from admin.schemes import PermissionId
+from .account import AccountID
 
 
 
@@ -15,8 +15,16 @@ class GenderID(GenderBase):
    id: int
 
 
-class GenderUpdate(GenderID):
+class GenderCreate(GenderBase):
       title:str
-      creater_id: PermissionId
+      creater_id: AccountID
+
+
+class GenderInfo(GenderCreate):
+    id: int
+
+
+class GenderUpdate(GenderCreate):
+      pass
 
 

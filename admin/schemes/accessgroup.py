@@ -1,17 +1,27 @@
 from pydantic import BaseModel
 
 
-from admin.schemes import Accessid, PermissionId, GroupId
+from schemes import AccessID
+from account.schemes import AccountID
 
 
-class BaseAccessGroup(BaseModel):
-    group_id: GroupId
-    access_id: Accessid
+class AccessAccountBase(BaseModel):
+    account: AccountID
+    access: AccessID
 
 
-class AccessGroupId(BaseAccessGroup):
+class AccessAccountID(AccessAccountBase):
     id: int
 
 
-class CreateAccessGroup(BaseAccessGroup):
-    creater_id: PermissionId
+class CreateAccessAccount(AccessAccountBase):
+    creater_id: AccessID
+
+
+class AccessAccountInfo(CreateAccessAccount):
+    id: int
+
+
+class AccessAccountUpdate(AccessAccountBase):
+    account: AccountID
+    access: AccessID

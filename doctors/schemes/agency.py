@@ -1,8 +1,7 @@
 from pydantic import BaseModel
 
 
-from admin.schemes import PermissionId
-
+from account.schemes import AccountID
 
 
 class BaseAgency(BaseModel):
@@ -14,6 +13,8 @@ class AgencyID(BaseAgency):
 
 
 class CreateAgency(BaseAgency):
-    creater_id: PermissionId
+    creater_id: AccountID
 
 
+class AccountInfo(CreateAgency):
+    id: int

@@ -7,5 +7,6 @@ class BaseAccess(BaseModel):
     title: str
 
 
-class Accessid(BaseAccess):
+class AccessID(BaseAccess):
     id: int
+    

@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from admin.schemes import PermissionId
+from .account import AccountID
 
 
 class DiseaseBase(BaseModel):
@@ -9,10 +9,22 @@ class DiseaseBase(BaseModel):
    class Config:
       orm_mode = True
 
+class DiseaseID(DiseaseBase):
+   id: int
+
 
 class CreateDisease(DiseaseBase):
-   creater_id: PermissionId
+   creater_id: AccountID
 
 
-class DiseaseID(CreateDisease):
+class DiseaseInfo(CreateDisease):
    id: int
+
+
+class DiseaseUpdate(DiseaseID):
+   title: str | None = None
+   code: int | None = None
+   creater_id: AccountID
+
+
+   

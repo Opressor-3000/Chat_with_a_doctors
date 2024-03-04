@@ -5,15 +5,15 @@ from typing import Optional
 
 
 from pydantic import BaseModel
-from admin.schemes import PermissionId
-from chat.schemes.chatuser import ChatUserId
-from .chatuser import ChatUserAccount
+from admin.schemes import AccountID
+from chat.schemes.chatuser import ChatUserID
 from .messagestatus import MessageStatusID
 
 
 class BaseMessage(BaseModel):
     text: str
     messagestatus: MessageStatusID
+    created_at: datetime
 
 
 class MessageID(BaseMessage):
@@ -21,14 +21,15 @@ class MessageID(BaseMessage):
 
 
 class MessageUserChat(BaseMessage):
-    chatuser_id: ChatUserId
+    chatuser_id: ChatUserID
 
 
 class MessageInfo(MessageUserChat):
     id: int
 
+
 class BanMessage(BaseMessage):
-    creater_id: PermissionId
+    creater_id: AccountID
     delete: bool
     deleted_at: datetime
 
@@ -37,6 +38,6 @@ class CurrentMessageStatus(MessageID):
     messagestatus: MessageStatusID
 
 
-class MessageList(ChatUserId):  #   1
+class MessageList(ChatUserID):  #   1
     id: int
     text: str

@@ -42,6 +42,22 @@ class ChatRelationMixin:
         )
 
 
+class ChatRelationMxn:
+    _chat_back_populate: str | None = None
+    _chat_uselist: bool
+    _chat_lazy:str | None = None
+    _chat_secondary: str | None = None
+
+    @declared_attr
+    def chat(cls) -> Mapped['Chat']:
+        return relationship(
+            'Chat', 
+            back_populates=cls._chat_back_populate, 
+            uselist=cls._chat_uselist, 
+            lazy=cls._chat_lazy
+        )
+
+
 class ChatUserRelationMixin:
     _chatuser_back_populate: str | None = None
     _chatuser_nullable: bool = False

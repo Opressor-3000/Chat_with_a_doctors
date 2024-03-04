@@ -1,7 +1,6 @@
-
 from pydantic import BaseModel
 
-from admin.schemes import PermissionId
+from account.schemes import AccountID
 
 
 class BaseQR(BaseModel):
@@ -9,6 +8,13 @@ class BaseQR(BaseModel):
 
 
 class CreateQR(BaseQR):
-    creater_id:PermissionId
+    creater_id: AccountID
 
+
+class QRID(BaseModel):
+    id: int
+
+
+class QRInfo(CreateQR):
+    id: int
 

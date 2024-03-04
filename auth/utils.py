@@ -2,11 +2,12 @@ from datetime import datetime, timedelta
 
 
 from sqlalchemy.ext.asyncio import AsyncSession
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status, Cookie
 from jwt import JWT
 import bcrypt
 import jwt
-from account.schemes import AccountID, CreateAccount, AccountLogin
+from account.schemes import AccountID, CreateAccount, AccountLogin, User
+from middleware import get_user_cookie
 
 jwt = JWT()
 from .crud import get_account
@@ -78,7 +79,6 @@ async def validation_auth_jwt(
     login_data: AccountLogin,
 ):
 
-    
     account = get_account(session, login_data)
     if not account:
         return False
@@ -89,8 +89,16 @@ async def validation_auth_jwt(
 
 
 async def account_created_phone_validate(
-        session: AsyncSession,
-        singin_data: CreateAccount,
+    session: AsyncSession,
+    singin_data: CreateAccount,
 ):
     phone_exist = get_account(session, singin_data)
     if not phone_exist:
+        a = 1
+
+
+async def get_current_user(user: User = Depends()):
+    user_cookie = Cookie(alias=COOKIE_SESSION_ID)
+    if user_cookie:
+        if get_user_cookie(user_cookie):
+            return

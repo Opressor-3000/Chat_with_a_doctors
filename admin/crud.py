@@ -1,209 +1,214 @@
+from sqlalchemy import Result, select, join, label
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from account.models import User, Account
+from account.models import User, Account, Disease
+
 from doctors.models import Speciality, Doctor, Certificate
 from chat.models import Chat, Message
-from admin.models import Permission, Group, Access, QR
-from admin.schemes import PermissionId, GroupId, AccessGroupId, CreateQR
+from admin.models import Access, QR
+from admin.schemes import CreateQR
 from chat.schemes import ChatId, MessageID
-from doctors.schemes import DoctorId, CertificateId, SpecialityId, SpecialityUpdate
-from account.schemes import UserID, AccountId, AccountUpdate
+from doctors.schemes import (
+    DoctorId,
+    CertificateID,
+    SpecialityId,
+    SpecialityUpdate,
+    CreateSpeciality,
+)
+from account.schemes import (
+    UserID,
+    AccountID,
+    AccountUpdate,
+)
 
 
 async def get_user_online(
-        session: AsyncSession,
+    session: AsyncSession,
 ) -> list[User]:
+    ###  NEED WEBSOCKET
     return
 
 
-async def get_chat_messages(
-        session: AsyncSession,
-        chat: ChatId
-) -> list[Message]:
-    return 
+async def get_chat_messages(session: AsyncSession, chat: ChatId) -> list[Message]:
+    return
 
 
 async def get_online_doctors(
-        session: AsyncSession,
-        speciality: Speciality,
+    session: AsyncSession,
+    speciality: Speciality,
 ) -> list[Doctor]:
-    return 
-
-
-async def get_user_current_chat(
-        session: AsyncSession,
-        user: User,
-) -> Chat:
-    return 
-
-
-async def get_users(
-        session: AsyncSession,
-) -> list[User]:
+    ###   NEED WEBSOCKET
     return
 
 
+async def get_users(
+    session: AsyncSession,
+) -> list[User]:
+    # ADMINS
+    stmt = select(User).offset(100)
+    user: Result = session.scalars(stmt)
+    return list(user.all())
+
+
 async def get_user(
-        session: AsyncSession,
-        user_id: UserID,
+    session: AsyncSession,
+    user_id: UserID,
 ) -> User:
+    #  ADMINS
+    subquery = select(Disease.title).where()
+    stmt = (
+        select(
+            User,
+            User.avatar,
+            Account,
+            list(Disease),
+            Chat,
+            Doctor,
+            Account.speciality,
+        )
+        .where(User=user_id)
+        .join(Account)
+        .where(Account.users == user_id)
+        .join(Disease)
+        .where()
+        .join(User)
+    )
+
     return
 
 
 async def get_chat_message(
-        session: AsyncSession,
-        message_id: MessageID
+    session: AsyncSession,
+    message_id: MessageID,
 ) -> Message:
     return
 
 
 async def get_delete_message(
-        session: AsyncSession,
-        message_id: MessageID
+    session: AsyncSession,
+    message_id: MessageID,
 ) -> Message:
     return
 
 
 async def get_account(
-        session: AsyncSession,
-        account: AccountId
+    session: AsyncSession,
+    account: AccountID,
 ) -> Account:
     return
 
 
 async def get_accounts(
-        session: AsyncSession,
+    session: AsyncSession,
 ) -> list[Account]:
     return
 
 
 async def account_update(
-        session: AsyncSession,
-        account_id: AccountUpdate,
+    session: AsyncSession,
+    account_id: AccountUpdate,
 ) -> Account:
     return
 
 
 async def get_doctor(
-        session: AsyncSession,
-        doctor_id: DoctorId,
+    session: AsyncSession,
+    doctor_id: DoctorId,
 ) -> Doctor:
     return
 
 
-# async def doctor_update(
-#         session: AsyncSession,
-#         dcotor_id: D
-# ) -> Doctor:
-#     return
-
-
 async def get_certificate(
-        session: AsyncSession,
-        certificate: CertificateId,
+    session: AsyncSession,
+    certificate: CertificateID,
 ) -> Certificate:
     return
 
 
 async def get_speciality(
-        session: AsyncSession,
-
+    session: AsyncSession,
 ) -> Speciality:
     return
 
 
 async def get_specialities(
-        session: AsyncSession,
+    session: AsyncSession,
 ) -> list[SpecialityId]:
-    return 
-
-
-#admins
-
-
-async def create_speciality(
-        session: AsyncSession,
-        permission_id: PermissionId,
-) -> Speciality:
     return
 
 
+##############    admins     ##############
+
+
+async def create_speciality(
+    session: AsyncSession, speciality: CreateSpeciality
+) -> Speciality:
+    new_spec = Speciality(**speciality.model_dump())
+    session.add(new_spec)
+    session.commit()
+    return session.refresh(new_spec)
+
+
 async def speciality_update(
-        session: AsyncSession,
-        speciality_id: SpecialityUpdate,
+    session: AsyncSession,
+    speciality_id: SpecialityUpdate,
 ) -> Speciality:
     return
 
 
 async def create_employee(
-        session: AsyncSession,
-        account_id: AccountId,
-) -> Permission:
+    session: AsyncSession,
+    account_update: AccountID,
+    partial: bool = False,
+) -> Account:
+    account = Account()
+    for name, value in Account(**account_update.model_dump().item()):
+        setattr(account, name, value)
+    await session.commit()
     return
 
 
 async def get_employees(
-        session: AsyncSession,
-) -> list[Permission]:
+    session: AsyncSession,
+) -> list[Account]:
     return
 
 
 async def employee_update(
-        session: AsyncSession,
-        permission_id: PermissionId,
-) -> Permission:
-    return
-
-
-async def get_groups(
-        session: AsyncSession,
-) -> list[Group]:
-    return
-
-
-async def get_group_employees(
-        session: AsyncSession,
-        group_id: GroupId,
-) -> list[Permission]:
-    return
-
-
-async def create_group(
-        session: AsyncSession,
-        permission_id: PermissionId,
-) -> Group:
-    return
-
-
-async def group_update(
-        session: AsyncSession,
-        group_id: GroupId,
-        employee_id: PermissionId,
-) -> list[AccessGroupId]:
-    return
-
-
-async def get_accessgroup(
-        session: AsyncSession,
-        group_id: GroupId,
-) -> list[Access]:
-    return
-
-
-async def get_accesses(
-        session: AsyncSession,
-        employee_id: PermissionId,
-) -> list[Access]:
+    session: AsyncSession,
+    account_update: AccountID,
+) -> Account:
+    account = Account(**account_update.model_dump())
     return
 
 
 async def create_qr(
-        session: AsyncSession,
-        qr: CreateQR,
-        employee_id: PermissionId,
+    session: AsyncSession,
+    qr: CreateQR,
 ) -> QR:
-    return
+    qr = select(QR)
+    result: Result = session.scalars(qr)
+    return result.all()
 
 
-
-
+accesses = (
+    "user activation",
+    "account activation",
+    "message activation",
+    "chat activation",
+    "doctor activation",
+    "create doctor",
+    "create certificate",
+    "create sertificate",
+    "create agency",
+    "edit doctor",
+    "edit certificate",
+    "edit speciality",
+    "edit agency",
+    "assing access",
+    "revoke access",
+    "create desease",
+    "edit desease",
+    "insert QR",
+    "singular",
+)

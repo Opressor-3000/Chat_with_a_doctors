@@ -1,4 +1,11 @@
-from fastapi import APIRouter
+from typing import List
+
+from core.models.db_connector import db_connect
+from fastapi import APIRouter, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
+from schemes.chat import UserChatMessageDoctor
+from account.schemes import User
+from auth.utils import get_current_user
 
 
 router = APIRouter(prefix="/chat", tags=["Chats"])
@@ -16,12 +23,15 @@ async def get_user_chat_list():
     return
 
 
-@router.post("/")
-async def set_all_chat_message_list():
+@router.post("/", response_model=List[UserChatMessageDoctor])
+async def set_all_chat_message_list(
+    session: AsyncSession = Depends(db_connect.scope_session_dependency),
+    user_id: User = Depends(get_current_user)
+):
     """
         return история messages
     """
-    return
+    return [message from ]
 
 
 @router.get("/doctors/")
@@ -35,5 +45,6 @@ async def get_doctors(user):
 @router.get("/{doctor_id}/")
 async def get_doctor(doctor_id):
     pass
+
 
 

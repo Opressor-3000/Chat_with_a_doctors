@@ -155,7 +155,7 @@ async def get_specialities():
 
 
 @router.post('/{speciality_id}/')
-async def create_speciality():
+async AccountID_speciality():
     pass
 
 

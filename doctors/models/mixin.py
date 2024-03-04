@@ -36,7 +36,6 @@ class SpecialityRelationMixin:
             nullable=cls._spec_nullable
         )
     
-
     @declared_attr
     def speciality(cls) -> Mapped['Speciality']:
         return relationship(
@@ -52,7 +51,6 @@ class DocRelationMixin:
     _doc_lazy: str 
     _doc_uselist: bool
     _doc_secondary:str | None = None
-
 
     @declared_attr
     def doctor(cls) -> Mapped['Doctor']:
@@ -98,6 +96,23 @@ class DoctorRelationMixin:
             lazy=cls._doc_lazy, 
             uselist=cls._doc_uselist,
             secondary=cls._doc_secondary,
+        )
+
+
+class SpecialityListRelationMxn:
+    _spec_back_populate: str
+    _spec_lazy: str
+    _spec_uselist: bool
+    _spec_secondary: str | None = None    
+
+    @declared_attr
+    def speciality(cls) -> Mapped['Speciality']:
+        return relationship(
+            'Speciality', 
+            back_populates=cls._spec_back_populate, 
+            lazy=cls._spec_lazy, 
+            uselist=cls._spec_uselist,
+            secondary=cls._spec_secondary,
         )
 
 

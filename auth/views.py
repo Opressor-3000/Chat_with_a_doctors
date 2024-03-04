@@ -49,19 +49,16 @@ async def create_user(
 async def account_singin(
     session: AsyncSession = Depends(db_connect.scope_session_dependency),
     account: CreateAccount = Depends(validation_auth_jwt),
-    ):
+):
     unregister_exc = HTTPException(
-        status_code=status.HTTP_404_NOT_FOUND,
-        detail="Register Except Message"
+        status_code=status.HTTP_404_NOT_FOUND, detail="Register Except Message"
     )
-    
-    
 
 
 @router.post("/jwt_login/")
 async def auth_account_jwt(
     session: AsyncSession = Depends(db_connect.scope_session_dependency),
-    login_data:AccountLogin = Depends(validation_auth_jwt()),
+    login_data: AccountLogin = Depends(validation_auth_jwt()),
 ):
     unauthed_exc = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -78,4 +75,3 @@ async def auth_account_jwt(
         access_token=token,
         token_type="Bearer",
     )
-

@@ -13,7 +13,7 @@ class ChatUserChatId(BaseChatUser):
    chat_id:ChatId
 
 
-class ChatUserId(BaseChatUser): #  1
+class ChatUserID(BaseChatUser): #  1
    id: int
 
 

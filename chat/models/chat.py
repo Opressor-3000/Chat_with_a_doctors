@@ -4,6 +4,7 @@ from sqlalchemy import ForeignKey, Integer, Boolean
 
 from core.models.base import Base
 from doctors.models.mixin import UserDocRelationMixin, SpecialityRelationMixin
+from doctors.models.doc_chatuser_mxn import DoctorAccountRelationMxn
 from account.models.accounts_mixin import AccountRelationMixin
 from chat.models.mixin_ import MessageListRelationMixin
 
@@ -13,6 +14,7 @@ class Chat(
     MessageListRelationMixin,
     SpecialityRelationMixin,
     AccountRelationMixin,
+    DoctorAccountRelationMxn,
     Base,
 ):
     _messages_back_populate = 'chat'
@@ -43,6 +45,11 @@ class Chat(
     _account_nullable = True
     _account_uselist = False
 
+    _doctor_account_back_populate = "chat"
+    _doctor_account_secondary = 'doctor'
+    _doctor_account_lazy = 'joined'
+    _doctor_account_uselist = False
+
     active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
     previous_chat_id: Mapped[int] = mapped_column(
         Integer,
@@ -57,4 +64,4 @@ class Chat(
     )
 
     def __repr__(self) -> str:
-        return f"{self.user} {self.speciality} {self.created_at}"
+        return f"{self.user} {self.doctor_account} {self.speciality} {self.created_at}"

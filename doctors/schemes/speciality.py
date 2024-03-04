@@ -2,15 +2,15 @@ from datetime import datetime
 
 from pydantic import BaseModel
 
-from admin.schemes import PermissionId
+from account.schemes import AccountID
 
 
 class BaseSpeciality(BaseModel):
     title: str
-    
+
 
 class CreateSpeciality(BaseSpeciality):
-    creater_id: PermissionId
+    creater_id: AccountID
 
 
 class SpecialityId(BaseSpeciality):
@@ -19,6 +19,4 @@ class SpecialityId(BaseSpeciality):
 
 class SpecialityUpdate(SpecialityId):
     title: str
-    creater_id: PermissionId
-
-
+    creater_id: AccountID

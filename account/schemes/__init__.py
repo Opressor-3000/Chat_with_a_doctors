@@ -1,34 +1,32 @@
-__all__ =(
-    'AccountPhone',
-    'AccountID',
-    'AccountLogin',
-    'CreateAccount',
-    'ChangePassword',
-    'AnamnesisID',
-    'AnamnesisDelete',
-    'AnamnesisUpdate',
-    'DiagnosisDelete',
-    'DiagnosisID',
-    'DiagnosisUpdate',
-    'GenderCreate',
-    'GenderID',
-    'GenderUpdate',
-    'UserCreate',
-    'User',
-    'DiseaseID',
-    'CreateDisease',
+__all__ = (
+    "AccountPhone",
+    "AccountID",
+    "AccountLogin",
+    "AccountUpdate",
+    "CreateAccount",
+    "ChangePassword",
+    "AnamnesisID",
+    "AnamnesisDelete",
+    "AnamnesisUpdate",
+    "DiagnosisDelete",
+    "DiagnosisID",
+    "DiagnosisUpdate",
+    "GenderCreate",
+    "GenderID",
+    "GenderUpdate",
+    "UserCreate",
+    "UserID",
+    "DiseaseID",
+    "CreateDisease",
 )
 
 from .account import (
     CreateAccount, 
-    AccountID,
-    AccountLogin
+    AccountID, 
+    AccountLogin,
+    AccountUpdate,
 )
-from .anamnesis import (
-    AnamnesisID,
-    AnamnesisDelete,
-    AnamnesisUpdate,
-)
+
 from .diagnosis import (
     DiagnosisDelete,
     DiagnosisID,
@@ -39,7 +37,7 @@ from .gender import (
     GenderUpdate,
 )
 from .user import (
-    User,
+    UserID,
 )
 from .disease import (
     DiseaseID,
