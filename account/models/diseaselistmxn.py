@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 from sqlalchemy.orm import declared_attr, Mapped, relationship
 
 if TYPE_CHECKING:
@@ -12,7 +12,7 @@ class DiseaseListRelationMixin:
     _diseases_secondary:str | None = None
 
     @declared_attr
-    def disease(cls) -> Mapped[list['Disease']]:
+    def disease(cls) -> Mapped[List['Disease']]:
         return relationship(
             'Disease',
             back_populates=cls._diseases_back_populate,

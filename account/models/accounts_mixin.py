@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 from sqlalchemy.orm import declared_attr, Mapped, relationship, mapped_column
 from sqlalchemy import ForeignKey, Integer
 
@@ -13,7 +13,7 @@ class AccountListRelationMixin:
     _accounts_secondary: str | None = None
 
     @declared_attr
-    def accounts(cls) -> Mapped[list['Account']]:
+    def accounts(cls) -> Mapped[List['Account']]:
         return relationship(
             'Account',
             back_populates=cls._accounts_back_populate,

@@ -1,10 +1,11 @@
 from datetime import datetime
-
+from typing import TYPE_CHECKING
 from pydantic import BaseModel
 
-from chat.schemes import ChatId
-from doctors.schemes.doctor import DoctorId
-from account.schemes import UserID
+if TYPE_CHECKING:
+    from chat.schemes import ChatId
+    from doctors.schemes import DoctorId
+    from account.schemes import UserID
 
 
 class BaseRating(BaseModel):
@@ -16,9 +17,9 @@ class RatingID(BaseRating):
 
 
 class CreateRating(BaseModel):
-    user_id: UserID
-    chat_id: ChatId
-    doctor_id: DoctorId
+    user_id: 'UserID'
+    chat_id: 'ChatId'
+    doctor_id: 'DoctorId'
 
 
 class Ratingnfo(CreateRating):

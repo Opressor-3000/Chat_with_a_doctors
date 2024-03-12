@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 
 from sqlalchemy.orm import declared_attr, Mapped, relationship
@@ -14,7 +14,7 @@ class DoctorListRelationMixin:
     _doctors_uselist:bool
 
     @declared_attr
-    def doctors(cls) -> Mapped[list['Doctor']]:
+    def doctors(cls) -> Mapped[List['Doctor']]:
         return relationship(
             back_populates=cls._doctors_back_populate,
             secondary=cls._doctors_secondary,

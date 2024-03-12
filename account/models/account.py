@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import TYPE_CHECKING, List
 import uuid
 from uuid import UUID as sqluuid
 
@@ -9,32 +10,40 @@ from sqlalchemy import (
     Integer,
     DateTime,
 )
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from pydantic import EmailStr
-
-
+if TYPE_CHECKING:
+    from doctors.models import Feedback
 from core.models import Base
 from .diseaselistmxn import DiseaseListRelationMixin
 from .user_mixin import UserListRelationMixin
 from doctors.models.mixin import SpecialityListRelationMxn
 from admin.models.accessesmxn import AccessListRelationMixin
+from doctors.models.feedbackmixin import FeedbacksRelationMixin, RatingRelationMixin
 
 
 class Account(
     UserListRelationMixin,
-    # DocRelationMixin,
+    FeedbacksRelationMixin,
+    RatingRelationMixin,
     DiseaseListRelationMixin,
     AccessListRelationMixin,
     SpecialityListRelationMxn,
     Base,
 ):
+    _ratings_back_populate = 'account'
+    _ratings_uselist = True
+    _ratings_lazy = 'joined'
+    _ratings_secondary = 'doctor'
+
     _users_back_populates = "account"
     _users_lazy = "joined"
     _users_uselist = True
 
-    # _doc_uselist = True
-    # _doc_lazy = "selectin"
-    # _doc_back_populate = "account"
+    _feedbacks_back_populate = 'account'
+    _feedbacks_lazy = 'joined'
+    _feedbacks_uselist = True
+    _feedbacks_secondary = 'doctor'
 
     _diseases_back_populate = "account"
     _diseases_secondary = "diagnosis"
@@ -64,6 +73,13 @@ class Account(
     password: Mapped[bytes] = mapped_column(String(250))
     is_active: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     is_staff: Mapped[bool] = mapped_column(Boolean, default=False)
+
+    account_feedbacks:Mapped[List['Feedback']] = relationship(
+            'Feedback',
+            back_populates='account',
+            uselist=True,
+            lazy='joined',
+        )
 
     def __repr__(self) -> str:
         return f"{self.last_name} {self.first_name}"

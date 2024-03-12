@@ -1,6 +1,13 @@
+from typing import TYPE_CHECKING, List
+
 from fastapi import APIRouter, Depends
 
+
 from sqlalchemy.ext.asyncio import AsyncSession
+from .models import Account, User
+from .schemes import AccountID, AccountInfo
+from chat.models import Chat
+from .crud import get_account
 
 # from .schemes.user import UserCreate, UserID
 
@@ -56,7 +63,7 @@ async def account_active():
     pass
 
 
-#            GET       
+#            GET
 
 
 @router.get("/result_comfirmation_phone/")
@@ -68,8 +75,11 @@ async def get_phone():
     pass
 
 
-@router.get("/{uuid}/")
-async def get_account():
+############################## Account ##################################
+
+
+@router.get("/{uuid}/", response_model=AccountInfo)
+async def get_account(account: AccountInfo = Depends(get_account)):
     """
     return account if is auth
 
@@ -77,60 +87,51 @@ async def get_account():
         2. First Name
         3. Last Name
         4. avatar
-        5. chatsuser_list(user.account = account)(get_chat_list, chatuser=user_id)
+        5. chats_list(user.account = account)(get_chat_list, chatuser=user_id)
         6. accesses_list
         7. sertificates(doctor.account=account)(doctor.is_active-true)
 
     """
-    pass
+    return account
 
 
 @router.get("/statistic/{user_id}/")
 async def get_user_statistic_data():
-    '''
-        user page:
-            username, avatar, gender (click get_user_data)
-            1. count(chat doctor)
-            2. list(chat doctor)
-                            yes/no(chat doctor without feedback)
-            3. count(chat without rating)
-            4. count(chat doctor without feedback)
-            5. list(feedback)count(feedback)
-    '''
+    """
+    user page:
+        username, avatar, gender (click get_user_data)
+        1. count(chat doctor)
+        2. list(chat doctor)
+                        yes/no(chat doctor without feedback)
+        3. count(chat without rating)
+        4. count(chat doctor without feedback)
+        5. list(feedback)count(feedback)
+    """
     pass
 
 
-@router.get("/{uuid}/my_doctors/")
-async def get_doctors():
+@router.get("/{uuid}/my_doctors/", response_model=AccountID)
+async def get_doctor_list(doctors: List[Account] = Depends(get_account)):
     """
     return doctor with which chats
-        1.[ user > chat > doctor 
-                                > account 
-                                        > first name 
+        1.[ user > chat > doctor
+                                > account
+                                        > first name
                                         > last name
-                                > speciality 
+                                > speciality
                                         > title
         ]
     """
-    pass
+    return doctors
 
 
-@router.get('/chats/')
-async def get_account_all_chat():
-    '''
-        list[user.account = account] 
-                                    > list[chat]
-    '''
-    pass
-
-
-@router.get('/{user_cookie}/')
+@router.get("/{user_cookie}/")
 async def get_user_data():
-    '''
-        username
-        avatar (click for select/change)
-        gender(click for select)
-    '''
+    """
+    username
+    avatar (click for select/change)
+    gender(click for select)
+    """
     pass
 
 

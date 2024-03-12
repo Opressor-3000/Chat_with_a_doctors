@@ -17,7 +17,7 @@ __all__ = (
 
 from .speciality import SpecialityId, SpecialityUpdate, CreateSpeciality
 from .certificate import CreateCertificate, CertificateID
-from .feedback import FeedbackID, BanFeedback
+from .feedback import FeedbackID
 from .rating import RatingID
 from .doctor import DoctorId, CreateDoctor
 from .agency import CreateAgency, AgencyID

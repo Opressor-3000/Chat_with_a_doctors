@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 
 from sqlalchemy.orm import declared_attr, mapped_column, relationship, Mapped
@@ -14,7 +14,7 @@ class SpecialityListRelationMixin:
     _specs_secondary: str | None = None
 
     @declared_attr
-    def specialities(cls) -> Mapped[list['Speciality']]:
+    def specialities(cls) -> Mapped[List['Speciality']]:
         return relationship(
             'Speciality',
             back_populates=cls._spec_back_populate,

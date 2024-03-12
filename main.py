@@ -1,8 +1,8 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Cookie
 import uvicorn
-from typing import Annotated
 from uuid import uuid5
+
 
 from core.models.base import Base
 from core.models.db_connector import db_connect, DataBaseConnector
@@ -29,4 +29,4 @@ async def session_id_generate() -> str:
 if __name__ == "__main__":
    uvicorn.run("main:app", reload=True)
 
-   
+

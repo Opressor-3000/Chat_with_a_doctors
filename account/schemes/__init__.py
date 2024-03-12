@@ -3,18 +3,16 @@ __all__ = (
     "AccountID",
     "AccountLogin",
     "AccountUpdate",
+    "AccountInfo",
+    "AccountChangePassword",
     "CreateAccount",
-    "ChangePassword",
-    "AnamnesisID",
-    "AnamnesisDelete",
-    "AnamnesisUpdate",
     "DiagnosisDelete",
     "DiagnosisID",
     "DiagnosisUpdate",
     "GenderCreate",
     "GenderID",
     "GenderUpdate",
-    "UserCreate",
+    "CreateUser",
     "UserID",
     "DiseaseID",
     "CreateDisease",
@@ -25,6 +23,8 @@ from .account import (
     AccountID, 
     AccountLogin,
     AccountUpdate,
+    AccountInfo,
+    AccountChangePassword,
 )
 
 from .diagnosis import (
@@ -38,6 +38,7 @@ from .gender import (
 )
 from .user import (
     UserID,
+    CreateUser,
 )
 from .disease import (
     DiseaseID,

@@ -1,7 +1,8 @@
+from typing import TYPE_CHECKING
 from pydantic import BaseModel
 
-
-from account.schemes import AccountID
+if TYPE_CHECKING:
+    from account.schemes import AccountID
 
 
 class BaseAgency(BaseModel):
@@ -13,7 +14,7 @@ class AgencyID(BaseAgency):
 
 
 class CreateAgency(BaseAgency):
-    creater_id: AccountID
+    creater_id: 'AccountID'
 
 
 class AccountInfo(CreateAgency):

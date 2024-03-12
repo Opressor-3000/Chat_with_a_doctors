@@ -1,4 +1,4 @@
-
+from typing import List
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -17,7 +17,7 @@ class Gender(
    
    title:Mapped[str] = mapped_column(String(30), unique=True)
 
-   users:Mapped[list[User]] = relationship(
+   users:Mapped[List[User]] = relationship(
       'User', 
       back_populates='gender',
       uselist=True,

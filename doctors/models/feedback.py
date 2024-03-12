@@ -30,6 +30,9 @@ class Feedback(
     delete:Mapped[bool] = mapped_column(Boolean, default=False)
     deleted_at:Mapped[datetime] = mapped_column(DateTime)
 
+    def __repr__(self) -> str:
+        return f'{self.text}'
+
 
 class Rating(
     DocChatUserRelationMixin, 
@@ -51,3 +54,5 @@ class Rating(
     _doc_lazy = 'joined'
     
     point:Mapped[int] = mapped_column(Integer)
+    def __repr__(self) -> str:
+        return f'{self.point}'

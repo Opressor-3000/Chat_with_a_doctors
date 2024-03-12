@@ -3,16 +3,14 @@ from datetime import datetime, timedelta
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Depends, HTTPException, status, Cookie
-from jwt import JWT
 import bcrypt
 import jwt
-from account.schemes import AccountID, CreateAccount, AccountLogin, User
+
+from account.schemes import AccountID, CreateAccount, AccountLogin, UserID
 from middleware import get_user_cookie
+from core.config import COOKIE_SESSION_ID
 
-jwt = JWT()
 from .crud import get_account
-
-COOKIE_SESSION_ID = "web_app_hekim_chat_uid"
 
 
 from core.config import settings
@@ -97,8 +95,9 @@ async def account_created_phone_validate(
         a = 1
 
 
-async def get_current_user(user: User = Depends()):
+async def get_current_user(user: UserID = Depends()):
     user_cookie = Cookie(alias=COOKIE_SESSION_ID)
     if user_cookie:
         if get_user_cookie(user_cookie):
             return
+

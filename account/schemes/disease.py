@@ -1,5 +1,8 @@
+from typing import TYPE_CHECKING
 from pydantic import BaseModel
-from .account import AccountID
+
+if TYPE_CHECKING:
+   from .account import AccountID
 
 
 class DiseaseBase(BaseModel):
@@ -14,7 +17,7 @@ class DiseaseID(DiseaseBase):
 
 
 class CreateDisease(DiseaseBase):
-   creater_id: AccountID
+   creater_id: 'AccountID'
 
 
 class DiseaseInfo(CreateDisease):
@@ -24,7 +27,7 @@ class DiseaseInfo(CreateDisease):
 class DiseaseUpdate(DiseaseID):
    title: str | None = None
    code: int | None = None
-   creater_id: AccountID
+   creater_id: 'AccountID'
 
 
    

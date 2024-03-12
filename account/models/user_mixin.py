@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 
 from sqlalchemy import ForeignKey, Integer
@@ -49,7 +49,7 @@ class UserListRelationMixin:
    _users_secondary:str | None = None
 
    @declared_attr
-   def users(cls) -> Mapped[list['User']]:
+   def users(cls) -> Mapped[List['User']]:
       return relationship(
          'User',
          back_populates=cls._users_back_populates, 

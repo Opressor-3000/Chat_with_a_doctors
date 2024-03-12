@@ -18,7 +18,7 @@ class Disease(
     _creater_foreignkey_name = "disease_creater_fk"
 
     _accounts_back_populate = "disease"
-    _accounts_secondary = "anamnesis"
+    _accounts_secondary = "diagnosis"
     _accounts_lazy = "joined"
     _accounts_uselist = True
 

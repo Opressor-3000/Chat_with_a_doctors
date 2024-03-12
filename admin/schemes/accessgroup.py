@@ -1,13 +1,14 @@
 from pydantic import BaseModel
+from typing import TYPE_CHECKING
 
-
-from schemes import AccessID
-from account.schemes import AccountID
+if TYPE_CHECKING:
+    from schemes import AccessID
+    from account.schemes import AccountID
 
 
 class AccessAccountBase(BaseModel):
-    account: AccountID
-    access: AccessID
+    account: 'AccountID'
+    access: 'AccessID'
 
 
 class AccessAccountID(AccessAccountBase):
@@ -15,7 +16,7 @@ class AccessAccountID(AccessAccountBase):
 
 
 class CreateAccessAccount(AccessAccountBase):
-    creater_id: AccessID
+    creater_id: 'AccessID'
 
 
 class AccessAccountInfo(CreateAccessAccount):
@@ -23,5 +24,5 @@ class AccessAccountInfo(CreateAccessAccount):
 
 
 class AccessAccountUpdate(AccessAccountBase):
-    account: AccountID
-    access: AccessID
+    account: 'AccountID'
+    access: 'AccessID'

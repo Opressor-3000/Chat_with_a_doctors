@@ -19,7 +19,7 @@ from admin.models.qr_mixin import QRRelationMixin
 from doctors.models.doc_list_mxn import DoctorListRelationMixin
 from .accounts_mixin import AccountRelationMixin
 from .gender_mixin import GenderRelationMixin
-from auth.utils import COOKIE_SESSION_ID
+from core.config import COOKIE_SESSION_ID
 
 
 class User(

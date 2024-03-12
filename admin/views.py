@@ -113,7 +113,7 @@ async def account_deactivate():
 
 
 @router.get('/{doctor_id}/')
-async def get_doctor():
+async def get_doctor_chat():
     '''
         all data of doctor filter and sort
     '''
@@ -155,7 +155,7 @@ async def get_specialities():
 
 
 @router.post('/{speciality_id}/')
-async AccountID_speciality():
+async def get_account_speciality():
     pass
 
 

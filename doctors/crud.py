@@ -20,13 +20,13 @@ async def get_doctor_profile(session: AsyncSession, doctor_id: DoctorId) -> Doct
 async def get_doctor_chats(
     session: AsyncSession,
     doctor_id: DoctorId,
-) -> list[Chat]:
+) -> List[Chat]:
     stmt = (
-        select(Chat, ChatId)
+        select(Chat)
         .where(Chat.doctor_id == doctor_id)
         .order_by(Chat.created_at)
     )
-    result: Result = session.execute(stmt)
+    result: Result = await session.execute(stmt)
     doctor_chat = result.scalars().all()
     return list(doctor_chat)
 

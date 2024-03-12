@@ -1,19 +1,19 @@
-from typing import Optional, List
+from typing import Optional, List, TYPE_CHECKING
 
 from pydantic import BaseModel
 
-
-from account.schemes import AccountID
-from doctors.schemes import SpecialityId
+if TYPE_CHECKING:
+    from account.schemes import AccountID
+    from doctors.schemes import SpecialityId
 
 
 class BaseDoctor(BaseModel):  #  1
-    account_id: AccountID
-    speciality_id: SpecialityId
+    account_id: 'AccountID'
+    speciality_id: 'SpecialityId'
 
 
-class AccountDoctorData(AccountID):
-    Speciality: List[SpecialityId]
+# class AccountDoctorData('AccountID'):
+#     Speciality: List['SpecialityId']
 
 
 class DoctorId(BaseDoctor):  #  1
@@ -25,6 +25,6 @@ class ChangeDoctorActive(BaseDoctor):
 
 
 class CreateDoctor(BaseDoctor):
-    creater_id: AccountID
+    creater_id: 'AccountID'
 
 

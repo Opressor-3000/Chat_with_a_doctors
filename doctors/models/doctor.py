@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 from sqlalchemy import UniqueConstraint, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -52,7 +52,7 @@ class Doctor(
 
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
 
-    feedbacks: Mapped[list[Feedback]] = relationship(
+    feedbacks: Mapped[List[Feedback]] = relationship(
         "Feedback", back_populates="doctor", lazy="joined", uselist=True
     )
 
@@ -61,4 +61,4 @@ class Doctor(
     )
 
     def __repr__(self) -> str:
-        return f"{self.account.last_name} {self.account.first_name} speciality:{self.speciality.title}"
+        return f"{self.account.last_name} {self.account.first_name}"

@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from .schemes import TokenInfo
 from core.models.db_connector import db_connect
-from account.schemes import AccountID, CreateAccount, AccountLogin
+from account.schemes import AccountID, CreateAccount, AccountLogin, CreateUser
 from account.crud import create_user
 from .utils import encode_jwt, validation_auth_jwt
 from .crud import get_account
@@ -24,10 +24,10 @@ async def main_auth():
     pass
 
 
-# @router.post('/add_cookie/', response_model=None, status_code=status.HTTP_201_CREATED)
-# async def cookie_auth(session: AsyncSession, user_data: UserCreate):
-#     await create_user(session=session, user=user_data)
-#     return RedirectResponse(url='api/v1/chat/', status_code=status.HTTP_302_FOUND)
+@router.post('/add_cookie/', response_model=None, status_code=status.HTTP_201_CREATED)
+async def cookie_auth(session: AsyncSession, user_data: CreateUser):
+    await create_user(session=session, user=user_data)
+    return RedirectResponse(url='api/v1/chat/', status_code=status.HTTP_302_FOUND)
 
 
 @router.get("/")  # страница для отправки сообщения и регистрации

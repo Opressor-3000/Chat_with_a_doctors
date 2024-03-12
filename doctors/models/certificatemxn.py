@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from sqlalchemy.orm import declared_attr, Mapped, relationship
 
@@ -13,7 +13,7 @@ class CertificateListRelationMixin:
     _certificates_secondary:str | None = None
 
     @declared_attr
-    def certificate(cls) -> Mapped[list['Certificate']]:
+    def certificate(cls) -> Mapped[List['Certificate']]:
         return relationship(
             'Certificate',
             back_populates=cls._certificates_back_populate, 

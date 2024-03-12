@@ -64,4 +64,4 @@ class Chat(
     )
 
     def __repr__(self) -> str:
-        return f"{self.user} {self.doctor_account} {self.speciality} {self.created_at}"
+        return f"{self.user.username} {self.doctor_account} {self.speciality} {self.created_at}"

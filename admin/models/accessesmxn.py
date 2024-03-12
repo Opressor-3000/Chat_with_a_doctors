@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 from sqlalchemy.orm import declared_attr, Mapped, relationship
 
 
@@ -12,7 +12,7 @@ class AccessListRelationMixin:
     _accesses_secondary: str | None = None
 
     @declared_attr
-    def access(cls) -> Mapped[list['Access']]:
+    def access(cls) -> Mapped[List['Access']]:
         return relationship(
             'Access',
             back_populates=cls._accesses_back_populate,

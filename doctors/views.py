@@ -1,87 +1,80 @@
-from fastapi import APIRouter
+from typing import TYPE_CHECKING, List
+from fastapi import APIRouter, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
-router = APIRouter(prefix="/doctor", tags=['Doctor'])
-'''
-    router for doctors 
+if TYPE_CHECKING:
+    from account.schemes import AccountID
+    from doctors.schemes import FeedbackID
 
-    #########     DOCTOR      #########
+from doctors.models import Feedback
+from account.crud import get_account_feedback, get_account_feedbacks
+from auth.utils import get_current_user
+from core.models import db_connect
 
-'''
-
-#    FEEDBACK
-
-@router.get('/{uuid}/feedbacks/')
-async def get_feedback_list():
-    '''
-        return all doctor feedbacks 
-            1. feedback chat speciality title
-            2. feedback chat created_at
-    '''
-    pass
+router = APIRouter(prefix="/doctor", tags=["Doctor"])
 
 
-@router.get('/{feedback_id}/')
-async def get_feedback(feedback_id):
-    '''
-        return doctor feedback if they is exist
-    '''
-    pass
+################    FEEDBACK    ###############
 
 
-#   CHAT
+@router.get("/{feedback}/")
+async def get_feedback(feedback: FeedbackID = Depends(get_account_feedback)) -> Feedback:
+    return {'feedback':feedback}
 
 
-@router.get('/{chat_id}/')
-async def get_chat():
-    '''
-        return chat
-    '''
-    pass
+##################    CHAT    ###################
 
 
-@router.get('/current_chat_list/')
+@router.get("/{chat_id}/")
+async def get_chat(
+    session: AsyncSession = Depends(db_connect.scope_session_dependency),
+    account: AccountID = Depends(get_current_user),
+):
+    """
+    return chat
+    """
+    
+
+
+@router.get("/current_chat_list/")
 async def get_current_chat_list():
-    '''
-        return all current (active) chats doctors 
-            показывать в каких чатах user online
-    '''
+    """
+    return all current (active) chats doctors
+        показывать в каких чатах user online
+    """
     pass
 
 
-@router.get('/{doctor_id}/chat_list/')
+@router.get("/{doctor_id}/chat_list/")
 async def get_all_chat_list():
-    '''
-        return one current (active) chats doctors 
-            показывать в каких чатах user online
-    '''
+    """
+    return one current (active) chats doctors
+        показывать в каких чатах user online
+    """
     pass
 
 
+#####################     USER      #####################
 
-#   USER
 
-
-@router.get('/{user_id}/')
+@router.get("/{user_id}/")
 async def get_user_from_chat():
-    '''
-        return user (username, chats, diagnosis, anamnesis, )
-    '''
+    """
+    return user (username, chats, diagnosis, anamnesis, )
+    """
     pass
 
 
-#     MESSAGE
+####################     MESSAGE     ######################
 
 
-
-@router.post('/{doctor_id}/{active_chat_id}/')
+@router.post("/{doctor_id}/{active_chat_id}/")
 async def doctor_post_message_to_chat(chat_id):
-    '''
-        chat is active True
-        chat doctor = account.doctor
-        text > 0
+    """
+    chat is active True
+    chat doctor = account.doctor
+    text > 0
 
-    '''
+    """
     pass
-
-

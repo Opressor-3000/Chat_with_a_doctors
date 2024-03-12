@@ -14,27 +14,19 @@ async def get_current_chat(
     user_id: UserID,
 ):
     stmt = select(Chat.id).where(Chat.active == True).where(Chat.user == user_id)
-    return session.scalar(stmt)
+    return await session.scalar(stmt)
 
 
-async def get_user_chat_list(
-    session: AsyncSession,
-    user_id: UserID,
-) -> list[Chat]:
-    stmt = (
-        select(Chat.id, Chat.created_at, Chat.speciality, Chat.doctor_account)
-        .where(Chat.user == user_id)
-        .order_by(desc(Chat.created_at))
-    )
-    return session.scalars(stmt)
-
-
-async def get_doctor_current_chat(
-    session: AsyncSession, account_id: AccountID
-) -> list[Chat]:
-    # получаем account, проверяем doctor_id -> account
-    # проверяем chat(active, doctor_id) -> result
-    return
+# async def get_user_chat_list(
+#     session: AsyncSession,
+#     user_id: UserID,
+# ) -> list[Chat]:
+#     stmt = (
+#         select(Chat.id, Chat.created_at, Chat.speciality, Chat.doctor_account)
+#         .where(Chat.user == user_id)
+#         .order_by(desc(Chat.created_at))
+#     )
+#     return session.scalars(stmt)
 
 
 async def get_user_doctors(
@@ -42,8 +34,9 @@ async def get_user_doctors(
     user: UserID,
 ) -> list[Doctor]:
     subquery = select(Chat.id).where(Chat.id == User.chats)
-    stmt = select(Doctor).where(Doctor.chats == subquery.label("user"))
-    return
+    stmt = select(Doctor).where(Doctor.chats == subquery)
+    doctors = await session.scalars(stmt)
+    return doctors.unique()
 
 
 async def get_chat_doctor(
@@ -51,7 +44,7 @@ async def get_chat_doctor(
     user_id: UserID,
 ) -> Doctor:
     stmt = select(Chat).where(Chat.user == user_id)
-    return session.scalar(stmt)
+    return await session.scalar(stmt)
 
 
 async def get_messages_all_chats(session: AsyncSession, user: UserID):
@@ -65,7 +58,7 @@ async def get_messages_all_chats(session: AsyncSession, user: UserID):
         .order_by(Message.created_at)
         .offset(50)
     )
-    result: Result = session.execute(stmt)
+    result: Result = await session.execute(stmt)
     messages = result.scalars().all()
     result[messages]
 
@@ -75,7 +68,7 @@ async def get_chat(
     chat_id: ChatId,
 ):
     stmt = select(Chat, list(Message)).where(Chat.id == chat_id)
-    return list(session.scalars(stmt))
+    return list(await session.scalars(stmt))
 
 
 ##################   ADMIN  ###############
@@ -94,8 +87,8 @@ async def get_all_current_chat_list(
         .order_by(desc(Chat.created_at))
         .offset(30)
     )
-    result: Result = session.execute(stmt)
-    return result.scalars().all()
+    result: Result = await session.execute(stmt)
+    return list(result.all())
 
 
 async def get_all_current_chat_count(session: AsyncSession):

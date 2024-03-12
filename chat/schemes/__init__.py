@@ -7,10 +7,12 @@ __all__ = (
     'CreateChatUser',
     'MessageStatusID',
     'CurrenChatId',
-    'ChatUserAccount'
+    'ChatUserAccount',
+    "UserChats",
+    "ChatUserMessageList"
 )
 
-from .chat import ChatId, CreateChat, CurrenChatId
+from .chat import ChatId, CreateChat, CurrenChatId, ChatUserMessageList, UserChats
 from .message import MessageID, BanMessage
 from .chatuser import ChatUserID, CreateChatUser
 from .messagestatus import MessageStatusID

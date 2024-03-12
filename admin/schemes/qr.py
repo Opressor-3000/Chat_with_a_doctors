@@ -1,6 +1,8 @@
 from pydantic import BaseModel
+from typing import TYPE_CHECKING
 
-from account.schemes import AccountID
+if TYPE_CHECKING:
+    from account.schemes import AccountID
 
 
 class BaseQR(BaseModel):
@@ -8,7 +10,7 @@ class BaseQR(BaseModel):
 
 
 class CreateQR(BaseQR):
-    creater_id: AccountID
+    creater_id: 'AccountID'
 
 
 class QRID(BaseModel):

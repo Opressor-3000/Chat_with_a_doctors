@@ -4,7 +4,6 @@ from typing import Optional, List
 from pydantic import BaseModel
 from doctors.schemes.doctor import DoctorId
 from doctors.schemes.speciality import SpecialityId
-from account.schemes.account import AccountID
 from account.schemes.user import UserInfo
 from .message import MessageList, MessageInfo, MessageUserChat
 from .message import CurrentMessageStatus

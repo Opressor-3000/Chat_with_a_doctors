@@ -1,13 +1,11 @@
 from datetime import datetime
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 
 from pydantic import BaseModel
-from .account import AccountID
-from .gender import GenderID
-from chat.schemes.chat import ChatId
-from doctors.schemes.doctor import AccountDoctorData
-from chat.schemes.chat import UserChats
-from chat.schemes.chat import ChatUserMessageList
+if TYPE_CHECKING:
+    from .account import AccountID
+    from .gender import GenderID
+    from chat.schemes import UserChats, ChatUserMessageList, ChatId
 
 
 class UserBase(BaseModel):  # 1, 2
@@ -18,7 +16,7 @@ class UserBase(BaseModel):  # 1, 2
 
 
 class UserIDAccount(UserBase):  # id
-    account: Optional[AccountID]
+    account: Optional['AccountID']
 
 
 class UserAvatar(UserBase):
@@ -30,7 +28,7 @@ class UserID(UserBase):  #  1     username, avatar
 
 
 class UserBaseAccount(UserID):  # 2
-    account: Optional[AccountID]
+    account: Optional["AccountID"]
 
 
 """
@@ -40,43 +38,43 @@ class UserBaseAccount(UserID):  # 2
 
 class UserInfo(UserID):  #  2   username, avatar, id
     birthday: Optional[datetime] = None
-    gender_id: Optional[GenderID] = None
+    gender_id: Optional["GenderID"] = None
 
 
 class UserAccountInfo(UserInfo):
-    account: AccountID
+    account: 'AccountID'
 
 
-class CreateUserModel(UserBase):  # username, avatar
+class CreateUser(UserBase):  # username, avatar
     qr_id: Optional[int] = None
 
 
 class UserAccountData(UserID):
-    account: AccountDoctorData
+    account: 'AccountID'
 
 
 class AccountUsersAdd(UserID):  # username, avatar, id
-    account_id: Optional[AccountID] = None
+    account_id: Optional['AccountID'] = None
 
 
 class CreateAccountGender(UserID):  # id
-    gender: Optional[GenderID]
+    gender: Optional['GenderID']
 
 
 class UserChat(UserID):
-    chats: Optional[List[ChatId]]
+    chats: Optional[List['ChatId']]
 
 
 class UserDoctors(UserID):
-    doctors: Optional[List[AccountDoctorData]]
+    doctors: Optional[List['AccountID']]
 
 
 class UserChatListList(UserID):
-    chats: Optional[List[UserChats]]
+    chats: Optional[List['UserChats']]
 
 
 class UserChatMessagesList(UserID):
-    messages: List[ChatUserMessageList]
+    messages: List['ChatUserMessageList']
 
 
 class UserDashboardInfo(UserID):

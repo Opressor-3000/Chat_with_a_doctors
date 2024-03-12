@@ -1,8 +1,10 @@
+from typing import TYPE_CHECKING
 from sqlalchemy.orm import relationship, Mapped, declared_attr
 
 from .mixin import UserDocRelationMixin, UserDocRelationMixin
 from chat.models.mixin import ChatRelationMixin
-from account.models import Account
+if TYPE_CHECKING:
+    from account.models import Account
 
 class DocChatUserRelationMixin(ChatRelationMixin, UserDocRelationMixin):
     pass
@@ -23,3 +25,7 @@ class DoctorAccountRelationMxn:
             lazy=cls._doctor_account_lazy,
             secondary=cls._doctor_account_secondary,
         )
+    
+
+# class DoctorSpecialitiesRelationMxn:
+#     _docspecs_back_populate: str

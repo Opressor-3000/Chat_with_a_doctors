@@ -1,3 +1,5 @@
+from typing import List
+
 from sqlalchemy import Result, select, join, label
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -43,10 +45,10 @@ async def get_online_doctors(
 
 async def get_users(
     session: AsyncSession,
-) -> list[User]:
+) -> List[User]:
     # ADMINS
     stmt = select(User).offset(100)
-    user: Result = session.scalars(stmt)
+    user: Result = await session.scalars(stmt)
     return list(user.all())
 
 
@@ -145,8 +147,8 @@ async def create_speciality(
 ) -> Speciality:
     new_spec = Speciality(**speciality.model_dump())
     session.add(new_spec)
-    session.commit()
-    return session.refresh(new_spec)
+    await session.commit()
+    return await session.refresh(new_spec)
 
 
 async def speciality_update(
@@ -187,7 +189,7 @@ async def create_qr(
     qr: CreateQR,
 ) -> QR:
     qr = select(QR)
-    result: Result = session.scalars(qr)
+    result: Result = await session.scalars(qr)
     return result.all()
 
 
@@ -211,4 +213,10 @@ accesses = (
     "edit desease",
     "insert QR",
     "singular",
+    
+    "statistic",
+    'doctorinfo',
+    'userinfo',
+    'accountstat',
+    'userstate',
 )

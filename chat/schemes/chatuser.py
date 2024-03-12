@@ -1,16 +1,18 @@
+from typing import TYPE_CHECKING
 
-from account.schemes.user import User
 from pydantic import BaseModel
-from chat.schemes import ChatId
-from account.schemes import UserAccount
+
+if TYPE_CHECKING:
+   from chat.schemes import ChatId
+   from account.schemes import UserID
 
 
 class BaseChatUser(BaseModel):  #  1
-   user_id: User
+   user_id: 'UserID'
 
 
 class ChatUserChatId(BaseChatUser):
-   chat_id:ChatId
+   chat_id:'ChatId'
 
 
 class ChatUserID(BaseChatUser): #  1

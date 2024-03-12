@@ -16,7 +16,9 @@ DB_POST = os.environ.get("DB_PORT")
 DB_NAME = os.environ.get("DB_NAME")
 
 
-BASE_DIR = Path(__file__).parent
+BASE_DIR = Path(__file__).parent.parent
+
+COOKIE_SESSION_ID = "web_app_hekim_chat_uid"
 
 
 class DBSettings(BaseModel):
@@ -32,7 +34,7 @@ class DBSettings(BaseModel):
 
 class AuthJWT(BaseModel):
     public_key_dir: Path = BASE_DIR / "certs" / "jwt_public.pem"
-    private_key_dir: Path = BASE_DIR / "certs" / "jwt_private/pem"
+    private_key_dir: Path = BASE_DIR / "certs" / "jwt_private.pem"
     algorithm: str = "RS256"
     access_token_expire_minutes: datetime = 15
 

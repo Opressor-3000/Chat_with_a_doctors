@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Optional, List, Annotated
 from annotated_types import MaxLen, MinLen
 from pydantic import BaseModel, EmailStr
-from .user import User
+from .user import UserID
 
 from doctors.schemes import DoctorId, CertificateID
 from .disease import DiseaseID
@@ -22,26 +22,33 @@ class AccountBase(BaseModel):
 
 class AccountID(AccountBase):  #   1
     id: int
+
+
+class AccountChangePassword(AccountID):
+    password: bytes    
     
 
 class CreateAccount(AccountBase):
-    phone: int
+    phone: Annotated[int, MaxLen(10), MinLen(10)]
     email: EmailStr | None = None
     password: bytes
 
 
-class AccountInfo(AccountID):
-    btk_db_id: int | None = None
+class MyAccount(AccountID): # for USER
     phone: int
     email: EmailStr
-    password: bytes
-    is_active: bool
-    is_staff: bool
     certificate: List[CertificateID]
-    users: List[UserID]
     diseases: List[DiseaseID]
     accesses: List[AccessID]
     specialities: List[SpecialityId]
+
+
+class AccountInfo(MyAccount):   # for ADMINS
+    btk_db_id: int | None = None
+    is_active: bool
+    is_staff: bool
+    users: List[UserID]
+
 
 
 class AccountLogin(BaseModel):
@@ -57,5 +64,7 @@ class AccountUpdate(AccountInfo):
 
 class AccountUsers(AccessID):
     users: List[UserID]
+
+
 
 

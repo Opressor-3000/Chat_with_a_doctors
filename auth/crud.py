@@ -1,3 +1,4 @@
+from typing import TYPE_CHECKING
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Depends, Cookie, HTTPException, status
@@ -5,18 +6,19 @@ from fastapi import Depends, Cookie, HTTPException, status
 
 from core.models.db_connector import db_connect
 from account.schemes import (
-    User as UserSchemas,
+    UserID as UserSchemas,
     CreateAccount,
     AccountID,
 )
 from auth.utils import COOKIE_SESSION_ID
-from account.models import Account, User as UserModel
+if TYPE_CHECKING:
+    from account.models import Account, User as UserModel
 
 
 async def get_account(
     session: AsyncSession,
     account: AccountID,
-) -> Account:
+) -> 'Account':
     stmt = select(Account).where(Account.phone == account.phone)
     return await session.execute(stmt)
 
@@ -27,7 +29,7 @@ async def get_account(
 async def create_account(
     session: AsyncSession,
     create_account: CreateAccount,
-) -> Account:
+) -> 'Account':
     account = Account(**create_account.model_dump())
     if await get_account(session, create_account):
         session.add(account)
@@ -43,7 +45,7 @@ async def create_account(
 async def create_user(
     session: AsyncSession,
     user: UserSchemas,
-) -> UserModel:
+) -> 'UserModel':
     user = UserModel(**user.model_dump())
     session.add(user)
     await session.commit()

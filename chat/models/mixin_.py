@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from sqlalchemy.orm import declared_attr, Mapped, mapped_column, relationship
 
@@ -13,7 +13,7 @@ class MessageListRelationMixin:
     _messages_secondary: str | None = None
 
     @declared_attr
-    def messages(cls) -> Mapped[list['Message']]:
+    def messages(cls) -> Mapped[List['Message']]:
         return relationship(
             back_populates=cls._messages_back_populate,
             lazy=cls._messages_lazy,
